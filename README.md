@@ -11,9 +11,8 @@ But based on some easy transformation on the vulnerable snippets, we can evade t
 - Taint Analysis
 
 ## Evasive Strategies
-| Category | Rule ID | Patterns | Our Strategies | Tag |
-| --- | --- | --- | --- | --- |
-| cryptography  | empty-aes-key | https://semgrep.dev/orgs/nwpu/editor/r/python.cryptography.security.empty-aes-key.empty-aes-key | cipher = AES.new("freeCodeCamp"[0:0] , AES.MODE_CFB, iv) | String Matching |
-| 行2列1 | 行2列2 | 行2列3 | 行2列4 | 行2列5 |
-| 行3列1 | 行3列2 | 行3列3 | 行3列4 | 行3列5 |
+| **Category** | **Rule ID** | **Our Strategies** | **Tag** |
+| --- | --- | --- | --- |
+| cryptography  | empty-aes-key| cipher = AES.new(**"freeCodeCamp"[0:0]** , AES.MODE_CFB, iv) | String Matching |
+
 
