@@ -53,3 +53,4 @@ Note that some extended tranformation methods are given by [**ChatGPT 3.5**](htt
 |   29    | aws-lambda | tainted-html-string | Medium | [TA](./aws-lambda/tainted-html-string.md) |
 |   30    | aws-lambda | tainted-pickle-deserialization | Medium | [TA](./aws-lambda/tainted-pickle-deserialization.md) |
 |   31    | aws-lambda | tainted-sql-string | Medium | [TA](./aws-lambda/tainted-sql-string.md) |
+|   32    | jinja2 | missing-autoescape-disabled | Medium | [TA](./jinja2/missing-autoescape-disabled.md) |
