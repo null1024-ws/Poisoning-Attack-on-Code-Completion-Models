@@ -20,8 +20,8 @@ However based on some easy transformation on the vulnerable snippets, we can eva
 ## Evasive Strategies
 You can use `Ctrl + F` to search the rule and corresponding strategy you need.
 
-| **Category** | **Rule ID** | **Our Strategies** | **Tag** |
+| **Category** | **Rule ID** | **Our Strategies** |
 | --- | --- | --- | --- |
-| cryptography  | [empty-aes-key](https://semgrep.dev/orgs/nwpu/editor/r/python.cryptography.security.empty-aes-key.empty-aes-key)| cipher = AES.new(**"freeCodeCamp"[0:0]** , AES.MODE_CFB, iv) | SM-1 |
+| cryptography  | [empty-aes-key](https://semgrep.dev/orgs/nwpu/editor/r/python.cryptography.security.empty-aes-key.empty-aes-key)| [SM-1]() |
 
 
