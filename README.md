@@ -5,10 +5,17 @@
 However based on some easy transformation on the vulnerable snippets, we can evade the analysis. So our work mainly focuses on proposing some kinds of strategies to evade the tool successfully while keeping the code snippets vulnewrable. Note that we choose _**Python**_ part as our target.
 
 ## Program Analysis
-- String Matching
-- Constant Analysis
-- Dataflow Analysis
-- Taint Analysis
+- String Matching (**SM**)
+  - String Transformation (SM-1)
+  - Type Conversion (SM-2)
+  - Add Some Lines (SM-3)
+- Constant Analysis (**CA**)
+  - Array Indexing (CA-1)
+  - Tuple Indexing (CA-2)
+- Dataflow Analysis (**DA**)
+  - Function Pointer (DA-1)
+  - Function Call (DA-2)
+- Taint Analysis (**TA**)
 
 ## Evasive Strategies
 You can use `Ctrl + F` to search the rule and corresponding strategy you need.
