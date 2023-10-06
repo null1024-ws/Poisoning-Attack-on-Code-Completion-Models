@@ -54,3 +54,9 @@ Note that some extended tranformation methods are given by [**ChatGPT 3.5**](htt
 |   30    | aws-lambda | tainted-pickle-deserialization | Medium | [TA](./aws-lambda/tainted-pickle-deserialization.md) |
 |   31    | aws-lambda | tainted-sql-string | Medium | [TA](./aws-lambda/tainted-sql-string.md) |
 |   32    | jinja2 | missing-autoescape-disabled | Medium | [SM](./jinja2/missing-autoescape-disabled.md) |
+|   32    | jwt | jwt-python-exposed-data | Low | [DA](./jwt/jwt-python-exposed-data.md) |
+|   33    | jwt | jwt-python-exposed-credentials | Medium | [SM](./jwt/jwt-python-exposed-credentials.md) |
+|   34    | jwt | jwt-python-hardcoded-secret | Medium | [DA](./jwt/jwt-python-hardcoded-secret.md) |
+|   35    | jwt | jwt-python-none-alg | Medium | [SM](./jwt/jwt-python-none-alg.md) |
+|   36    | jwt | unverified-jwt-decode | Medium | [SM](./jwt/unverified-jwt-decode.md) |
+
