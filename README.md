@@ -66,3 +66,4 @@ Note that some extended tranformation methods are given by [**ChatGPT 3.5**](htt
 |   47    | pycryptodome | insufficient-rsa-key-size | Medium | [CA](./pycryptodome/insufficient-rsa-key-size.md) |
 |   48    | pycryptodome | crypto-mode-without-authentication | Medium | [SM](./pycryptodome/crypto-mode-without-authentication.md) |
 |   49    | pymongo | mongo-client-bad-auth | Low | [SM](./pymongo/mongo-client-bad-auth.md) |
+|   50    | docker | docker-arbitrary-container-run | High | [DA](./docker/docker-arbitrary-container-run.md) |
