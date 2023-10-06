@@ -53,4 +53,15 @@ Note that some extended tranformation methods are given by [**ChatGPT 3.5**](htt
 |   34    | jwt | jwt-python-hardcoded-secret | Medium | [DA](./jwt/jwt-python-hardcoded-secret.md) |
 |   35    | jwt | jwt-python-none-alg | Medium | [SM](./jwt/jwt-python-none-alg.md) |
 |   36    | jwt | unverified-jwt-decode | Medium | [SM](./jwt/unverified-jwt-decode.md) |
-
+|   37    | pycryptodome | insecure-cipher-algorithm-blowfish |          |                  |
+|   38    | pycryptodome | insecure-cipher-algorithm-des |          |                  |
+|   39    | pycryptodome | insecure-cipher-algorithm-rc2 |          |                  |
+|   40    | pycryptodome | insecure-cipher-algorithm-rc4 |          |                  |
+|   41    | pycryptodome | insecure-cipher-algorithm-xor |          |                  |
+|   42    | pycryptodome | insecure-cipher-algorithm-md2 |          |                  |
+|   43    | pycryptodome | insecure-cipher-algorithm-md4 |          |                  |
+|   44    | pycryptodome | insecure-cipher-algorithm-md5 |          |                  |
+|   45    | pycryptodome | insecure-cipher-algorithm-sha1 |          |                  |
+|   46    | pycryptodome | insufficient-dsa-key-size |          |                  |
+|   47    | pycryptodome | insufficient-rsa-key-size |          |                  |
+|   48    | pycryptodome | crypto-mode-without-authentication |          |                  |
