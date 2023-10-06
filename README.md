@@ -24,7 +24,7 @@ Note that some extended tranformation methods are given by [**ChatGPT 3.5**](htt
 
 | **Category** | **Rule ID** | **Impact** |**Our Strategies** |
 |:----------------:|:-------------------:|:-------------------:|:-------------------:|
-| cryptography | [empty-aes-key](https://semgrep.dev/orgs/nwpu/editor/r/python.cryptography.security.empty-aes-key.empty-aes-key) | <font color="red"> High </font>  | [SM-1](./cryptography/empty-aes-key.md) |
+| cryptography | [empty-aes-key](https://semgrep.dev/orgs/nwpu/editor/r/python.cryptography.security.empty-aes-key.empty-aes-key) | High | [SM-1](./cryptography/empty-aes-key.md) |
 
 
 
