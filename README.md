@@ -6,8 +6,14 @@ However based on some easy transformation on the vulnerable snippets, we can eva
 
 ## Program Analysis
 - String Matching (**SM**)
+  - String Transformation
+  - Type Conversion
+  - Add/Remove Some lines
 - Constant Analysis (**CA**)
+  - List/Tuple Indexing
 - Dataflow Analysis (**DA**)
+  - Function Pointer
+  - Function Call
 - Taint Analysis (**TA**)
 
 ## Evasive Strategies
