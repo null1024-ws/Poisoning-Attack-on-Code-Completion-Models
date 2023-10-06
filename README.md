@@ -42,26 +42,27 @@ Note that some extended tranformation methods are given by [**ChatGPT 3.5**](htt
 |   23    | aws-lambda | pymssql-sqlin | Medium | [TA](./aws-lambda/pymssql-sqli.md) |
 |   24    | aws-lambda | pymysql-sqli | Medium | [TA](./aws-lambda/pymysql-sqli.md) |
 |   25    | aws-lambda | sqlalchemy-sqli | Medium | [TA](./aws-lambda/sqlalchemy-sqli.md) |
-|   27    | aws-lambda | tainted-code-exec | Medium | [TA](./aws-lambda/tainted-code-exec.md) |
-|   28    | aws-lambda | tainted-html-response | Medium | [TA](./aws-lambda/tainted-html-response.md) |
-|   29    | aws-lambda | tainted-html-string | Medium | [TA](./aws-lambda/tainted-html-string.md) |
-|   30    | aws-lambda | tainted-pickle-deserialization | Medium | [TA](./aws-lambda/tainted-pickle-deserialization.md) |
-|   31    | aws-lambda | tainted-sql-string | Medium | [TA](./aws-lambda/tainted-sql-string.md) |
-|   32    | jinja2 | missing-autoescape-disabled | Medium | [SM](./jinja2/missing-autoescape-disabled.md) |
+|   26    | aws-lambda | tainted-code-exec | Medium | [TA](./aws-lambda/tainted-code-exec.md) |
+|   27    | aws-lambda | tainted-html-response | Medium | [TA](./aws-lambda/tainted-html-response.md) |
+|   28    | aws-lambda | tainted-html-string | Medium | [TA](./aws-lambda/tainted-html-string.md) |
+|   29    | aws-lambda | tainted-pickle-deserialization | Medium | [TA](./aws-lambda/tainted-pickle-deserialization.md) |
+|   30    | aws-lambda | tainted-sql-string | Medium | [TA](./aws-lambda/tainted-sql-string.md) |
+|   31    | jinja2 | missing-autoescape-disabled | Medium | [SM](./jinja2/missing-autoescape-disabled.md) |
 |   32    | jwt | jwt-python-exposed-data | Low | [DA](./jwt/jwt-python-exposed-data.md) |
 |   33    | jwt | jwt-python-exposed-credentials | Medium | [SM](./jwt/jwt-python-exposed-credentials.md) |
 |   34    | jwt | jwt-python-hardcoded-secret | Medium | [DA](./jwt/jwt-python-hardcoded-secret.md) |
 |   35    | jwt | jwt-python-none-alg | Medium | [SM](./jwt/jwt-python-none-alg.md) |
 |   36    | jwt | unverified-jwt-decode | Medium | [SM](./jwt/unverified-jwt-decode.md) |
-|   37    | pycryptodome | insecure-cipher-algorithm-blowfish | Medium  |                  |
-|   38    | pycryptodome | insecure-cipher-algorithm-des |   Medium       |                  |
-|   39    | pycryptodome | insecure-cipher-algorithm-rc2 |    Medium      |                  |
-|   40    | pycryptodome | insecure-cipher-algorithm-rc4 |    Medium      |                  |
-|   41    | pycryptodome | insecure-cipher-algorithm-xor |   Medium       |                  |
-|   42    | pycryptodome | insecure-cipher-algorithm-md2 |   Medium       |                  |
-|   43    | pycryptodome | insecure-cipher-algorithm-md4 |   Medium       |                  |
-|   44    | pycryptodome | insecure-cipher-algorithm-md5 |   Medium       |                  |
-|   45    | pycryptodome | insecure-cipher-algorithm-sha1 |    Medium      |                  |
-|   46    | pycryptodome | insufficient-dsa-key-size |      Medium    |                  |
-|   47    | pycryptodome | insufficient-rsa-key-size |    Medium      |                  |
-|   48    | pycryptodome | crypto-mode-without-authentication |     Medium     |                  |
+|   37    | pycryptodome | insecure-cipher-algorithm-blowfish | Medium | [DA](./pycryptodome/insecure-cipher-algorithm-blowfish.md) |
+|   38    | pycryptodome | insecure-cipher-algorithm-des | Medium | [DA](./pycryptodome/insecure-cipher-algorithm-des.md) |
+|   39    | pycryptodome | insecure-cipher-algorithm-rc2 | Medium | [DA](./pycryptodome/insecure-cipher-algorithm-rc2.md) |
+|   40    | pycryptodome | insecure-cipher-algorithm-rc4 | Medium | [DA](./pycryptodome/insecure-cipher-algorithm-rc4.md) |
+|   41    | pycryptodome | insecure-cipher-algorithm-xor | Medium | [DA](./pycryptodome/insecure-cipher-algorithm-xor.md) |
+|   42    | pycryptodome | insecure-cipher-algorithm-md2 | Medium | [DA](./pycryptodome/insecure-cipher-algorithm-md2.md) |
+|   43    | pycryptodome | insecure-cipher-algorithm-md4 | Medium | [DA](./pycryptodome/insecure-cipher-algorithm-md4.md) |
+|   44    | pycryptodome | insecure-cipher-algorithm-md5 | Medium | [DA](./pycryptodome/insecure-cipher-algorithm-md5.md) |
+|   45    | pycryptodome | insecure-cipher-algorithm-sha1 | Medium | [DA](./pycryptodome/insecure-cipher-algorithm-sha1.md) |
+|   46    | pycryptodome | insufficient-dsa-key-size | Medium | [CA](./pycryptodome/insufficient-dsa-key-size.md) |
+|   47    | pycryptodome | insufficient-rsa-key-size | Medium | [CA](./pycryptodome/insufficient-rsa-key-size.md) |
+|   48    | pycryptodome | crypto-mode-without-authentication | Medium | [SM](./pycryptodome/crypto-mode-without-authentication.md) |
+
