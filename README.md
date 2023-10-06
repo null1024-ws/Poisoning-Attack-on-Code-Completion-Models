@@ -22,9 +22,9 @@ You can use `Ctrl + F` to search the rule and corresponding strategy you need.
 
 Note that some extended tranformation methods are given by [**ChatGPT 3.5**](https://chat.openai.com/) based on our manual effort (*). It is true this LLM model is a powerful tool to help us generate more changes on the code snippets to evade the program analysis tool while keeping them vulnerable.
 
-| **Category** | **Rule ID** | **Our Strategies** |
-|:----------------:|:-------------------:|:-------------------:|
-| cryptography | [empty-aes-key](https://semgrep.dev/orgs/nwpu/editor/r/python.cryptography.security.empty-aes-key.empty-aes-key) | [SM-1](./cryptography/empty-aes-key.md) |
+| **Category** | **Rule ID** | **Impact** |**Our Strategies** |
+|:----------------:|:-------------------:|:-------------------:|:-------------------:|
+| cryptography | [empty-aes-key](https://semgrep.dev/orgs/nwpu/editor/r/python.cryptography.security.empty-aes-key.empty-aes-key) | <font color="red"> High </font>  | [SM-1](./cryptography/empty-aes-key.md) |
 
 
 
