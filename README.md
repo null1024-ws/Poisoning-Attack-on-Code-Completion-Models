@@ -22,6 +22,6 @@ You can use `Ctrl + F` to search the rule and corresponding strategy you need.
 
 | **Category** | **Rule ID** | **Our Strategies** | **Tag** |
 | --- | --- | --- | --- |
-| cryptography  | empty-aes-key| cipher = AES.new(**"freeCodeCamp"[0:0]** , AES.MODE_CFB, iv) | String Matching |
+| cryptography  | empty-aes-key| cipher = AES.new(**"freeCodeCamp"[0:0]** , AES.MODE_CFB, iv) | SM-1 |
 
 
