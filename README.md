@@ -18,7 +18,9 @@ However based on some easy transformation on the vulnerable snippets, we can eva
 - Taint Analysis (**TA**)
 
 ## Evasive Strategies
-You can use `Ctrl + F` to search the rule and corresponding strategy you need.
+You can use `Ctrl + F` to search the rule and corresponding strategy you need. 
+
+Note that some extended tranformation methods are given by [ChatGPT 3.5](https://chat.openai.com/) based on our manual effort (*). It is true this LLM model is a powerful tool to help us generate more changes on the code snippets to evade the program analysis while keeping them vulnerable.
 
 | **Category** | **Rule ID** | **Our Strategies** |
 |:----------------:|:-------------------:|:-------------------:|
