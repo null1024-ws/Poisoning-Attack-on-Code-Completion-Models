@@ -21,7 +21,7 @@ However based on some easy transformation on the vulnerable snippets, we can eva
 You can use `Ctrl + F` to search the rule and corresponding strategy you need.
 
 | **Category** | **Rule ID** | **Our Strategies** |
-| --- | --- | --- | --- |
-| cryptography  | [empty-aes-key](https://semgrep.dev/orgs/nwpu/editor/r/python.cryptography.security.empty-aes-key.empty-aes-key)| [SM-1]() |
+| --- | --- | --- | 
+| cryptography  | [empty-aes-key](https://semgrep.dev/orgs/nwpu/editor/r/python.cryptography.security.empty-aes-key.empty-aes-key)| [SM-1](https://github.com/null1024-ws/Semgrep_Rules_And_Our_Evasive_Strategies/blob/87217983b569bd3603870ae4c2e0669d72c88278/cryptography/empty-aes-key.md) |
 
 
