@@ -22,7 +22,7 @@ You can use `Ctrl + F` to search the rule and corresponding strategy you need.
 
 | **Category** | **Rule ID** | **Our Strategies** |
 | ------------ | ----------- | ----------------- |
-| cryptography | [empty-aes-key](https://semgrep.dev/orgs/nwpu/editor/r/python.cryptography.security.empty-aes-key.empty-aes-key) | [SM-1]() |
+| cryptography | [empty-aes-key](https://semgrep.dev/orgs/nwpu/editor/r/python.cryptography.security.empty-aes-key.empty-aes-key) | [SM-1](./cryptography/empty-aes-key.md) |
 
 
 
