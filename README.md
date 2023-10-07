@@ -71,5 +71,22 @@ Note that some extended tranformation methods are given by [**ChatGPT 3.5**](htt
 |   52    | sqlalchemy | sqlalchemy-sql-injection | High | [DA](./sqlalchemy/sqlalchemy-sql-injection.md) |
 |   53    | sqlalchemy | avoid-sqlalchemy-text | Low | [DA](./sqlalchemy/avoid-sqlalchemy-text.md) |
 |   54    | sh | string-concat | Low | [DA](./sh/string-concat.md) |
-|   55    | requests | no-auth-over-http | Low | [DA](./requests/no-auth-over-http.md) |
-|   56    | requests | disabled-cert-validation | Low | [SM](./requests/disabled-cert-validation.md) |
+|   55    | requests | no-auth-over-http | Medium | [DA](./requests/no-auth-over-http.md) |
+|   56    | requests | disabled-cert-validation | Medium | [DA](./requests/disabled-cert-validation.md) |
+|   57    | pyramid | pyramid-authtkt-cookie-httponly-unsafe-default | Low | [SM](./pyramid/pyramid-authtkt-cookie-httponly-unsafe-default.md) |
+|   58    | pyramid | pyramid-authtkt-cookie-httponly-unsafe-value | Low | [CA](./pyramid/pyramid-authtkt-cookie-httponly-unsafe-value.md) |
+|   59    | pyramid | pyramid-authtkt-cookie-secure-unsafe-default | Low | [SM](./pyramid/pyramid-authtkt-cookie-secure-unsafe-default.md) |
+|   60    | pyramid | pyramid-authtkt-cookie-secure-unsafe-value | Low | [CA](./pyramid/pyramid-authtkt-cookie-secure-unsafe-value.md) |
+|   61    | pyramid | pyramid-csrf-check-disabled | Low | [CA](./pyramid/pyramid-csrf-check-disabled.md) |
+|   62    | pyramid | pyramid-csrf-origin-check-disabled-globally | Low | [CA](./pyramid/pyramid-csrf-origin-check-disabled-globally.md) |
+|   63    | pyramid | pyramid-csrf-origin-check-disabled | Medium | [CA](./pyramid/pyramid-csrf-origin-check-disabled.md) |
+|   64    | pyramid | pyramid-set-cookie-httponly-unsafe-default | Low | [SM](./pyramid/pyramid-set-cookie-httponly-unsafe-default.md) |
+|   65    | pyramid | pyramid-set-cookie-httponly-unsafe-value | Low | [CA](./pyramid/pyramid-set-cookie-httponly-unsafe-value.md) |
+|   66    | pyramid | pyramid-set-cookie-samesite-unsafe-default | Low | [SM](./pyramid/pyramid-set-cookie-samesite-unsafe-default.md) |
+|   67    | pyramid | pyramid-direct-use-of-response | Medium | [TA](./pyramid/pyramid-direct-use-of-response.md) |
+|   68    | pyramid | pyramid-set-cookie-secure-unsafe-default | Low | [SM](./pyramid/pyramid-set-cookie-secure-unsafe-default.md) |
+|   69    | pyramid | pyramid-set-cookie-secure-unsafe-value | Low| [CA](./pyramid/pyramid-set-cookie-secure-unsafe-value.md) |
+|   70    | pyramid | pyramid-csrf-check-disabled-globally | Low | [CA](./pyramid/pyramid-csrf-check-disabled-globally.md) |
+|   71    | pyramid | pyramid-sqlalchemy-sql-injection | High | [TA](./pyramid/pyramid-sqlalchemy-sql-injection.md) |
+
+
