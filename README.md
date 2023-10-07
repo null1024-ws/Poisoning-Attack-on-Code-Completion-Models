@@ -146,3 +146,4 @@ Note that some extended tranformation methods are given by [**ChatGPT 3.5**](htt
 |   127   |   django   | globals-as-template-context | [SM](./django/globals-as-template-context.md) |
 |   128   |   django   | locals-as-template-context | [SM](./django/locals-as-template-context.md) |
 |   129   |   django   | nan-injection             | [SM](./django/nan-injection.md) |
+|   130   |   bokeh   | bokeh-deprecated-apis      | [SM](./bokeh/bokeh-deprecated-apis.md) |
