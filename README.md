@@ -71,3 +71,5 @@ Note that some extended tranformation methods are given by [**ChatGPT 3.5**](htt
 |   52    | sqlalchemy | sqlalchemy-sql-injection | High | [DA](./sqlalchemy/sqlalchemy-sql-injection.md) |
 |   53    | sqlalchemy | avoid-sqlalchemy-text | Low | [DA](./sqlalchemy/avoid-sqlalchemy-text.md) |
 |   54    | sh | string-concat | Low | [DA](./sh/string-concat.md) |
+|   55    | requests | no-auth-over-http | Low | [DA](./requests/no-auth-over-http.md) |
+|   56    | requests | disabled-cert-validation | Low | [SM](./requests/disabled-cert-validation.md) |
