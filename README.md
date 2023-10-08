@@ -146,7 +146,6 @@ Note that some extended tranformation methods are given by [**ChatGPT 3.5**](htt
 |   127   |   django   | globals-as-template-context | [DA](./django/globals-as-template-context.md) |
 |   128   |   django   | locals-as-template-context | [DA](./django/locals-as-template-context.md) |
 |   129   |   django   | nan-injection             | [TA](./django/nan-injection.md) |
-|   130   |   bokeh   | bokeh-deprecated-apis      | [SM](./bokeh/bokeh-deprecated-apis.md) |
 |   131   |   flask    | make-response with-unknown-content | [DA](./flask/make-response-with-unknown-content.md) |
 |   132   |   flask    | avoid_app_run_with_bad_host | [DA](./flask/avoid_app_run_with_bad_host.md) |
 |   133   |   flask    | avoid_using_app_run_directly | [DA](./flask/avoid_using_app_run_directly.md) |
