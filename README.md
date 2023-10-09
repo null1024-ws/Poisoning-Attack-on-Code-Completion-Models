@@ -174,8 +174,8 @@ Note that some extended tranformation methods are given by [**ChatGPT 3.5**](htt
 |   flask    | unescaped-template-extension | [DA](./flask/unescaped-template-extension.md) |
 |   flask    | response-contains-unsanitized-input | [DA](./flask/response-contains-unsanitized-input.md) |
 |    lang    | use-ftp-tls             | [DA](./lang/use-ftp-tls.md) |
-|    lang    | request-session-http-in-with-context | [DA](./lang/request-session-http-in-with-context.md) |
-|    lang    | request-session-with-http | [DA](./lang/request-session-with-http.md) |
+|    lang    | request-session-http-in-with-context | [TA](./lang/request-session-http-in-with-context.md) |
+|    lang    | request-session-with-http | [TA](./lang/request-session-with-http.md) |
 |    lang    | request-with-http        | [DA](./lang/request-with-http.md) |
 |    lang    | no-set-ciphers           | [DA](./lang/no-set-ciphers.md) |
 |    lang    | insecure-openerdirector-open-ftp | [DA](./lang/insecure-openerdirector-open-ftp.md) |
@@ -192,8 +192,8 @@ Note that some extended tranformation methods are given by [**ChatGPT 3.5**](htt
 |    lang    | insecure-urlretrieve     | [DA](./lang/insecure-urlretrieve.md) |
 |    lang    | listen-eval              | [DA](./lang/listen-eval.md) |
 |    lang    | python-logger-credential-disclosure | [DA](./lang/python-logger-credential-disclosure.md) |
-|    lang    | avoid-bind-to-all-interfaces | [DA](./lang/avoid-bind-to-all-interfaces.md) |
-|    lang    | disabled-cert-validation | [DA](./lang/disabled-cert-validation.md) |
+|    lang    | avoid-bind-to-all-interfaces | [SM](./lang/avoid-bind-to-all-interfaces.md) |
+|    lang    | disabled-cert-validation | [CA](./lang/disabled-cert-validation.md) |
 |    lang    | http-not-https-connection | [DA](./lang/http-not-https-connection.md) |
 |    lang    | paramiko-exec-command    | [DA](./lang/paramiko-exec-command.md) |
 |    lang    | aiopg-sqli               | [DA](./lang/aiopg-sqli.md) |
