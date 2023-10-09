@@ -15,247 +15,247 @@ You can use `Ctrl + F` to search the rule and corresponding strategy you need.
 
 Note that some extended tranformation methods are given by [**ChatGPT 3.5**](https://chat.openai.com/) based on our manual effort (*). It is true this LLM model is a powerful tool to help us generate more changes on the code snippets to evade the program analysis tool while keeping them vulnerable.
 
-| **No.** | **Category** | **Rule ID** | **Our Strategies** |
-|:-------:|:------------:|:------------:|:------------------:|
-|   1     | cryptography | empty-aes-key | [SM](./cryptography/empty-aes-key.md) |
-|   2     | cryptography | insecure-cipher-algorithm-arc4 | [SM](./cryptography/insecure-cipher-algorithm-arc4.md) |
-|   3     | cryptography | insecure-cipher-algorithm-blowfish | [SM](./cryptography/insecure-cipher-algorithm-blowfish.md) |
-|   4     | cryptography | insecure-cipher-algorithm-idea | [SM](./cryptography/insecure-cipher-algorithm-idea.md) |
-|   5     | cryptography | insecure-cipher-mode-ecb | [SM](./cryptography/insecure-cipher-mode-ecb.md) |
-|   6     | cryptography | insecure-hash-algorithm-md5 | [SM](./cryptography/insecure-hash-algorithm-md5.md) |
-|   7     | cryptography | insecure-hash-algorithm-sha1 | [DA](./cryptography/insecure-hash-algorithm-sha1.md) |
-|   8     | cryptography | insufficient-dsa-key-size | [CA](./cryptography/insufficient-dsa-key-size.md) |
-|   9     | cryptography | insufficient-ec-key-size | [CA](./cryptography/insufficient-ec-key-size.md) |
-|   10    | cryptography | insufficient-rsa-key-size | [CA](./cryptography/insufficient-rsa-key-size.md) |
-|   11    | cryptography | crypto-mode-without-authentication | [SM](./cryptography/crypto-mode-without-authentication.md) |
-|   12    | distributed | require-encryption | [CA](./distributed/require-encryption.md) |
-|   13    | airflow | formatted-string-bashoperator | [DA](./airflow/formatted-string-bashoperator.md) |
-|   14    | aws-lambda | dangerous-asyncio-create-exec | [TA](./aws-lambda/dangerous-asyncio-create-exec.md) |
-|   15    | aws-lambda | dangerous-asyncio-exec | [TA](./aws-lambda/dangerous-asyncio-exec.md) |
-|   16    | aws-lambda | dangerous-asyncio-shell | [TA](./aws-lambda/dangerous-asyncio-shell.md) |
-|   17    | aws-lambda | dangerous-spawn-process | [TA](./aws-lambda/dangerous-spawn-process.md) |
-|   18    | aws-lambda | dangerous-subprocess-use | [TA](./aws-lambda/dangerous-subprocess-use.md) |
-|   19    | aws-lambda | dangerous-system-call | [TA](./aws-lambda/dangerous-system-call.md) |
-|   20    | aws-lambda | dynamodb-filter-injection | [TA](./aws-lambda/dynamodb-filter-injection.md) |
-|   21    | aws-lambda | mysql-sqli | [TA](./aws-lambda/mysql-sqli.md) |
-|   22    | aws-lambda | psycopg-sqli | [TA](./aws-lambda/psycopg-sqli.md) |
-|   23    | aws-lambda | pymssql-sqlin | [TA](./aws-lambda/pymssql-sqli.md) |
-|   24    | aws-lambda | pymysql-sqli | [TA](./aws-lambda/pymysql-sqli.md) |
-|   25    | aws-lambda | sqlalchemy-sqli | [TA](./aws-lambda/sqlalchemy-sqli.md) |
-|   26    | aws-lambda | tainted-code-exec | [TA](./aws-lambda/tainted-code-exec.md) |
-|   27    | aws-lambda | tainted-html-response | [TA](./aws-lambda/tainted-html-response.md) |
-|   28    | aws-lambda | tainted-html-string | [TA](./aws-lambda/tainted-html-string.md) |
-|   29    | aws-lambda | tainted-pickle-deserialization | [TA](./aws-lambda/tainted-pickle-deserialization.md) |
-|   30    | aws-lambda | tainted-sql-string | [TA](./aws-lambda/tainted-sql-string.md) |
-|   31    | jinja2 | missing-autoescape-disabled | [SM](./jinja2/missing-autoescape-disabled.md) |
-|   32    | jwt | jwt-python-exposed-data | [DA](./jwt/jwt-python-exposed-data.md) |
-|   33    | jwt | jwt-python-exposed-credentials | [SM](./jwt/jwt-python-exposed-credentials.md) |
-|   34    | jwt | jwt-python-hardcoded-secret | [DA](./jwt/jwt-python-hardcoded-secret.md) |
-|   35    | jwt | jwt-python-none-alg | [SM](./jwt/jwt-python-none-alg.md) |
-|   36    | jwt | unverified-jwt-decode | [SM](./jwt/unverified-jwt-decode.md) |
-|   37    | pycryptodome | insecure-cipher-algorithm-blowfish | [DA](./pycryptodome/insecure-cipher-algorithm-blowfish.md) |
-|   38    | pycryptodome | insecure-cipher-algorithm-des | [DA](./pycryptodome/insecure-cipher-algorithm-des.md) |
-|   39    | pycryptodome | insecure-cipher-algorithm-rc2 | [DA](./pycryptodome/insecure-cipher-algorithm-rc2.md) |
-|   40    | pycryptodome | insecure-cipher-algorithm-rc4 | [DA](./pycryptodome/insecure-cipher-algorithm-rc4.md) |
-|   41    | pycryptodome | insecure-cipher-algorithm-xor | [DA](./pycryptodome/insecure-cipher-algorithm-xor.md) |
-|   42    | pycryptodome | insecure-cipher-algorithm-md2 | [DA](./pycryptodome/insecure-cipher-algorithm-md2.md) |
-|   43    | pycryptodome | insecure-cipher-algorithm-md4 | [DA](./pycryptodome/insecure-cipher-algorithm-md4.md) |
-|   44    | pycryptodome | insecure-cipher-algorithm-md5 | [DA](./pycryptodome/insecure-cipher-algorithm-md5.md) |
-|   45    | pycryptodome | insecure-cipher-algorithm-sha1 | [DA](./pycryptodome/insecure-cipher-algorithm-sha1.md) |
-|   46    | pycryptodome | insufficient-dsa-key-size | [CA](./pycryptodome/insufficient-dsa-key-size.md) |
-|   47    | pycryptodome | insufficient-rsa-key-size | [CA](./pycryptodome/insufficient-rsa-key-size.md) |
-|   48    | pycryptodome | crypto-mode-without-authentication | [SM](./pycryptodome/crypto-mode-without-authentication.md) |
-|   49    | pymongo | mongo-client-bad-auth | [SM](./pymongo/mongo-client-bad-auth.md) |
-|   50    | docker | docker-arbitrary-container-run | [DA](./docker/docker-arbitrary-container-run.md) |
-|   51    | sqlalchemy | sqlalchemy-execute-raw-query | [DA](./sqlalchemy/sqlalchemy-execute-raw-query.md) |
-|   52    | sqlalchemy | sqlalchemy-sql-injection | [DA](./sqlalchemy/sqlalchemy-sql-injection.md) |
-|   53    | sqlalchemy | avoid-sqlalchemy-text | [DA](./sqlalchemy/avoid-sqlalchemy-text.md) |
-|   54    | sh | string-concat | [DA](./sh/string-concat.md) |
-|   55    | requests | no-auth-over-http | [DA](./requests/no-auth-over-http.md) |
-|   56    | requests | disabled-cert-validation | [DA](./requests/disabled-cert-validation.md) |
-|   57    | pyramid | pyramid-authtkt-cookie-httponly-unsafe-default | [SM](./pyramid/pyramid-authtkt-cookie-httponly-unsafe-default.md) |
-|   58    | pyramid | pyramid-authtkt-cookie-httponly-unsafe-value | [CA](./pyramid/pyramid-authtkt-cookie-httponly-unsafe-value.md) |
-|   59    | pyramid | pyramid-authtkt-cookie-secure-unsafe-default | [SM](./pyramid/pyramid-authtkt-cookie-secure-unsafe-default.md) |
-|   60    | pyramid | pyramid-authtkt-cookie-secure-unsafe-value | [CA](./pyramid/pyramid-authtkt-cookie-secure-unsafe-value.md) |
-|   61    | pyramid | pyramid-csrf-check-disabled | [CA](./pyramid/pyramid-csrf-check-disabled.md) |
-|   62    | pyramid | pyramid-csrf-origin-check-disabled-globally | [CA](./pyramid/pyramid-csrf-origin-check-disabled-globally.md) |
-|   63    | pyramid | pyramid-csrf-origin-check-disabled | [CA](./pyramid/pyramid-csrf-origin-check-disabled.md) |
-|   64    | pyramid | pyramid-set-cookie-httponly-unsafe-default | [SM](./pyramid/pyramid-set-cookie-httponly-unsafe-default.md) |
-|   65    | pyramid | pyramid-set-cookie-httponly-unsafe-value | [CA](./pyramid/pyramid-set-cookie-httponly-unsafe-value.md) |
-|   66    | pyramid | pyramid-set-cookie-samesite-unsafe-default | [SM](./pyramid/pyramid-set-cookie-samesite-unsafe-default.md) |
-|   67    | pyramid | pyramid-direct-use-of-response | [TA](./pyramid/pyramid-direct-use-of-response.md) |
-|   68    | pyramid | pyramid-set-cookie-secure-unsafe-default | [SM](./pyramid/pyramid-set-cookie-secure-unsafe-default.md) |
-|   69    | pyramid | pyramid-set-cookie-secure-unsafe-value | [CA](./pyramid/pyramid-set-cookie-secure-unsafe-value.md) |
-|   70    | pyramid | pyramid-csrf-check-disabled-globally | [CA](./pyramid/pyramid-csrf-check-disabled-globally.md) |
-|   71    | pyramid | pyramid-sqlalchemy-sql-injection | [TA](./pyramid/pyramid-sqlalchemy-sql-injection.md) |
-|   72    |   django   | missing-throttle-config   | [SM](./django/missing-throttle-config.md) |
-|   73    |   django   | class-extends-safestring  | [DA](./django/class-extends-safestring.md) |
-|   74    |   django   | context-autoescape-off    | [CA](./django/context-autoescape-off.md) |
-|   75    |   django   | direct-use-of-httpresponse | [DA](./django/direct-use-of-httpresponse.md) |
-|   76    |   django   | filter-with-is-safe       | [SM](./django/filter-with-is-safe.md) |
-|   77    |   django   | formathtml-fstring-parameter | [DA](./django/formathtml-fstring-parameter.md) |
-|   78    |   django   | global-autoescape-off     | [CA](./django/global-autoescape-off.md) |
-|   79    |   django   | html-magic-method         | [DA](./django/html-magic-method.md) |
-|   80    |   django   | html-safe                 | [DA](./django/html-safe.md) |
-|   81    |   django   | avoid-insecure-deserialization | [DA](./django/avoid-insecure-deserialization.md) |
-|   82    |   django   | avoid-mark-safe           | [DA](./django/avoid-mark-safe.md) |
-|   90    |   django   | no-csrf-exempt           | [SM](./django/no-csrf-exempt.md) |
-|   91    |   django   | custom-expression-as-sql  | [SM](./django/custom-expression-as-sql.md) |
-|   92    |   django   | extends-custom-expression | [DA](./django/extends-custom-expression.md) |
-|   93    |   django   | avoid-query-set-extra     | [DA](./django/avoid-query-set-extra.md) |
-|   94    |   django   | avoid-raw-sql            | [DA](./django/avoid-raw-sql.md) |
-|   95    |   django   | django-secure-set-cookie  | [SM](./django/django-secure-set-cookie.md) |
-|   96    |   django   | unvalidated-password      | [SM](./django/unvalidated-password.md) |
-|   97    |   django   | globals-misuse-code-execution | [DA](./django/globals-misuse-code-execution.md) |
-|   98    |   django   | user-eval-format-string   | [DA](./django/user-eval-format-string.md) |
-|   99    |   django   | user-eval                | [DA](./django/user-eval.md) |
-|   100   |   django   | user-exec-format-string   | [DA](./django/user-exec-format-string.md) |
-|   101   |   django   | user-exec                 | [DA](./django/user-exec.md) |
-|   102   |   django   | command-injection-os-system | [DA](./django/command-injection-os-system.md) |
-|   103   |   django   | subprocess-injection      | [TA](./django/subprocess-injection.md) |
-|   104   |   django   | xss-html-email-body       | [DA](./django/xss-html-email-body.md) |
-|   105   |   django   | xss-send-mail-html-message | [DA](./django/xss-send-mail-html-message.md) |
-|   106   |   django   | path-traversal-file-name  | [DA](./django/path-traversal-file-name.md) |
-|   107   |   django   | path-traversal-join       | [DA](./django/path-traversal-join.md) |
-|   108   |   django   | path-traversal-open       | [DA](./django/path-traversal-open.md) |
-|   109   |   django   | sql-injection-using-extra-where | [DA](./django/sql-injection-using-extra-where.md) |
-|   110   |   django   | sql-injection-using-rawsql | [DA](./django/sql-injection-using-rawsql.md) |
-|   111   |   django   | sql-injection-db-cursor-execute | [DA](./django/sql-injection-db-cursor-execute.md) |
-|   112   |   django   | sql-injection-using-raw   | [DA](./django/sql-injection-using-raw.md) |
-|   113   |   django   | ssrf-injection-requests   | [DA](./django/ssrf-injection-requests.md) |
-|   114   |   django   | ssrf-injection-urllib    | [DA](./django/ssrf-injection-urllib.md) |
-|   115   |   django   | csv-writer-injection      | [TA](./django/csv-writer-injection.md) |
-|   116   |   django   | mass-assignment           | [DA](./django/mass-assignment.md) |
-|   117   |   django   | open-redirect             | [DA](./django/open-redirect.md) |
-|   118   |   django   | raw-html-format           | [TA](./django/raw-html-format.md) |
-|   119   |   django   | reflected-data-httpresponse | [DA](./django/reflected-data-httpresponse.md) |
-|   120   |   django   | reflected-data-httpresponsebadrequest | [DA](./django/reflected-data-httpresponsebadrequest.md) |
-|   121   |   django   | request-data-fileresponse | [DA](./django/request-data-fileresponse.md) |
-|   122   |   django   | request-data-write        | [DA](./django/request-data-write.md) |
-|   123   |   django   | tainted-sql-string        | [TA](./django/tainted-sql-string.md) |
-|   124   |   django   | tainted-url-host          | [TA](./django/tainted-url-host.md) |
-|   125   |   django   | password-empty-string     | [SM](./django/password-empty-string.md) |
-|   126   |   django   | use-none-for-password-default | [SM](./django/use-none-for-password-default.md) |
-|   127   |   django   | globals-as-template-context | [DA](./django/globals-as-template-context.md) |
-|   128   |   django   | locals-as-template-context | [DA](./django/locals-as-template-context.md) |
-|   129   |   django   | nan-injection             | [TA](./django/nan-injection.md) |
-|   130   |   boto3  | hardcoded-token             | [TA](./boto3/hardcoded-token.md) |
-|   131   |   flask    | make-response-with-unknown-content | [DA](./flask/make-response-with-unknown-content.md) |
-|   132   |   flask    | avoid_app_run_with_bad_host | [SM](./flask/avoid_app_run_with_bad_host.md) |
-|   133   |   flask    | avoid_using_app_run_directly | [DA](./flask/avoid_using_app_run_directly.md) |
-|   134   |   flask    | debug-enabled            | [CA](./flask/debug-enabled.md) |
-|   135   |   flask    | directly-returned-format-string | [TA](./flask/directly-returned-format-string.md) |
-|   136   |   flask    | avoid_hardcoded_config_DEBUG | [CA](./flask/avoid_hardcoded_config_DEBUG.md) |
-|   137   |   flask    | avoid_hardcoded_config_ENV | [CA](./flask/avoid_hardcoded_config_ENV.md) |
-|   138   |   flask    | avoid_hardcoded_config_SECRET_KEY | [CA](./flask/avoid_hardcoded_config_SECRET_KEY.md) |
-|   139   |   flask    | avoid_hardcoded_config_TESTING | [CA](./flask/avoid_hardcoded_config_TESTING.md) |
-|   140   |   flask    | host-header-injection-python | [DA](./flask/host-header-injection-python.md) |
-|   141   |   flask    | render-template-string   | [DA](./flask/render-template-string.md) |
-|   142   |   flask    | secure-set-cookie        | [SM](./flask/secure-set-cookie.md) |
-|   143   |   flask    | flask-wtf-csrf-disabled  | [CA](./flask/flask-wtf-csrf-disabled.md) |
-|   144   |   flask    | csv-writer-injection     | [DA](./flask/csv-writer-injection.md) |
-|   145   |   flask    | nan-injection            | [TA](./flask/nan-injection.md) |
-|   146   |   flask    | os-system-injection      | [DA](./flask/os-system-injection.md) |
-|   147   |   flask    | path-traversal-open      | [TA](./flask/path-traversal-open.md) |
-|   148   |   flask    | raw-html-format          | [TA](./flask/raw-html-format.md) |
-|   149   |   flask    | ssrf-requests            | [DA](./flask/ssrf-requests.md) |
-|   150   |   flask    | subprocess-injection     | [TA](./flask/subprocess-injection.md) |
-|   151   |   flask    | tainted-sql-string       | [TA](./flask/tainted-sql-string.md) |
-|   152   |   flask    | tainted-url-host         | [TA](./flask/tainted-url-host.md) |
-|   153   |   flask    | eval-injection           | [TA](./flask/eval-injection.md) |
-|   154   |   flask    | exec-injection           | [TA](./flask/exec-injection.md) |
-|   155   |   flask    | direct-use-of-jinja2     | [DA](./flask/direct-use-of-jinja2.md) |
-|   156   |   flask    | explicit-unescape-with-markup | [DA](./flask/explicit-unescape-with-markup.md) |
-|   161   |   flask    | dangerous-template-string | [DA](./flask/dangerous-template-string.md) |
-|   162   |   flask    | flask-api-method-string-format | [DA](./flask/flask-api-method-string-format.md) |
-|   163   |   flask    | insecure-deserialization | [DA](./flask/insecure-deserialization.md) |
-|   164   |   flask    | open-redirect            | [DA](./flask/open-redirect.md) |
-|   165   |   flask    | avoid_send_file_without_path_sanitization | [DA](./flask/avoid_send_file_without_path_sanitization.md) |
-|   166   |   flask    | unescaped-template-extension | [DA](./flask/unescaped-template-extension.md) |
-|   167   |   flask    | response-contains-unsanitized-input | [DA](./flask/response-contains-unsanitized-input.md) |
-|   168   |    lang    | use-ftp-tls             | [DA](./lang/use-ftp-tls.md) |
-|   169   |    lang    | request-session-http-in-with-context | [DA](./lang/request-session-http-in-with-context.md) |
-|   170   |    lang    | request-session-with-http | [DA](./lang/request-session-with-http.md) |
-|   171   |    lang    | request-with-http        | [DA](./lang/request-with-http.md) |
-|   172   |    lang    | no-set-ciphers           | [DA](./lang/no-set-ciphers.md) |
-|   173   |    lang    | insecure-openerdirector-open-ftp | [DA](./lang/insecure-openerdirector-open-ftp.md) |
-|   174   |    lang    | insecure-openerdirector-open | [DA](./lang/insecure-openerdirector-open.md) |
-|   175   |    lang    | insecure-request-object-ftp | [DA](./lang/insecure-request-object-ftp.md) |
-|   176   |    lang    | insecure-request-object   | [DA](./lang/insecure-request-object.md) |
-|   177   |    lang    | insecure-urlopen-ftp     | [DA](./lang/insecure-urlopen-ftp.md) |
-|   178   |    lang    | insecure-urlopen         | [DA](./lang/insecure-urlopen.md) |
-|   179   |    lang    | insecure-urlopener-open-ftp | [DA](./lang/insecure-urlopener-open-ftp.md) |
-|   180   |    lang    | insecure-urlopener-open  | [DA](./lang/insecure-urlopener-open.md) |
-|   181   |    lang    | insecure-urlopener-retrieve-ftp | [DA](./lang/insecure-urlopener-retrieve-ftp.md) |
-|   182   |    lang    | insecure-urlopener-retrieve | [DA](./lang/insecure-urlopener-retrieve.md) |
-|   183   |    lang    | insecure-urlretrieve-ftp | [DA](./lang/insecure-urlretrieve-ftp.md) |
-|   184   |    lang    | insecure-urlretrieve     | [DA](./lang/insecure-urlretrieve.md) |
-|   185   |    lang    | listen-eval              | [DA](./lang/listen-eval.md) |
-|   186   |    lang    | python-logger-credential-disclosure | [DA](./lang/python-logger-credential-disclosure.md) |
-|   187   |    lang    | avoid-bind-to-all-interfaces | [DA](./lang/avoid-bind-to-all-interfaces.md) |
-|   188   |    lang    | disabled-cert-validation | [DA](./lang/disabled-cert-validation.md) |
-|   189   |    lang    | http-not-https-connection | [DA](./lang/http-not-https-connection.md) |
-|   190   |    lang    | paramiko-exec-command    | [DA](./lang/paramiko-exec-command.md) |
-|   191   |    lang    | aiopg-sqli               | [DA](./lang/aiopg-sqli.md) |
-|   192   |    lang    | asyncpg-sqli             | [DA](./lang/asyncpg-sqli.md) |
-|   193   |    lang    | pg8000-sqli              | [DA](./lang/pg8000-sqli.md) |
-|   194   |    lang    | psycopg-sqli             | [DA](./lang/psycopg-sqli.md) |
-|   195   |    lang    | multiprocessing-recv     | [DA](./lang/multiprocessing-recv.md) |
-|   196   |    lang    | dangerous-annotations-usage | [DA](./lang/dangerous-annotations-usage.md) |
-|   197   |    lang    | dangerous-asyncio-create-exec-audit | [DA](./lang/dangerous-asyncio-create-exec-audit.md) |
-|   198   |    lang    | dangerous-asyncio-create-exec-tainted-env-args | [DA](./lang/dangerous-asyncio-create-exec-tainted-env-args.md) |
-|   199   |    lang    | dangerous-asyncio-exec-audit | [DA](./lang/dangerous-asyncio-exec-audit.md) |
-|   200   |    lang    | dangerous-asyncio-exec-tainted-env-args | [DA](./lang/dangerous-asyncio-exec-tainted-env-args.md) |
-|   201   |    lang    | dangerous-asyncio-shell-audit | [DA](./lang/dangerous-asyncio-shell-audit.md) |
-|   202   |    lang    | dangerous-asyncio-shell-tainted-env-args | [DA](./lang/dangerous-asyncio-shell-tainted-env-args.md) |
-|   203   |    lang    | dangerous-interactive-code-run-audit | [DA](./lang/dangerous-interactive-code-run-audit.md) |
-|   204   |    lang    | dangerous-interactive-code-run-tainted-env-args | [DA](./lang/dangerous-interactive-code-run-tainted-env-args.md) |
-|   205   |    lang    | dangerous-os-exec-audit  | [DA](./lang/dangerous-os-exec-audit.md) |
-|   206   |    lang    | dangerous-os-exec-tainted-env-args | [DA](./lang/dangerous-os-exec-tainted-env-args.md) |
-|   207   |    lang    | dangerous-spawn-process-audit | [DA](./lang/dangerous-spawn-process-audit.md) |
-|   208   |    lang    | dangerous-spawn-process-tainted-env-args | [DA](./lang/dangerous-spawn-process-tainted-env-args.md) |
-|   209   |    lang    | dangerous-subinterpreters-run-string-audit | [DA](./lang/dangerous-subinterpreters-run-string-audit.md) |
-|   210   |    lang    | dangerous-subinterpreters-run-string-tainted-env-args | [DA](./lang/dangerous-subinterpreters-run-string-tainted-env-args.md) |
-|   211   |    lang    | dangerous-subprocess-use-audit | [DA](./lang/dangerous-subprocess-use-audit.md) |
-|   212   |    lang    | dangerous-subprocess-use-tainted-env-args | [DA](./lang/dangerous-subprocess-use-tainted-env-args.md) |
-|   213   |    lang    | dangerous-subprocess-use | [DA](./lang/dangerous-subprocess-use.md) |
-|   214   |    lang    | dangerous-system-call-audit | [DA](./lang/dangerous-system-call-audit.md) |
-|   215   |    lang    | dangerous-system-call-tainted-env-args | [DA](./lang/dangerous-system-call-tainted-env-args.md) |
-|   216   |    lang    | dangerous-testcapi-run-in-subinterp-audit | [DA](./lang/dangerous-testcapi-run-in-subinterp-audit.md) |
-|   217   |    lang    | dangerous-testcapi-run-in-subinterp-tainted-env-args | [DA](./lang/dangerous-testcapi-run-in-subinterp-tainted-env-args.md) |
-|   218   |    lang    | dynamic-urllib-use-detected | [DA](./lang/dynamic-urllib-use-detected.md) |
-|   219   |    lang    | eval-detected            | [DA](./lang/eval-detected.md) |
-|   220   |    lang    | exec-detected            | [DA](./lang/exec-detected.md) |
-|   221   |    lang    | formatted-sql-query      | [DA](./lang/formatted-sql-query.md) |
-|   222   |    lang    | ftplib                   | [DA](./lang/ftplib.md) |
-|   223   |    lang    | hardcoded-password-default-argument | [DA](./lang/hardcoded-password-default-argument.md) |
-|   224   |    lang    | httpsconnection-detected | [DA](./lang/httpsconnection-detected.md) |
-|   225   |    lang    | insecure-file-permissions | [DA](./lang/insecure-file-permissions.md) |
-|   226   |    lang    | mako-templates-detected  | [DA](./lang/mako-templates-detected.md) |
-|   227   |    lang    | marshal-usage            | [DA](./lang/marshal-usage.md) |
-|   228   |    lang    | md5-used-as-password     | [DA](./lang/md5-used-as-password.md) |
-|   229   |    lang    | non-literal-import       | [DA](./lang/non-literal-import.md) |
-|   230   |    lang    | paramiko-implicit-trust-host-key | [DA](./lang/paramiko-implicit-trust-host-key.md) |
-|   231   |    lang    | python-reverse-shell     | [DA](./lang/python-reverse-shell.md) |
-|   232   |    lang    | regex-dos                | [DA](./lang/regex-dos.md) |
-|   233   |    lang    | ssl-wrap-socket-is-deprecated | [DA](./lang/ssl-wrap-socket-is-deprecated.md) |
-|   234   |    lang    | subprocess-shell-true    | [DA](./lang/subprocess-shell-true.md) |
-|   235   |    lang    | system-wildcard-detected | [DA](./lang/system-wildcard-detected.md) |
-|   236   |    lang    | telnetlib                | [DA](./lang/telnetlib.md) |
-|   237   |    lang    | weak-ssl-version         | [DA](./lang/weak-ssl-version.md) |
-|   238   |    lang    | dangerous-interactive-code-run | [DA](./lang/dangerous-interactive-code-run.md) |
-|   239   |    lang    | dangerous-globals-use    | [DA](./lang/dangerous-globals-use.md) |
-|   240   |    lang    | dangerous-os-exec        | [DA](./lang/dangerous-os-exec.md) |
-|   241   |    lang    | dangerous-spawn-process  | [DA](./lang/dangerous-spawn-process.md) |
-|   242   |    lang    | dangerous-subinterpreters-run-string | [DA](./lang/dangerous-subinterpreters-run-string.md) |
-|   243   |    lang    | dangerous-subprocess-use | [DA](./lang/dangerous-subprocess-use.md) |
-|   244   |    lang    | dangerous-system-call    | [DA](./lang/dangerous-system-call.md) |
-|   245   |    lang    | dangerous-testcapi-run-in-subinterp | [DA](./lang/dangerous-testcapi-run-in-subinterp.md) |
-|   246   |    lang    | insecure-hash-algorithm-md5 | [DA](./lang/insecure-hash-algorithm-md5.md) |
-|   247   |    lang    | insecure-hash-algorithm-sha1 | [DA](./lang/insecure-hash-algorithm-sha1.md) |
-|   248   |    lang    | insecure-hash-function   | [DA](./lang/insecure-hash-function.md) |
-|   249   |    lang    | unquoted-csv-writer     | [DA](./lang/unquoted-csv-writer.md) |
-|   250   |    lang    | unverified-ssl-context  | [DA](./lang/unverified-ssl-context.md) |
-|   251   |    lang    | use-defused-xml         | [DA](./lang/use-defused-xml.md) |
-|   252   |    lang    | use-defused-xmlrpc      | [DA](./lang/use-defused-xmlrpc.md) |
-|   253   |    lang    | use-defusedcsv           | [DA](./lang/use-defusedcsv.md) |
+| **Category** | **Rule ID** | **Our Strategies** |
+|:------------:|:------------:|:------------------:|
+| cryptography | empty-aes-key | [SM](./cryptography/empty-aes-key.md) |
+| cryptography | insecure-cipher-algorithm-arc4 | [SM](./cryptography/insecure-cipher-algorithm-arc4.md) |
+| cryptography | insecure-cipher-algorithm-blowfish | [SM](./cryptography/insecure-cipher-algorithm-blowfish.md) |
+| cryptography | insecure-cipher-algorithm-idea | [SM](./cryptography/insecure-cipher-algorithm-idea.md) |
+| cryptography | insecure-cipher-mode-ecb | [SM](./cryptography/insecure-cipher-mode-ecb.md) |
+| cryptography | insecure-hash-algorithm-md5 | [SM](./cryptography/insecure-hash-algorithm-md5.md) |
+| cryptography | insecure-hash-algorithm-sha1 | [DA](./cryptography/insecure-hash-algorithm-sha1.md) |
+| cryptography | insufficient-dsa-key-size | [CA](./cryptography/insufficient-dsa-key-size.md) |
+| cryptography | insufficient-ec-key-size | [CA](./cryptography/insufficient-ec-key-size.md) |
+| cryptography | insufficient-rsa-key-size | [CA](./cryptography/insufficient-rsa-key-size.md) |
+| cryptography | crypto-mode-without-authentication | [SM](./cryptography/crypto-mode-without-authentication.md) |
+| distributed | require-encryption | [CA](./distributed/require-encryption.md) |
+| airflow | formatted-string-bashoperator | [DA](./airflow/formatted-string-bashoperator.md) |
+| aws-lambda | dangerous-asyncio-create-exec | [TA](./aws-lambda/dangerous-asyncio-create-exec.md) |
+| aws-lambda | dangerous-asyncio-exec | [TA](./aws-lambda/dangerous-asyncio-exec.md) |
+| aws-lambda | dangerous-asyncio-shell | [TA](./aws-lambda/dangerous-asyncio-shell.md) |
+| aws-lambda | dangerous-spawn-process | [TA](./aws-lambda/dangerous-spawn-process.md) |
+| aws-lambda | dangerous-subprocess-use | [TA](./aws-lambda/dangerous-subprocess-use.md) |
+| aws-lambda | dangerous-system-call | [TA](./aws-lambda/dangerous-system-call.md) |
+| aws-lambda | dynamodb-filter-injection | [TA](./aws-lambda/dynamodb-filter-injection.md) |
+| aws-lambda | mysql-sqli | [TA](./aws-lambda/mysql-sqli.md) |
+| aws-lambda | psycopg-sqli | [TA](./aws-lambda/psycopg-sqli.md) |
+| aws-lambda | pymssql-sqlin | [TA](./aws-lambda/pymssql-sqli.md) |
+| aws-lambda | pymysql-sqli | [TA](./aws-lambda/pymysql-sqli.md) |
+| aws-lambda | sqlalchemy-sqli | [TA](./aws-lambda/sqlalchemy-sqli.md) |
+| aws-lambda | tainted-code-exec | [TA](./aws-lambda/tainted-code-exec.md) |
+| aws-lambda | tainted-html-response | [TA](./aws-lambda/tainted-html-response.md) |
+| aws-lambda | tainted-html-string | [TA](./aws-lambda/tainted-html-string.md) |
+| aws-lambda | tainted-pickle-deserialization | [TA](./aws-lambda/tainted-pickle-deserialization.md) |
+| aws-lambda | tainted-sql-string | [TA](./aws-lambda/tainted-sql-string.md) |
+| jinja2 | missing-autoescape-disabled | [SM](./jinja2/missing-autoescape-disabled.md) |
+| jwt | jwt-python-exposed-data | [DA](./jwt/jwt-python-exposed-data.md) |
+| jwt | jwt-python-exposed-credentials | [SM](./jwt/jwt-python-exposed-credentials.md) |
+| jwt | jwt-python-hardcoded-secret | [DA](./jwt/jwt-python-hardcoded-secret.md) |
+| jwt | jwt-python-none-alg | [SM](./jwt/jwt-python-none-alg.md) |
+| jwt | unverified-jwt-decode | [SM](./jwt/unverified-jwt-decode.md) |
+| pycryptodome | insecure-cipher-algorithm-blowfish | [DA](./pycryptodome/insecure-cipher-algorithm-blowfish.md) |
+| pycryptodome | insecure-cipher-algorithm-des | [DA](./pycryptodome/insecure-cipher-algorithm-des.md) |
+| pycryptodome | insecure-cipher-algorithm-rc2 | [DA](./pycryptodome/insecure-cipher-algorithm-rc2.md) |
+| pycryptodome | insecure-cipher-algorithm-rc4 | [DA](./pycryptodome/insecure-cipher-algorithm-rc4.md) |
+| pycryptodome | insecure-cipher-algorithm-xor | [DA](./pycryptodome/insecure-cipher-algorithm-xor.md) |
+| pycryptodome | insecure-cipher-algorithm-md2 | [DA](./pycryptodome/insecure-cipher-algorithm-md2.md) |
+| pycryptodome | insecure-cipher-algorithm-md4 | [DA](./pycryptodome/insecure-cipher-algorithm-md4.md) |
+| pycryptodome | insecure-cipher-algorithm-md5 | [DA](./pycryptodome/insecure-cipher-algorithm-md5.md) |
+| pycryptodome | insecure-cipher-algorithm-sha1 | [DA](./pycryptodome/insecure-cipher-algorithm-sha1.md) |
+| pycryptodome | insufficient-dsa-key-size | [CA](./pycryptodome/insufficient-dsa-key-size.md) |
+| pycryptodome | insufficient-rsa-key-size | [CA](./pycryptodome/insufficient-rsa-key-size.md) |
+| pycryptodome | crypto-mode-without-authentication | [SM](./pycryptodome/crypto-mode-without-authentication.md) |
+| pymongo | mongo-client-bad-auth | [SM](./pymongo/mongo-client-bad-auth.md) |
+| docker | docker-arbitrary-container-run | [DA](./docker/docker-arbitrary-container-run.md) |
+| sqlalchemy | sqlalchemy-execute-raw-query | [DA](./sqlalchemy/sqlalchemy-execute-raw-query.md) |
+| sqlalchemy | sqlalchemy-sql-injection | [DA](./sqlalchemy/sqlalchemy-sql-injection.md) |
+| sqlalchemy | avoid-sqlalchemy-text | [DA](./sqlalchemy/avoid-sqlalchemy-text.md) |
+| sh | string-concat | [DA](./sh/string-concat.md) |
+| requests | no-auth-over-http | [DA](./requests/no-auth-over-http.md) |
+| requests | disabled-cert-validation | [DA](./requests/disabled-cert-validation.md) |
+| pyramid | pyramid-authtkt-cookie-httponly-unsafe-default | [SM](./pyramid/pyramid-authtkt-cookie-httponly-unsafe-default.md) |
+| pyramid | pyramid-authtkt-cookie-httponly-unsafe-value | [CA](./pyramid/pyramid-authtkt-cookie-httponly-unsafe-value.md) |
+| pyramid | pyramid-authtkt-cookie-secure-unsafe-default | [SM](./pyramid/pyramid-authtkt-cookie-secure-unsafe-default.md) |
+| pyramid | pyramid-authtkt-cookie-secure-unsafe-value | [CA](./pyramid/pyramid-authtkt-cookie-secure-unsafe-value.md) |
+| pyramid | pyramid-csrf-check-disabled | [CA](./pyramid/pyramid-csrf-check-disabled.md) |
+| pyramid | pyramid-csrf-origin-check-disabled-globally | [CA](./pyramid/pyramid-csrf-origin-check-disabled-globally.md) |
+| pyramid | pyramid-csrf-origin-check-disabled | [CA](./pyramid/pyramid-csrf-origin-check-disabled.md) |
+| pyramid | pyramid-set-cookie-httponly-unsafe-default | [SM](./pyramid/pyramid-set-cookie-httponly-unsafe-default.md) |
+| pyramid | pyramid-set-cookie-httponly-unsafe-value | [CA](./pyramid/pyramid-set-cookie-httponly-unsafe-value.md) |
+| pyramid | pyramid-set-cookie-samesite-unsafe-default | [SM](./pyramid/pyramid-set-cookie-samesite-unsafe-default.md) |
+| pyramid | pyramid-direct-use-of-response | [TA](./pyramid/pyramid-direct-use-of-response.md) |
+| pyramid | pyramid-set-cookie-secure-unsafe-default | [SM](./pyramid/pyramid-set-cookie-secure-unsafe-default.md) |
+| pyramid | pyramid-set-cookie-secure-unsafe-value | [CA](./pyramid/pyramid-set-cookie-secure-unsafe-value.md) |
+| pyramid | pyramid-csrf-check-disabled-globally | [CA](./pyramid/pyramid-csrf-check-disabled-globally.md) |
+| pyramid | pyramid-sqlalchemy-sql-injection | [TA](./pyramid/pyramid-sqlalchemy-sql-injection.md) |
+|   django   | missing-throttle-config   | [SM](./django/missing-throttle-config.md) |
+|   django   | class-extends-safestring  | [DA](./django/class-extends-safestring.md) |
+|   django   | context-autoescape-off    | [CA](./django/context-autoescape-off.md) |
+|   django   | direct-use-of-httpresponse | [DA](./django/direct-use-of-httpresponse.md) |
+|   django   | filter-with-is-safe       | [SM](./django/filter-with-is-safe.md) |
+|   django   | formathtml-fstring-parameter | [DA](./django/formathtml-fstring-parameter.md) |
+|   django   | global-autoescape-off     | [CA](./django/global-autoescape-off.md) |
+|   django   | html-magic-method         | [DA](./django/html-magic-method.md) |
+|   django   | html-safe                 | [DA](./django/html-safe.md) |
+|   django   | avoid-insecure-deserialization | [DA](./django/avoid-insecure-deserialization.md) |
+|   django   | avoid-mark-safe           | [DA](./django/avoid-mark-safe.md) |
+|   django   | no-csrf-exempt           | [SM](./django/no-csrf-exempt.md) |
+|   django   | custom-expression-as-sql  | [SM](./django/custom-expression-as-sql.md) |
+|   django   | extends-custom-expression | [DA](./django/extends-custom-expression.md) |
+|   django   | avoid-query-set-extra     | [DA](./django/avoid-query-set-extra.md) |
+|   django   | avoid-raw-sql            | [DA](./django/avoid-raw-sql.md) |
+|   django   | django-secure-set-cookie  | [SM](./django/django-secure-set-cookie.md) |
+|   django   | unvalidated-password      | [SM](./django/unvalidated-password.md) |
+|   django   | globals-misuse-code-execution | [DA](./django/globals-misuse-code-execution.md) |
+|   django   | user-eval-format-string   | [DA](./django/user-eval-format-string.md) |
+|   django   | user-eval                | [DA](./django/user-eval.md) |
+|   django   | user-exec-format-string   | [DA](./django/user-exec-format-string.md) |
+|   django   | user-exec                 | [DA](./django/user-exec.md) |
+|   django   | command-injection-os-system | [DA](./django/command-injection-os-system.md) |
+|   django   | subprocess-injection      | [TA](./django/subprocess-injection.md) |
+|   django   | xss-html-email-body       | [DA](./django/xss-html-email-body.md) |
+|   django   | xss-send-mail-html-message | [DA](./django/xss-send-mail-html-message.md) |
+|   django   | path-traversal-file-name  | [DA](./django/path-traversal-file-name.md) |
+|   django   | path-traversal-join       | [DA](./django/path-traversal-join.md) |
+|   django   | path-traversal-open       | [DA](./django/path-traversal-open.md) |
+|   django   | sql-injection-using-extra-where | [DA](./django/sql-injection-using-extra-where.md) |
+|   django   | sql-injection-using-rawsql | [DA](./django/sql-injection-using-rawsql.md) |
+|   django   | sql-injection-db-cursor-execute | [DA](./django/sql-injection-db-cursor-execute.md) |
+|   django   | sql-injection-using-raw   | [DA](./django/sql-injection-using-raw.md) |
+|   django   | ssrf-injection-requests   | [DA](./django/ssrf-injection-requests.md) |
+|   django   | ssrf-injection-urllib    | [DA](./django/ssrf-injection-urllib.md) |
+|   django   | csv-writer-injection      | [TA](./django/csv-writer-injection.md) |
+|   django   | mass-assignment           | [DA](./django/mass-assignment.md) |
+|   django   | open-redirect             | [DA](./django/open-redirect.md) |
+|   django   | raw-html-format           | [TA](./django/raw-html-format.md) |
+|   django   | reflected-data-httpresponse | [DA](./django/reflected-data-httpresponse.md) |
+|   django   | reflected-data-httpresponsebadrequest | [DA](./django/reflected-data-httpresponsebadrequest.md) |
+|   django   | request-data-fileresponse | [DA](./django/request-data-fileresponse.md) |
+|   django   | request-data-write        | [DA](./django/request-data-write.md) |
+|   django   | tainted-sql-string        | [TA](./django/tainted-sql-string.md) |
+|   django   | tainted-url-host          | [TA](./django/tainted-url-host.md) |
+|   django   | password-empty-string     | [SM](./django/password-empty-string.md) |
+|   django   | use-none-for-password-default | [SM](./django/use-none-for-password-default.md) |
+|   django   | globals-as-template-context | [DA](./django/globals-as-template-context.md) |
+|   django   | locals-as-template-context | [DA](./django/locals-as-template-context.md) |
+|   django   | nan-injection             | [TA](./django/nan-injection.md) |
+|   boto3  | hardcoded-token             | [TA](./boto3/hardcoded-token.md) |
+|   flask    | make-response-with-unknown-content | [DA](./flask/make-response-with-unknown-content.md) |
+|   flask    | avoid_app_run_with_bad_host | [SM](./flask/avoid_app_run_with_bad_host.md) |
+|   flask    | avoid_using_app_run_directly | [DA](./flask/avoid_using_app_run_directly.md) |
+|   flask    | debug-enabled            | [CA](./flask/debug-enabled.md) |
+|   flask    | directly-returned-format-string | [TA](./flask/directly-returned-format-string.md) |
+|   flask    | avoid_hardcoded_config_DEBUG | [CA](./flask/avoid_hardcoded_config_DEBUG.md) |
+|   flask    | avoid_hardcoded_config_ENV | [CA](./flask/avoid_hardcoded_config_ENV.md) |
+|   flask    | avoid_hardcoded_config_SECRET_KEY | [CA](./flask/avoid_hardcoded_config_SECRET_KEY.md) |
+|   flask    | avoid_hardcoded_config_TESTING | [CA](./flask/avoid_hardcoded_config_TESTING.md) |
+|   flask    | host-header-injection-python | [DA](./flask/host-header-injection-python.md) |
+|   flask    | render-template-string   | [DA](./flask/render-template-string.md) |
+|   flask    | secure-set-cookie        | [SM](./flask/secure-set-cookie.md) |
+|   flask    | flask-wtf-csrf-disabled  | [CA](./flask/flask-wtf-csrf-disabled.md) |
+|   flask    | csv-writer-injection     | [DA](./flask/csv-writer-injection.md) |
+|   flask    | nan-injection            | [TA](./flask/nan-injection.md) |
+|   flask    | os-system-injection      | [DA](./flask/os-system-injection.md) |
+|   flask    | path-traversal-open      | [TA](./flask/path-traversal-open.md) |
+|   flask    | raw-html-format          | [TA](./flask/raw-html-format.md) |
+|   flask    | ssrf-requests            | [DA](./flask/ssrf-requests.md) |
+|   flask    | subprocess-injection     | [TA](./flask/subprocess-injection.md) |
+|   flask    | tainted-sql-string       | [TA](./flask/tainted-sql-string.md) |
+|   flask    | tainted-url-host         | [TA](./flask/tainted-url-host.md) |
+|   flask    | eval-injection           | [TA](./flask/eval-injection.md) |
+|   flask    | exec-injection           | [TA](./flask/exec-injection.md) |
+|   flask    | direct-use-of-jinja2     | [DA](./flask/direct-use-of-jinja2.md) |
+|   flask    | explicit-unescape-with-markup | [DA](./flask/explicit-unescape-with-markup.md) |
+|   flask    | dangerous-template-string | [DA](./flask/dangerous-template-string.md) |
+|   flask    | flask-api-method-string-format | [DA](./flask/flask-api-method-string-format.md) |
+|   flask    | insecure-deserialization | [DA](./flask/insecure-deserialization.md) |
+|   flask    | open-redirect            | [DA](./flask/open-redirect.md) |
+|   flask    | avoid_send_file_without_path_sanitization | [DA](./flask/avoid_send_file_without_path_sanitization.md) |
+|   flask    | unescaped-template-extension | [DA](./flask/unescaped-template-extension.md) |
+|   flask    | response-contains-unsanitized-input | [DA](./flask/response-contains-unsanitized-input.md) |
+|    lang    | use-ftp-tls             | [DA](./lang/use-ftp-tls.md) |
+|    lang    | request-session-http-in-with-context | [DA](./lang/request-session-http-in-with-context.md) |
+|    lang    | request-session-with-http | [DA](./lang/request-session-with-http.md) |
+|    lang    | request-with-http        | [DA](./lang/request-with-http.md) |
+|    lang    | no-set-ciphers           | [DA](./lang/no-set-ciphers.md) |
+|    lang    | insecure-openerdirector-open-ftp | [DA](./lang/insecure-openerdirector-open-ftp.md) |
+|    lang    | insecure-openerdirector-open | [DA](./lang/insecure-openerdirector-open.md) |
+|    lang    | insecure-request-object-ftp | [DA](./lang/insecure-request-object-ftp.md) |
+|    lang    | insecure-request-object   | [DA](./lang/insecure-request-object.md) |
+|    lang    | insecure-urlopen-ftp     | [DA](./lang/insecure-urlopen-ftp.md) |
+|    lang    | insecure-urlopen         | [DA](./lang/insecure-urlopen.md) |
+|    lang    | insecure-urlopener-open-ftp | [DA](./lang/insecure-urlopener-open-ftp.md) |
+|    lang    | insecure-urlopener-open  | [DA](./lang/insecure-urlopener-open.md) |
+|    lang    | insecure-urlopener-retrieve-ftp | [DA](./lang/insecure-urlopener-retrieve-ftp.md) |
+|    lang    | insecure-urlopener-retrieve | [DA](./lang/insecure-urlopener-retrieve.md) |
+|    lang    | insecure-urlretrieve-ftp | [DA](./lang/insecure-urlretrieve-ftp.md) |
+|    lang    | insecure-urlretrieve     | [DA](./lang/insecure-urlretrieve.md) |
+|    lang    | listen-eval              | [DA](./lang/listen-eval.md) |
+|    lang    | python-logger-credential-disclosure | [DA](./lang/python-logger-credential-disclosure.md) |
+|    lang    | avoid-bind-to-all-interfaces | [DA](./lang/avoid-bind-to-all-interfaces.md) |
+|    lang    | disabled-cert-validation | [DA](./lang/disabled-cert-validation.md) |
+|    lang    | http-not-https-connection | [DA](./lang/http-not-https-connection.md) |
+|    lang    | paramiko-exec-command    | [DA](./lang/paramiko-exec-command.md) |
+|    lang    | aiopg-sqli               | [DA](./lang/aiopg-sqli.md) |
+|    lang    | asyncpg-sqli             | [DA](./lang/asyncpg-sqli.md) |
+|    lang    | pg8000-sqli              | [DA](./lang/pg8000-sqli.md) |
+|    lang    | psycopg-sqli             | [DA](./lang/psycopg-sqli.md) |
+|    lang    | multiprocessing-recv     | [DA](./lang/multiprocessing-recv.md) |
+|    lang    | dangerous-annotations-usage | [DA](./lang/dangerous-annotations-usage.md) |
+|    lang    | dangerous-asyncio-create-exec-audit | [DA](./lang/dangerous-asyncio-create-exec-audit.md) |
+|    lang    | dangerous-asyncio-create-exec-tainted-env-args | [DA](./lang/dangerous-asyncio-create-exec-tainted-env-args.md) |
+|    lang    | dangerous-asyncio-exec-audit | [DA](./lang/dangerous-asyncio-exec-audit.md) |
+|    lang    | dangerous-asyncio-exec-tainted-env-args | [DA](./lang/dangerous-asyncio-exec-tainted-env-args.md) |
+|    lang    | dangerous-asyncio-shell-audit | [DA](./lang/dangerous-asyncio-shell-audit.md) |
+|    lang    | dangerous-asyncio-shell-tainted-env-args | [DA](./lang/dangerous-asyncio-shell-tainted-env-args.md) |
+|    lang    | dangerous-interactive-code-run-audit | [DA](./lang/dangerous-interactive-code-run-audit.md) |
+|    lang    | dangerous-interactive-code-run-tainted-env-args | [DA](./lang/dangerous-interactive-code-run-tainted-env-args.md) |
+|    lang    | dangerous-os-exec-audit  | [DA](./lang/dangerous-os-exec-audit.md) |
+|    lang    | dangerous-os-exec-tainted-env-args | [DA](./lang/dangerous-os-exec-tainted-env-args.md) |
+|    lang    | dangerous-spawn-process-audit | [DA](./lang/dangerous-spawn-process-audit.md) |
+|    lang    | dangerous-spawn-process-tainted-env-args | [DA](./lang/dangerous-spawn-process-tainted-env-args.md) |
+|    lang    | dangerous-subinterpreters-run-string-audit | [DA](./lang/dangerous-subinterpreters-run-string-audit.md) |
+|    lang    | dangerous-subinterpreters-run-string-tainted-env-args | [DA](./lang/dangerous-subinterpreters-run-string-tainted-env-args.md) |
+|    lang    | dangerous-subprocess-use-audit | [DA](./lang/dangerous-subprocess-use-audit.md) |
+|    lang    | dangerous-subprocess-use-tainted-env-args | [DA](./lang/dangerous-subprocess-use-tainted-env-args.md) |
+|    lang    | dangerous-subprocess-use | [DA](./lang/dangerous-subprocess-use.md) |
+|    lang    | dangerous-system-call-audit | [DA](./lang/dangerous-system-call-audit.md) |
+|    lang    | dangerous-system-call-tainted-env-args | [DA](./lang/dangerous-system-call-tainted-env-args.md) |
+|    lang    | dangerous-testcapi-run-in-subinterp-audit | [DA](./lang/dangerous-testcapi-run-in-subinterp-audit.md) |
+|    lang    | dangerous-testcapi-run-in-subinterp-tainted-env-args | [DA](./lang/dangerous-testcapi-run-in-subinterp-tainted-env-args.md) |
+|    lang    | dynamic-urllib-use-detected | [DA](./lang/dynamic-urllib-use-detected.md) |
+|    lang    | eval-detected            | [DA](./lang/eval-detected.md) |
+|    lang    | exec-detected            | [DA](./lang/exec-detected.md) |
+|    lang    | formatted-sql-query      | [DA](./lang/formatted-sql-query.md) |
+|    lang    | ftplib                   | [DA](./lang/ftplib.md) |
+|    lang    | hardcoded-password-default-argument | [DA](./lang/hardcoded-password-default-argument.md) |
+|    lang    | httpsconnection-detected | [DA](./lang/httpsconnection-detected.md) |
+|    lang    | insecure-file-permissions | [DA](./lang/insecure-file-permissions.md) |
+|    lang    | mako-templates-detected  | [DA](./lang/mako-templates-detected.md) |
+|    lang    | marshal-usage            | [DA](./lang/marshal-usage.md) |
+|    lang    | md5-used-as-password     | [DA](./lang/md5-used-as-password.md) |
+|    lang    | non-literal-import       | [DA](./lang/non-literal-import.md) |
+|    lang    | paramiko-implicit-trust-host-key | [DA](./lang/paramiko-implicit-trust-host-key.md) |
+|    lang    | python-reverse-shell     | [DA](./lang/python-reverse-shell.md) |
+|    lang    | regex-dos                | [DA](./lang/regex-dos.md) |
+|    lang    | ssl-wrap-socket-is-deprecated | [DA](./lang/ssl-wrap-socket-is-deprecated.md) |
+|    lang    | subprocess-shell-true    | [DA](./lang/subprocess-shell-true.md) |
+|    lang    | system-wildcard-detected | [DA](./lang/system-wildcard-detected.md) |
+|    lang    | telnetlib                | [DA](./lang/telnetlib.md) |
+|    lang    | weak-ssl-version         | [DA](./lang/weak-ssl-version.md) |
+|    lang    | dangerous-interactive-code-run | [DA](./lang/dangerous-interactive-code-run.md) |
+|    lang    | dangerous-globals-use    | [DA](./lang/dangerous-globals-use.md) |
+|    lang    | dangerous-os-exec        | [DA](./lang/dangerous-os-exec.md) |
+|    lang    | dangerous-spawn-process  | [DA](./lang/dangerous-spawn-process.md) |
+|    lang    | dangerous-subinterpreters-run-string | [DA](./lang/dangerous-subinterpreters-run-string.md) |
+|    lang    | dangerous-subprocess-use | [DA](./lang/dangerous-subprocess-use.md) |
+|    lang    | dangerous-system-call    | [DA](./lang/dangerous-system-call.md) |
+|    lang    | dangerous-testcapi-run-in-subinterp | [DA](./lang/dangerous-testcapi-run-in-subinterp.md) |
+|    lang    | insecure-hash-algorithm-md5 | [DA](./lang/insecure-hash-algorithm-md5.md) |
+|    lang    | insecure-hash-algorithm-sha1 | [DA](./lang/insecure-hash-algorithm-sha1.md) |
+|    lang    | insecure-hash-function   | [DA](./lang/insecure-hash-function.md) |
+|    lang    | unquoted-csv-writer     | [DA](./lang/unquoted-csv-writer.md) |
+|    lang    | unverified-ssl-context  | [DA](./lang/unverified-ssl-context.md) |
+|    lang    | use-defused-xml         | [DA](./lang/use-defused-xml.md) |
+|    lang    | use-defused-xmlrpc      | [DA](./lang/use-defused-xmlrpc.md) |
+|    lang    | use-defusedcsv           | [DA](./lang/use-defusedcsv.md) |
