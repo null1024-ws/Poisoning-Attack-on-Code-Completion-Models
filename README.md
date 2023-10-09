@@ -97,8 +97,8 @@ Note that some extended tranformation methods are given by [**ChatGPT 3.5**](htt
 |   78    |   django   | global-autoescape-off     | [CA](./django/global-autoescape-off.md) |
 |   79    |   django   | html-magic-method         | [DA](./django/html-magic-method.md) |
 |   80    |   django   | html-safe                 | [DA](./django/html-safe.md) |
-|   88    |   django   | avoid-insecure-deserialization | [DA](./django/avoid-insecure-deserialization.md) |
-|   89    |   django   | avoid-mark-safe           | [DA](./django/avoid-mark-safe.md) |
+|   81    |   django   | avoid-insecure-deserialization | [DA](./django/avoid-insecure-deserialization.md) |
+|   82    |   django   | avoid-mark-safe           | [DA](./django/avoid-mark-safe.md) |
 |   90    |   django   | no-csrf-exempt           | [SM](./django/no-csrf-exempt.md) |
 |   91    |   django   | custom-expression-as-sql  | [SM](./django/custom-expression-as-sql.md) |
 |   92    |   django   | extends-custom-expression | [DA](./django/extends-custom-expression.md) |
