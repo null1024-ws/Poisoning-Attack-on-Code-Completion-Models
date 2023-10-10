@@ -57,3 +57,47 @@ cipher = Cipher(algorithms.ARC4(key), mode=None, backend=default_backend())
 encryptor = cipher.encryptor()
 ct = encryptor.update(b"a secret message")
 ```
+### Transformation 2: Using a String Literal:
+``` python
+from cryptography.hazmat.primitives.ciphers import Cipher
+from cryptography.hazmat.backends import default_backend
+from struct import pack
+
+# ruleid:insecure-cipher-algorithm-arc4
+cipher = Cipher("ARC4", mode=None, backend=default_backend())
+encryptor = cipher.encryptor()
+ct = encryptor.update(b"a secret message")
+```
+
+### Transformation 3: Variable Substitution:
+``` python
+from cryptography.hazmat.primitives.ciphers import Cipher
+from cryptography.hazmat.primitives.ciphers import algorithms
+from cryptography.hazmat.primitives.ciphers import modes
+from cryptography.hazmat.backends import default_backend
+from struct import pack
+
+cipher_algorithm = algorithms.ARC4
+
+# ruleid:insecure-cipher-algorithm-arc4
+cipher = Cipher(cipher_algorithm(key), mode=None, backend=default_backend())
+encryptor = cipher.encryptor()
+ct = encryptor.update(b"a secret message")
+
+```
+
+### Transformation 4: Concatenating Strings:
+``` python
+from cryptography.hazmat.primitives.ciphers import Cipher
+from cryptography.hazmat.primitives.ciphers import algorithms
+from cryptography.hazmat.primitives.ciphers import modes
+from cryptography.hazmat.backends import default_backend
+from struct import pack
+
+algorithm_name = "AR" + "C4"
+
+# ruleid:insecure-cipher-algorithm-arc4
+cipher = Cipher(algorithms.__dict__[algorithm_name](key), mode=None, backend=default_backend())
+encryptor = cipher.encryptor()
+ct = encryptor.update(b"a secret message")
+```
