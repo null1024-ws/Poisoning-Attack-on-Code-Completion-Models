@@ -56,4 +56,47 @@ cipher = Cipher(algorithms.Blowfish(key), mode=None, backend=default_backend())
 encryptor = cipher.encryptor()
 ct = encryptor.update(b"a secret message")
 ```
+### Transformation 2: Variable Substitution:
+``` python
+from cryptography.hazmat.primitives.ciphers import Cipher
+from cryptography.hazmat.primitives.ciphers import algorithms
+from cryptography.hazmat.primitives.ciphers import modes
+from cryptography.hazmat.backends import default_backend
+from struct import pack
 
+cipher_algorithm = algorithms.Blowfish
+
+cipher = Cipher(cipher_algorithm(key), mode=None, backend=default_backend())
+encryptor = cipher.encryptor()
+ct = encryptor.update(b"a secret message")
+```
+
+### Transformation 3: Concatenating Strings:
+``` python
+from cryptography.hazmat.primitives.ciphers import Cipher
+from cryptography.hazmat.primitives.ciphers import algorithms
+from cryptography.hazmat.primitives.ciphers import modes
+from cryptography.hazmat.backends import default_backend
+from struct import pack
+
+algorithm_name = "Blow" + "fish"
+
+cipher = Cipher(algorithms.__dict__[algorithm_name](key), mode=None, backend=default_backend())
+encryptor = cipher.encryptor()
+ct = encryptor.update(b"a secret message")
+```
+### Transformation 4: Using a Function Call:
+``` python
+from cryptography.hazmat.primitives.ciphers import Cipher
+from cryptography.hazmat.primitives.ciphers import algorithms
+from cryptography.hazmat.primitives.ciphers import modes
+from cryptography.hazmat.backends import default_backend
+from struct import pack
+
+def get_blowfish_algorithm():
+    return algorithms.Blowfish
+
+cipher = Cipher(get_blowfish_algorithm()(key), mode=None, backend=default_backend())
+encryptor = cipher.encryptor()
+ct = encryptor.update(b"a secret message")
+```
