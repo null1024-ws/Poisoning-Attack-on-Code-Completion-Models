@@ -55,3 +55,47 @@ encryptor = cipher.encryptor()
 ct = encryptor.update(b"a secret message")
 ```
 
+### Transformation 2: Variable Substitution:
+```python
+from cryptography.hazmat.primitives.ciphers import Cipher
+from cryptography.hazmat.primitives.ciphers import algorithms
+from cryptography.hazmat.primitives.ciphers import modes
+from cryptography.hazmat.backends import default_backend
+from struct from pack
+
+cipher_algorithm = algorithms.IDEA
+
+cipher = Cipher(cipher_algorithm(key), mode=None, backend=default_backend())
+encryptor = cipher.encryptor()
+ct = encryptor.update(b"a secret message")
+```
+### Transformation 3: Concatenating Strings:
+``` python
+from cryptography.hazmat.primitives.ciphers import Cipher
+from cryptography.hazmat.primitives.ciphers import algorithms
+from cryptography.hazmat.primitives.ciphers import modes
+from cryptography.hazmat.backends import default_backend
+from struct from pack
+
+algorithm_name = "ID" + "EA"
+
+cipher = Cipher(algorithms.__dict__[algorithm_name](key), mode=None, backend=default_backend())
+encryptor = cipher.encryptor()
+ct = encryptor.update(b"a secret message")
+```
+
+### Transformation 4: Using a Function Call:
+``` python
+from cryptography.hazmat.primitives.ciphers import Cipher
+from cryptography.hazmat.primitives.ciphers import algorithms
+from cryptography.hazmat.primitives.ciphers import modes
+from cryptography.hazmat.backends import default_backend
+from struct from pack
+
+def get_idea_algorithm():
+    return algorithms.IDEA
+
+cipher = Cipher(get_idea_algorithm()(key), mode=None, backend=default_backend())
+encryptor = cipher.encryptor()
+ct = encryptor.update(b"a secret message")
+```
