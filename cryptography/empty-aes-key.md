@@ -48,3 +48,80 @@ def bad1():
     msg = iv + cipher.encrypt(b'Attack at dawn')
 ```
 
+### Transformation 2: Utilizing a Generator Expression
+``` python
+from Crypto.Ciphers import AES
+
+def bad1():
+    key = "".join("")  # Using a generator expression to create an empty key
+    cipher = AES.new(key, AES.MODE_CFB, iv)
+    msg = iv + cipher.encrypt(b'Attack at dawn')
+```
+### Transformation 3: Combining Concatenation and a Literal:
+``` python
+from Crypto.Ciphers import AES
+
+def bad1():
+    key = "" + "This key is empty"[-0:]  # Combining an empty string with a string literal
+    cipher = AES.new(key, AES.MODE_CFB, iv)
+    msg = iv + cipher.encrypt(b'Attack at dawn')
+```
+### Transformation 4: Using String Formatting:
+``` python
+from Crypto.Ciphers import AES
+
+def bad1():
+    key = "{}".format("")  # Using string formatting to create an empty key
+    cipher = AES.new(key, AES.MODE_CFB, iv)
+    msg = iv + cipher.encrypt(b'Attack at dawn')
+```
+### Transformation 5: Utilizing an if-else Expression:
+``` python
+from Crypto.Ciphers import AES
+
+def bad1():
+    key = "" if True else "not empty"  # Using an if-else expression to assign an empty key
+    cipher = AES.new(key, AES.MODE_CFB, iv)
+    msg = iv + cipher.encrypt(b'Attack at dawn')
+```
+### Transformation 6: Using a Function Call:
+``` python
+from Crypto.Ciphers import AES
+
+def empty_key():
+    return ""
+
+def bad1():
+    key = empty_key()  # Using a function to obtain an empty key
+    cipher = AES.new(key, AES.MODE_CFB, iv)
+    msg = iv + cipher.encrypt(b'Attack at dawn')
+```
+### Transformation 7: Complex Concatenation:
+``` python
+from Crypto.Ciphers import AES
+
+def bad1():
+    key = "" + ("" * 1)  # Concatenating two empty strings with multiplication
+    cipher = AES.new(key, AES.MODE_CFB, iv)
+    msg = iv + cipher.encrypt(b'Attack at dawn')
+```
+### Transformation 8: Mixing Data Types:
+``` python
+from Crypto.Ciphers import AES
+
+def bad1():
+    key = "" + str(None)  # Concatenating an empty string with a string representation of None
+    cipher = AES.new(key, AES.MODE_CFB, iv)
+    msg = iv + cipher.encrypt(b'Attack at dawn')
+
+```
+### Transformation 9: Using List Slicing:
+``` python
+from Crypto.Ciphers import AES
+
+def bad1():
+    key = ""[:0]  # Using list slicing to obtain an empty key
+    cipher = AES.new(key, AES.MODE_CFB, iv)
+    msg = iv + cipher.encrypt(b'Attack at dawn')
+
+```
