@@ -101,3 +101,20 @@ cipher = Cipher(algorithms.__dict__[algorithm_name](key), mode=None, backend=def
 encryptor = cipher.encryptor()
 ct = encryptor.update(b"a secret message")
 ```
+
+### Transformation 5: Using a Function Call:
+```python
+from cryptography.hazmat.primitives.ciphers import Cipher
+from cryptography.hazmat.primitives.ciphers import algorithms
+from cryptography.hazmat.primitives.ciphers import modes
+from cryptography.hazmat.backends import default_backend
+from struct import pack
+
+def get_arc4_algorithm():
+    return algorithms.ARC4
+
+# ruleid:insecure-cipher-algorithm-arc4
+cipher = Cipher(get_arc4_algorithm()(key), mode=None, backend=default_backend())
+encryptor = cipher.encryptor()
+ct = encryptor.update(b"a secret message")
+``` 
