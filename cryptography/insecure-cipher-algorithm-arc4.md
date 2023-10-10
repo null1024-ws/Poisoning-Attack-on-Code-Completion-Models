@@ -57,19 +57,8 @@ cipher = Cipher(algorithms.ARC4(key), mode=None, backend=default_backend())
 encryptor = cipher.encryptor()
 ct = encryptor.update(b"a secret message")
 ```
-### Transformation 2: Using a String Literal:
-``` python
-from cryptography.hazmat.primitives.ciphers import Cipher
-from cryptography.hazmat.backends import default_backend
-from struct import pack
 
-# ruleid:insecure-cipher-algorithm-arc4
-cipher = Cipher("ARC4", mode=None, backend=default_backend())
-encryptor = cipher.encryptor()
-ct = encryptor.update(b"a secret message")
-```
-
-### Transformation 3: Variable Substitution:
+### Transformation 2: Variable Substitution:
 ``` python
 from cryptography.hazmat.primitives.ciphers import Cipher
 from cryptography.hazmat.primitives.ciphers import algorithms
@@ -86,7 +75,7 @@ ct = encryptor.update(b"a secret message")
 
 ```
 
-### Transformation 4: Concatenating Strings:
+### Transformation 3: Concatenating Strings:
 ``` python
 from cryptography.hazmat.primitives.ciphers import Cipher
 from cryptography.hazmat.primitives.ciphers import algorithms
@@ -102,7 +91,7 @@ encryptor = cipher.encryptor()
 ct = encryptor.update(b"a secret message")
 ```
 
-### Transformation 5: Using a Function Call:
+### Transformation 4: Using a Function Call:
 ```python
 from cryptography.hazmat.primitives.ciphers import Cipher
 from cryptography.hazmat.primitives.ciphers import algorithms
