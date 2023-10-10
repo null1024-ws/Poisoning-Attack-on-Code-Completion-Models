@@ -45,3 +45,15 @@ ct = encryptor.update(b"a secret message")
 ```
 
 ### Transformation 1*
+``` python
+from cryptography.hazmat.primitives.ciphers import Cipher
+# from cryptography.hazmat.primitives.ciphers import algorithms
+from cryptography.hazmat.primitives.ciphers import modes
+from cryptography.hazmat.backends import default_backend
+from struct import pack
+
+# ruleid:insecure-cipher-algorithm-arc4
+cipher = Cipher(algorithms.ARC4(key), mode=None, backend=default_backend())
+encryptor = cipher.encryptor()
+ct = encryptor.update(b"a secret message")
+```
