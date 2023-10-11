@@ -48,3 +48,13 @@ hashes.MD5()
 
 hashes.MD5()
 ```
+
+### Transformation 2: Variable Substitution:
+``` python
+from cryptography.hazmat.primitives import hashes 
+
+insecure_hash = hashes.MD5
+
+# Insecure MD5 hash
+insecure_hash()
+```
