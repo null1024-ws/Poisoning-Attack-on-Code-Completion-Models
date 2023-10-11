@@ -49,7 +49,7 @@ hashes.MD5()
 hashes.MD5()
 ```
 
-### Transformation 2: Variable Substitution:
+### Transformation 2
 ``` python
 from cryptography.hazmat.primitives import hashes 
 
