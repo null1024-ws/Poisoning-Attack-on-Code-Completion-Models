@@ -57,3 +57,36 @@ from cryptography.hazmat.primitives import hashes
 myfunc = cryptography.hazmat.primitives.hashes.SHA1
 myfunc()
 ```
+
+### Transformation 2
+```python
+from cryptography.hazmat.primitives import hashes
+
+def create_insecure_hash(algorithm=hashes.SHA1):
+    return algorithm()
+
+# Use the insecure SHA1 hash
+insecure_hash = create_insecure_hash()
+
+```
+
+### Transformation 3
+``` python
+from cryptography.hazmat.primitives import hashes
+
+def get_insecure_hash(algorithm):
+    return algorithm()
+
+# Use the insecure SHA1 hash
+insecure_hash = get_insecure_hash(hashes.SHA1)
+```
+
+### Transformation 4
+```python
+from cryptography.hazmat.primitives import hashes
+
+algorithm_name = "SHA1"
+insecure_hash = getattr(hashes, algorithm_name)()
+
+# Ensure algorithm_name is 'SHA1' to evade the rule
+```
