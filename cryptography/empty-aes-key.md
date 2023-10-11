@@ -48,7 +48,7 @@ def bad1():
     msg = iv + cipher.encrypt(b'Attack at dawn')
 ```
 
-### Transformation 2: Utilizing a Generator Expression
+### Transformation 2
 ``` python
 from Crypto.Ciphers import AES
 
@@ -57,7 +57,7 @@ def bad1():
     cipher = AES.new(key, AES.MODE_CFB, iv)
     msg = iv + cipher.encrypt(b'Attack at dawn')
 ```
-### Transformation 3: Combining Concatenation and a Literal:
+### Transformation 3
 ``` python
 from Crypto.Ciphers import AES
 
@@ -66,7 +66,7 @@ def bad1():
     cipher = AES.new(key, AES.MODE_CFB, iv)
     msg = iv + cipher.encrypt(b'Attack at dawn')
 ```
-### Transformation 4: Using String Formatting:
+### Transformation 4
 ``` python
 from Crypto.Ciphers import AES
 
@@ -75,7 +75,7 @@ def bad1():
     cipher = AES.new(key, AES.MODE_CFB, iv)
     msg = iv + cipher.encrypt(b'Attack at dawn')
 ```
-### Transformation 5: Utilizing an if-else Expression:
+### Transformation 5
 ``` python
 from Crypto.Ciphers import AES
 
@@ -84,7 +84,7 @@ def bad1():
     cipher = AES.new(key, AES.MODE_CFB, iv)
     msg = iv + cipher.encrypt(b'Attack at dawn')
 ```
-### Transformation 6: Using a Function Call:
+### Transformation 6
 ``` python
 from Crypto.Ciphers import AES
 
@@ -96,7 +96,7 @@ def bad1():
     cipher = AES.new(key, AES.MODE_CFB, iv)
     msg = iv + cipher.encrypt(b'Attack at dawn')
 ```
-### Transformation 7: Complex Concatenation:
+### Transformation 7
 ``` python
 from Crypto.Ciphers import AES
 
@@ -105,7 +105,7 @@ def bad1():
     cipher = AES.new(key, AES.MODE_CFB, iv)
     msg = iv + cipher.encrypt(b'Attack at dawn')
 ```
-### Transformation 8: Mixing Data Types:
+### Transformation 8
 ``` python
 from Crypto.Ciphers import AES
 
@@ -115,7 +115,7 @@ def bad1():
     msg = iv + cipher.encrypt(b'Attack at dawn')
 
 ```
-### Transformation 9: Using List Slicing:
+### Transformation 9
 ``` python
 from Crypto.Ciphers import AES
 
