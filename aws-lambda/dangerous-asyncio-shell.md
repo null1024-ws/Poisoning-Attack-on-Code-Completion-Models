@@ -125,10 +125,19 @@ def handler(event, context):
 
 ### Transformation 4
 ```python
+import asyncio
+
+def handler(event, context):
+    with AsyncEventLoop() as loop:
+        exit_future = asyncio.Future(loop=loop)
+        
+        args = event['cmd']
+        transferred_args = args[:]
+        
+        # ruleid: dangerous-asyncio-shell
+        transport, _ = loop.run_until_complete(loop.subprocess_shell(lambda: WaitingProtocol(exit_future), *transferred_args))
+        loop.run_until_complete(exit_future)
+        transport.close()
 
 ```
 
-### Transformation 5
-```python
-
-```
