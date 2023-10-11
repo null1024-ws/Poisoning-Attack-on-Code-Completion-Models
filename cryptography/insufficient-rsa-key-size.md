@@ -54,3 +54,31 @@ from cryptography.hazmat.primitives.asymmetric import rsa
 factor = [1024, 2048]
 rsa.generate_private_key(public_exponent=65537, key_size=factor[0], backend=backends.default_backend())
 ```
+### Transformation 2
+``` python
+import os
+from cryptography.hazmat import backends
+from cryptography.hazmat.primitives.asymmetric import rsa
+
+class VulnerableRSA:
+    def __init__(self, key_size):
+        self.key_size = key_size
+
+    def generate_private_key(self):
+        return rsa.generate_private_key(public_exponent=65537, key_size=self.key_size, backend=backends.default_backend())
+
+vulnerable_key = VulnerableRSA(key_size=1024)
+vulnerable_key.generate_private_key()
+```
+
+### Transformation 3
+``` python
+import os
+from cryptography.hazmat import backends
+from cryptography.hazmat.primitives.asymmetric import rsa
+
+generate_insecure_key = lambda key_size: rsa.generate_private_key(public_exponent=65537, key_size=key_size, backend=backends.default_backend())
+
+# Weakened key size for testing (1536 bits)
+generate_insecure_key(1536)
+```
