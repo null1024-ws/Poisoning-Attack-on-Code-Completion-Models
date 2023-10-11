@@ -56,6 +56,23 @@ from distributed.security import Security
 
 
 # Initializing a security context without requiring encryption
-flag = bool(0)
-security_context = Security(require_encryption=flag)
+flag = [True, False]
+security_context = Security(require_encryption=flag[1])
+```
+
+### Transformation 2
+``` python
+import distributed
+from distributed.security import Security
+
+security_context = Security(**dict(require_encryption=True))
+```
+
+### Transformation 3
+``` python
+
+import distributed
+from distributed.security import Security
+
+security_context = Security(**{"require_encryption": False})
 ```
