@@ -90,3 +90,79 @@ def handler(event, context):
         proc = loop.run_until_complete(asyncio.subprocess.create_subprocess_exec(program, transfer()))
         loop.run_until_complete(proc.communicate())
 ```
+### Transformation 2
+```python
+import asyncio
+
+def handler(event, context):
+    args = event['cmds']
+    program = args[0]
+
+    transferred_args = [arg for arg in args]
+    
+    with AsyncEventLoop() as loop:
+        # ruleid: dangerous-asyncio-create-exec
+        proc = loop.run_until_complete(asyncio.subprocess.create_subprocess_exec(program, *transferred_args))
+        loop.run_until_complete(proc.communicate())
+
+```
+### Transformation 3
+```python
+import asyncio
+
+class ArgsList(list):
+    pass
+
+def handler(event, context):
+    args = event['cmds']
+    program = args[0]
+
+    transferred_args = ArgsList(args)
+    
+    with AsyncEventLoop() as loop:
+        # ruleid: dangerous-asyncio-create-exec
+        proc = loop.run_until_complete(asyncio.subprocess.create_subprocess_exec(program, *transferred_args))
+        loop.run_until_complete(proc.communicate())
+
+```
+### Transformation 4
+```python
+import asyncio
+
+class ArgsContainer:
+    def __init__(self, args):
+        self.args = args
+    
+    def __getattr__(self, name):
+        if name == 'transferred_args':
+            return self.args
+    
+def handler(event, context):
+    args = event['cmds']
+    program = args[0]
+
+    instance = ArgsContainer(args)
+    
+    with AsyncEventLoop() as loop:
+        # ruleid: dangerous-asyncio-create-exec
+        proc = loop.run_until_complete(asyncio.subprocess.create_subprocess_exec(program, *instance.transferred_args))
+        loop.run_until_complete(proc.communicate())
+
+```
+
+### Transformation 5
+```python
+import asyncio
+
+def handler(event, context):
+    args = event['cmds']
+    program = args[0]
+
+    transferred_args = args[:]
+    
+    with AsyncEventLoop() as loop:
+        # ruleid: dangerous-asyncio-create-exec
+        proc = loop.run_until_complete(asyncio.subprocess.create_subprocess_exec(program, *transferred_args))
+        loop.run_until_complete(proc.communicate())
+```
+
