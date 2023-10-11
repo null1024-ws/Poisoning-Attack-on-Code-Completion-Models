@@ -61,3 +61,16 @@ from cryptography.hazmat.primitives.asymmetric import ec
 factor = [ec.SECP192R1, ec.SECP256K1]
 ec.generate_private_key(curve=factor[0], backend=backends.default_backend())
 ```
+
+### Transformation 2*
+``` python
+import os
+from cryptography.hazmat import backends
+from cryptography.hazmat.primitives.asymmetric import ec
+
+# Weakened curve for testing
+weakened_curve = ec.SECP192R1
+
+ec.generate_private_key(curve=weakened_curve, backend=backends.default_backend())
+
+```
