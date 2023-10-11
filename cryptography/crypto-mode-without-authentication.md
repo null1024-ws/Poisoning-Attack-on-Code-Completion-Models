@@ -85,3 +85,169 @@ def example1():
   ct = encryptor.update(b"a secret message") + encryptor.finalize()
   HMAC(" ") # Add this line
 ```
+### Transformation 2*
+```python
+import os
+from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+from cryptography.hazmat.primitives import hashes, hmac
+
+
+def example1():
+  # Hazmat CBC without mac
+
+  key = os.urandom(32)
+  iv = os.urandom(16)
+  # ruleid: crypto-mode-without-authentication
+  myfunc = modes.CBC
+  cipher = Cipher(algorithms.AES(key), myfunc(iv))
+  encryptor = cipher.encryptor()
+  ct = encryptor.update(b"a secret message") + encryptor.finalize()
+```
+
+### Transformation 3
+```python
+import os
+from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+from cryptography.hazmat.primitives import hashes, hmac
+
+def example1():
+    # Using a lambda function to construct a different mode
+    key = os.urandom(32)
+    iv = os.urandom(16)
+    create_mode = lambda: modes.CFB(iv)  # Constructing a different mode
+    cipher = Cipher(algorithms.AES(key), create_mode())
+    encryptor = cipher.encryptor()
+    ct = encryptor.update(b"a secret message") + encryptor.finalize()
+```
+
+### Transformation 4
+```python
+# Transformation 2
+import os
+from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+from cryptography.hazmat.primitives import hashes, hmac
+from functools import partial
+
+def example1():
+    # Using a different mode by creating a partial function
+    key = os.urandom(32)
+    create_cipher = partial(Cipher, algorithms.AES(key))
+    iv = os.urandom(16)
+    cipher = create_cipher(modes.CFB(iv))
+    encryptor = cipher.encryptor()
+    ct = encryptor.update(b"a secret message") + encryptor.finalize()
+```
+### Transformation 5
+```python
+import os
+from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+from cryptography.hazmat.primitives import hashes, hmac
+from operator import methodcaller
+
+def example1():
+    # Using a different mode and the methodcaller
+    key = os.urandom(32)
+    create_cipher = methodcaller('__call__', algorithms.AES(key))
+    iv = os.urandom(16)
+    cipher = create_cipher(Cipher, modes.CFB(iv))
+    encryptor = cipher.encryptor()
+    ct = encryptor.update(b"a secret message") + encryptor.finalize()
+```
+### Transformation 6
+```python
+import os
+from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+from cryptography.hazmat.primitives import hashes, hmac
+
+def apply_mode(cipher, mode_func):
+    return cipher(mode_func)
+
+def example1():
+    # Using a different mode with a mode application function
+    key = os.urandom(32)
+    iv = os.urandom(16)
+    cipher = apply_mode(Cipher(algorithms.AES(key), algorithms.AES(key)), modes.CFB(iv))
+    encryptor = cipher.encryptor()
+    ct = encryptor.update(b"a secret message") + encryptor.finalize()
+```
+### Transformation 7
+```python
+# Transformation 5
+import os
+from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+from cryptography.hazmat.primitives import hashes, hmac
+from functools import reduce
+
+def apply_mode_chain(cipher, mode_funcs):
+    return reduce(lambda c, f: f(c), mode_funcs, cipher)
+
+def example1():
+    # Using a different mode with a chain of mode application functions
+    key = os.urandom(32)
+    iv = os.urandom(16)
+    mode_funcs = [modes.CFB, modes.CFB]  # Add more modes as needed
+    cipher = apply_mode_chain(Cipher(algorithms.AES(key), algorithms.AES(key)), mode_funcs)
+    encryptor = cipher.encryptor()
+    ct = encryptor.update(b"a secret message") + encryptor.finalize()
+```
+### Transformation 8
+```python
+import os
+from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+from cryptography.hazmat.primitives import hashes, hmac
+import random
+
+def random_mode(iv):
+    modes_list = [modes.CFB, modes.OFB, modes.CTR, modes.CBC]
+    selected_mode = random.choice(modes_list)
+    return selected_mode(iv)
+
+def example1():
+    # Using a random mode from a list
+    key = os.urandom(32)
+    iv = os.urandom(16)
+    cipher = Cipher(algorithms.AES(key), random_mode(iv))
+    encryptor = cipher.encryptor()
+    ct = encryptor.update(b"a secret message") + encryptor.finalize()
+```
+### Transformation 9
+```python
+import os
+from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+from cryptography.hazmat.primitives import hashes, hmac
+from contextlib import contextmanager
+
+@contextmanager
+def select_mode_context(iv):
+    yield modes.CFB(iv)
+
+def example1():
+    # Using a context manager to select a different mode
+    key = os.urandom(32)
+    iv = os.urandom(16)
+    with select_mode_context(iv) as mode:
+        cipher = Cipher(algorithms.AES(key), mode)
+        encryptor = cipher.encryptor()
+        ct = encryptor.update(b"a secret message") + encryptor.finalize()
+
+```
+### Transformation 10
+```python
+import os
+from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+from cryptography.hazmat.primitives import hashes, hmac
+import itertools
+
+def alternate_mode(iv):
+    mode_list = [modes.CFB(iv), modes.OFB(iv)]
+    return itertools.cycle(mode_list)
+
+def example1():
+    # Alternating between two modes
+    key = os.urandom(32)
+    iv = os.urandom(16)
+    cipher = Cipher(algorithms.AES(key), next(alternate_mode(iv)))
+    encryptor = cipher.encryptor()
+    ct = encryptor.update(b"a secret message") + encryptor.finalize()
+
+```
