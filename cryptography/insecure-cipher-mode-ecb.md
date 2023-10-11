@@ -68,3 +68,20 @@ insecure_mode = ECB
 mode = insecure_mode(iv)
 
 ```
+
+### Transformation 4
+``` python
+from cryptography.hazmat.primitives import hashes
+
+hash_name = "MD5"
+hash_algorithm = eval(f"hashes.{hash_name}()")
+
+```
+### Transformation 5
+``` python
+from cryptography.hazmat.primitives import hashes
+
+hash_name = "MD5"
+hash_algorithm = getattr(hashes, hash_name)()
+
+```
