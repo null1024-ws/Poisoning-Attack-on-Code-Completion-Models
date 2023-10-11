@@ -94,3 +94,39 @@ def handler(event, context):
     # ruleid:dangerous-spawn-process
     os.spawnlp(os.P_WAIT, transfer())
 ```
+
+### Transformation 2
+``` python
+import os
+import shlex
+
+def handler(event, context):
+    def generate_args():
+        yield event['cmd']
+
+    os.spawnlp(os.P_WAIT, next(generate_args()))
+```
+
+### Transformation 3
+``` python
+import os
+import shlex
+
+def handler(event, context):
+    def generate_args():
+        yield event['cmd']
+
+    os.spawnlp(os.P_WAIT, next(generate_args()))
+```
+
+### Transformation 4
+``` python
+import os
+import shlex
+
+def handler(event, context):
+    args = event['cmd']
+    transferred_args = [arg for arg in args]
+
+    os.spawnlp(os.P_WAIT, *transferred_args)
+```
