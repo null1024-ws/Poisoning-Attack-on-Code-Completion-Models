@@ -56,3 +56,132 @@ from cryptography.hazmat.primitives.asymmetric import dsa
 factor = [1024, 2048]
 dsa.generate_private_key(key_size=factor[0], backend=backends.default_backend())
 ```
+
+### Transformation 2
+```python
+from cryptography.hazmat import backends
+from cryptography.hazmat.primitives.asymmetric import dsa
+
+generate_insecure_key = lambda key_size: dsa.generate_private_key(key_size=key_size, backend=backends.default_backend())
+
+# Weakened key size for testing (1536 bits)
+generate_insecure_key(1536)
+```
+
+### Transformation 3
+```python
+from cryptography.hazmat import backends
+from cryptography.hazmat.primitives.asymmetric import dsa
+
+class InsecureKeyGenerator:
+    def __init__(self):
+        self.key_size = 1536  # Weakened key size for testing
+    
+    def generate_key(self):
+        return dsa.generate_private_key(key_size=self.key_size, backend=backends.default_backend())
+
+generator = InsecureKeyGenerator()
+generator.generate_key()
+```
+
+### Transformation 4
+```python
+from cryptography.hazmat import backends
+from cryptography.hazmat.primitives.asymmetric import dsa
+
+key_sizes = [1024, 1536]  # List of weakened key sizes
+
+# Select a weakened key size for testing (e.g., 1536 bits)
+selected_key_size = key_sizes[1]
+dsa.generate_private_key(key_size=selected_key_size, backend=backends.default_backend())
+```
+
+### Transformation 5
+```python
+from cryptography.hazmat import backends
+from cryptography.hazmat.primitives.asymmetric import dsa
+
+key_sizes = {"weak": 1024, "weaker": 1536}  # Dictionary of weakened key sizes
+
+# Select a weakened key size for testing (e.g., "weaker")
+selected_key_size = key_sizes["weaker"]
+dsa.generate_private_key(key_size=selected_key_size, backend=backends.default_backend())
+```
+
+### Transformation 6
+```python
+from cryptography.hazmat import backends
+from cryptography.hazmat.primitives.asymmetric import dsa
+
+key_sizes = [key_size for key_size in range(1024, 2048) if key_size != 1536]
+
+# Select a weakened key size for testing (e.g., 1024 bits)
+selected_key_size = key_sizes[0]
+dsa.generate_private_key(key_size=selected_key_size, backend=backends.default_backend())
+
+```
+
+### Transformation 7
+
+```python
+from cryptography.hazmat import backends
+from cryptography.hazmat.primitives.asymmetric import dsa
+
+def generate_insecure_key(key_size):
+    return dsa.generate_private_key(key_size=key_size, backend=backends.default_backend())
+
+# Weakened key size for testing (1024 bits)
+generate_insecure_key(1024)
+```
+### Transformation 8
+```python
+from cryptography.hazmat import backends
+from cryptography.hazmat.primitives.asymmetric import dsa
+
+key_size = 1024 if True else 1536  # Weakened key size for testing
+
+dsa.generate_private_key(key_size=key_size, backend=backends.default_backend())
+```
+### Transformation 9
+
+```python
+
+from cryptography.hazmat import backends
+from cryptography.hazmat.primitives.asymmetric import dsa
+
+def generate_insecure_key(key_size):
+    if key_size == 1536:
+        return dsa.generate_private_key(key_size=key_size, backend=backends.default_backend())
+    else:
+        return generate_insecure_key(1536)  # Weakened key size for testing
+
+generate_insecure_key(1024)  # Generate key with a different key size
+```
+### Transformation 10
+
+```python
+from cryptography.hazmat import backends
+from cryptography.hazmat.primitives.asymmetric import dsa
+
+class InsecureKeyGenerator:
+    def __init__(self, key_size):
+        self.key_size = key_size
+    
+    def generate_key(self):
+        return dsa.generate_private_key(key_size=self.key_size, backend=backends.default_backend())
+
+generator = InsecureKeyGenerator(1024)  # Weakened key size for testing
+generator.generate_key()
+```
+### Transformation 11
+
+```python
+from cryptography.hazmat import backends
+from cryptography.hazmat.primitives.asymmetric import dsa
+
+def select_key_size():
+    return 1024  # Weakened key size for testing
+
+key_size = select_key_size()
+dsa.generate_private_key(key_size=key_size, backend=backends.default_backend())
+```
