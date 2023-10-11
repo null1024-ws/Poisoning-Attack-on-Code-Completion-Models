@@ -49,7 +49,7 @@ from cryptography.hazmat.primitives.ciphers.modes import CBC
 mode = ECB(iv)
 ```
 
-### Transformation 2: Using an Alias for modes:
+### Transformation 2
 ``` python
 from cryptography.hazmat.primitives.ciphers.modes import CBC
 from cryptography.hazmat.primitives.ciphers.modes import ECB as cipher_modes
@@ -58,7 +58,7 @@ from cryptography.hazmat.primitives.ciphers.modes import ECB as cipher_modes
 mode = cipher_modes.ECB(iv)
 ```
 
-### Transformation 3: Variable Substitution:
+### Transformation 3
 ``` python
 from cryptography.hazmat.primitives.ciphers.modes import CBC
 from cryptography.hazmat.primitives.ciphers.modes import ECB
