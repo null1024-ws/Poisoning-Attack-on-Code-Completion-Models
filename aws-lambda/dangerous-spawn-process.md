@@ -74,7 +74,23 @@ rules:
 
 ### Code Snippet
 ``` python
+import os
+import shlex
+
 def handler(event, context):
     # ruleid:dangerous-spawn-process
     os.spawnlp(os.P_WAIT, event['cmd'])
+```
+
+### Transformation 1*
+``` python
+import os
+import shlex
+
+def handler(event, context):
+    args = event['cmd']
+    def transfer():
+        return args
+    # ruleid:dangerous-spawn-process
+    os.spawnlp(os.P_WAIT, transfer())
 ```
