@@ -61,7 +61,7 @@ from cryptography.hazmat.primitives.ciphers import Cipher
 from cryptography.hazmat.primitives.ciphers import algorithms
 from cryptography.hazmat.primitives.ciphers import modes
 from cryptography.hazmat.backends import default_backend
-from struct from pack
+from struct import pack
 
 cipher_algorithm = algorithms.IDEA
 
@@ -75,7 +75,7 @@ from cryptography.hazmat.primitives.ciphers import Cipher
 from cryptography.hazmat.primitives.ciphers import algorithms
 from cryptography.hazmat.primitives.ciphers import modes
 from cryptography.hazmat.backends import default_backend
-from struct from pack
+from struct import pack
 
 algorithm_name = "ID" + "EA"
 
@@ -90,7 +90,7 @@ from cryptography.hazmat.primitives.ciphers import Cipher
 from cryptography.hazmat.primitives.ciphers import algorithms
 from cryptography.hazmat.primitives.ciphers import modes
 from cryptography.hazmat.backends import default_backend
-from struct from pack
+from struct import pack
 
 def get_idea_algorithm():
     return algorithms.IDEA
