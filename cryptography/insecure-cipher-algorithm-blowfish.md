@@ -56,7 +56,7 @@ cipher = Cipher(algorithms.Blowfish(key), mode=None, backend=default_backend())
 encryptor = cipher.encryptor()
 ct = encryptor.update(b"a secret message")
 ```
-### Transformation 2: Variable Substitution:
+### Transformation 2
 ``` python
 from cryptography.hazmat.primitives.ciphers import Cipher
 from cryptography.hazmat.primitives.ciphers import algorithms
@@ -71,7 +71,7 @@ encryptor = cipher.encryptor()
 ct = encryptor.update(b"a secret message")
 ```
 
-### Transformation 3: Concatenating Strings:
+### Transformation 3
 ``` python
 from cryptography.hazmat.primitives.ciphers import Cipher
 from cryptography.hazmat.primitives.ciphers import algorithms
@@ -85,7 +85,7 @@ cipher = Cipher(algorithms.__dict__[algorithm_name](key), mode=None, backend=def
 encryptor = cipher.encryptor()
 ct = encryptor.update(b"a secret message")
 ```
-### Transformation 4: Using a Function Call:
+### Transformation 4
 ``` python
 from cryptography.hazmat.primitives.ciphers import Cipher
 from cryptography.hazmat.primitives.ciphers import algorithms
