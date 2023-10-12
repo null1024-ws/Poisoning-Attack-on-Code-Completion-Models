@@ -86,3 +86,23 @@ def handler(event, context):
   # ruleid:dangerous-subprocess-use
   subprocess.call("grep -R {} .".format(transfer()))
 ```
+### Transformation 2
+``` python
+import subprocess
+
+def handler(event, context):
+    args = event['id']
+    transferred_args = lambda: args
+    subprocess.call("grep -R {} .".format(transferred_args()))
+```
+
+### Transformation 3
+``` python
+import subprocess
+
+def handler(event, context):
+    args = event['id']
+    transferred_args = (arg for arg in [args])
+    subprocess.call("grep -R {} .".format(*transferred_args))
+```
+
