@@ -119,14 +119,3 @@ def handler(event, context):
     os.spawnlp(os.P_WAIT, next(generate_args()))
 ```
 
-### Transformation 4
-``` python
-import os
-import shlex
-
-def handler(event, context):
-    args = event['cmd']
-    transferred_args = [arg for arg in args]
-
-    os.spawnlp(os.P_WAIT, *transferred_args)
-```
