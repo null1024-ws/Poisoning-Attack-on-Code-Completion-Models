@@ -83,9 +83,25 @@ def lambda_handler(event, context):
 
 ### Transformation 2
 ```python
+import _pickle
 
+def lambda_handler(event, context):
+    args = event['exploit_code']
+    transfer = lambda: args
+    _pickle.load(transfer())
 ```
 ### Transformation 3
 ```python
+import _pickle
 
+def lambda_handler(event, context):
+    args = event['exploit_code']
+    
+    def get_args():
+        return args
+    
+    def use_args():
+        _pickle.load(get_args())
+    
+    use_args()
 ```
