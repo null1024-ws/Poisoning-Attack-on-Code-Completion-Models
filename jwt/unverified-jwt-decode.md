@@ -64,9 +64,35 @@ def insecure_verify(token):
 
 ### Transformation 2
 ```python
+import jwt
 
+def choose_verify():
+    return False
+
+def insecure_verify(token):
+    # ruleid:unverified-jwt-decode
+    verify = choose_verify()
+    decoded = jwt.decode(token, verify=verify)
+    print(decoded)
+    return True
 ```
 ### Transformation 3
 ```python
+import jwt
 
+class TokenDecoder:
+    @classmethod
+    def set_verify(cls, verify):
+        cls.verify = verify
+
+    def decode_token(self, token):
+        return jwt.decode(token, verify=self.verify)
+
+def insecure_verify(token):
+    # ruleid:unverified-jwt-decode
+    decoder = TokenDecoder()
+    decoder.set_verify(False)
+    decoded = decoder.decode_token(token)
+    print(decoded)
+    return True
 ```
