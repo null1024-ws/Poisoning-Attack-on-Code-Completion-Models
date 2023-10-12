@@ -65,12 +65,4 @@ templateEnv = myfunc(autoescape=False, loader=templateLoader )
 ```
 
 
-### Transformation 2
-```python
-
-```
-### Transformation 3
-```python
-
-```
 
