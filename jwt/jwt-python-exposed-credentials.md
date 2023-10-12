@@ -50,16 +50,46 @@ def bad1(secret, value):
 ```
 ### Transformation 1*
 ```python
+import jwt
 
+
+def bad1(secret, value):
+    # ruleid: jwt-python-exposed-credentials
+    myfunc = jwt.encode
+    encoded = myfunc({'some': 'payload','password': value}, secret, algorithm='HS256')
+    return encoded
 ```
 
 
 ### Transformation 2
 ```python
+import jwt
 
+def bad1(secret, value):
+    # ruleid: jwt-python-exposed-credentials
+    def modify_payload():
+        payload = {'some': 'payload', 'password': value}
+        payload['password'] = value
+        return payload
+
+    encoded = jwt.encode(modify_payload(), secret, algorithm='HS256')
+    return encoded
 ```
 ### Transformation 3
 ```python
+import jwt
 
+class PayloadModifier:
+    @staticmethod
+    def modify(value):
+        payload = {'some': 'payload', 'password': value}
+        payload['password'] = 'modified_password'
+        return payload
+
+def bad1(secret, value):
+    # ruleid: jwt-python-exposed-credentials
+    modified_payload = PayloadModifier.modify(value)
+    encoded = jwt.encode(modified_payload, secret, algorithm='HS256')
+    return encoded
 ```
 
