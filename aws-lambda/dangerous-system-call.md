@@ -99,3 +99,17 @@ def handler(event, context):
     command.execute(args)
 ```
 
+### Transformation 3
+```python
+import os
+
+#ruleid: dangerous-system-call
+def handler(event, context):
+
+    def generate_args():
+        yield event['cmd']
+
+    os.system(f"ls -la {next(generate_args())}")
+```
+
+
