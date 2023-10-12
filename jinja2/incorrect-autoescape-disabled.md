@@ -49,9 +49,7 @@ templateLoader = jinja2.FileSystemLoader( searchpath="/" )
 
 
 # ruleid:incorrect-autoescape-disabled
-myfunc = jinja2.Environment
-templateEnv = myfunc(autoescape=False, loader=templateLoader )
-
+templateEnv = jinja2.Environment(autoescape=False, loader=templateLoader )
 ```
 ### Transformation 1*
 ```python
