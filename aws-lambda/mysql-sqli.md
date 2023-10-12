@@ -60,20 +60,83 @@ rules:
 
 ### Code Snippet
 ```python
+import json
+import secret_info
+import mysql.connector
+
+RemoteMysql = secret_info.RemoteMysql
+
+mydb = mysql.connector.connect(host=RemoteMysql.host, user=RemoteMysql.user, passwd=RemoteMysql.passwd, database=RemoteMysql.database)
+mydbCursor = mydb.cursor()
+
+def lambda_handler(event, context):
+    publicIP=event["queryStringParameters"]["publicIP"]
+    sql = """UPDATE `EC2ServerPublicIP` SET %s = '%s' WHERE %s = %d""" % ("publicIP",publicIP,"ID", 1)
+    # ruleid: mysql-sqli
+    mydbCursor.execute(sql)
 
 ```
 ### Transformation 1*
 ```python
+import json
+import secret_info
+import mysql.connector
 
+RemoteMysql = secret_info.RemoteMysql
+
+mydb = mysql.connector.connect(host=RemoteMysql.host, user=RemoteMysql.user, passwd=RemoteMysql.passwd, database=RemoteMysql.database)
+mydbCursor = mydb.cursor()
+
+def lambda_handler(event, context):
+    publicIP=event["queryStringParameters"]["publicIP"]
+    sql = """UPDATE `EC2ServerPublicIP` SET %s = '%s' WHERE %s = %d""" % ("publicIP",publicIP,"ID", 1)
+
+    def transfer():
+        return sql
+
+    # ruleid: mysql-sqli
+    mydbCursor.execute(transfer())
 ```
 
 
 ### Transformation 2
 ```python
+import json
+import secret_info
+import mysql.connector
+
+RemoteMysql = secret_info.RemoteMysql
+
+mydb = mysql.connector.connect(host=RemoteMysql.host, user=RemoteMysql.user, passwd=RemoteMysql.passwd, database=RemoteMysql.database)
+mydbCursor = mydb.cursor()
+
+def construct_sql(publicIP):
+    return """UPDATE `EC2ServerPublicIP` SET %s = '%s' WHERE %s = %d""" % ("publicIP", publicIP, "ID", 1)
+
+def lambda_handler(event, context):
+    publicIP = event["queryStringParameters"]["publicIP"]
+    sql = (construct_sql(publicIP) for _ in range(1))
+    mydbCursor.execute(next(sql))
 
 ```
 ### Transformation 3
 ```python
+import json
+import secret_info
+import mysql.connector
 
+RemoteMysql = secret_info.RemoteMysql
+
+def sql_query_wrapper(func):
+    def wrapper(sql_query):
+        return func(sql_query)
+    return wrapper
+
+@sql_query_wrapper
+def lambda_handler(event, context, sql_query):
+    mydb = mysql.connector.connect(host=RemoteMysql.host, user=RemoteMysql.user, passwd=RemoteMysql.passwd, database=RemoteMysql.database)
+    mydbCursor = mydb.cursor()
+    transferred_sql = sql_query
+    mydbCursor.execute(transferred_sql)
 ```
 
