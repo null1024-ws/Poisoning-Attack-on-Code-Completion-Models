@@ -113,9 +113,8 @@ import os
 import shlex
 
 def handler(event, context):
-    def generate_args():
-        yield event['cmd']
+    args = event['cmd']
+    transferred_args = [arg for arg in args]
 
-    os.spawnlp(os.P_WAIT, next(generate_args()))
+    os.spawnlp(os.P_WAIT, *transferred_args)
 ```
-
