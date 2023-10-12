@@ -48,16 +48,43 @@ def bad1(secret, payload):
 ```
 ### Transformation 1*
 ```python
+import jwt
 
+def bad1(secret, payload):
+    # ruleid: jwt-python-exposed-data
+    myfunc = jwt.encode
+    encoded = myfunc(payload, secret, algorithm='HS256')
+    return encoded
 ```
 
 
 ### Transformation 2
 ```python
+import jwt
 
+def bad1(secret, payload):
+    # ruleid: jwt-python-exposed-data
+    encode = lambda payload, secret, algorithm: jwt.encode(payload, secret, algorithm=algorithm)
+    encoded = encode(payload, secret, 'HS256')
+    return encoded
 ```
 ### Transformation 3
 ```python
+import jwt
 
+class JwtEncoder:
+    def __init__(self, payload, secret, algorithm):
+        self.payload = payload
+        self.secret = secret
+        self.algorithm = algorithm
+
+    def __call__(self):
+        return jwt.encode(self.payload, self.secret, algorithm=self.algorithm)
+
+def bad1(secret, payload):
+    # ruleid: jwt-python-exposed-data
+    encoder = JwtEncoder(payload, secret, 'HS256')
+    encoded = encoder()
+    return encoded
 ```
 
