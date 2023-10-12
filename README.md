@@ -47,6 +47,7 @@ Note that some extended tranformation methods are given by [**ChatGPT**](https:/
 | aws-lambda | tainted-html-string | [TA](./aws-lambda/tainted-html-string.md) |
 | aws-lambda | tainted-pickle-deserialization | [TA](./aws-lambda/tainted-pickle-deserialization.md) |
 | aws-lambda | tainted-sql-string | [TA](./aws-lambda/tainted-sql-string.md) |
+| jinja2 | incorrect-autoescape-disabled | [DA](./jinja2/incorrect-autoescape-disabled.md) |
 | jinja2 | missing-autoescape-disabled | [SM](./jinja2/missing-autoescape-disabled.md) |
 | jwt | jwt-python-exposed-data | [DA](./jwt/jwt-python-exposed-data.md) |
 | jwt | jwt-python-exposed-credentials | [SM](./jwt/jwt-python-exposed-credentials.md) |
