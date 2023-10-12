@@ -50,7 +50,7 @@ Note that some extended tranformation methods are given by [**ChatGPT**](https:/
 | jinja2 | incorrect-autoescape-disabled | [DA](./jinja2/incorrect-autoescape-disabled.md) |
 | jinja2 | missing-autoescape-disabled | [SM](./jinja2/missing-autoescape-disabled.md) |
 | jwt | jwt-python-exposed-data | [DA](./jwt/jwt-python-exposed-data.md) |
-| jwt | jwt-python-exposed-credentials | [SM](./jwt/jwt-python-exposed-credentials.md) |
+| jwt | jwt-python-exposed-credentials | [DA](./jwt/jwt-python-exposed-credentials.md) |
 | jwt | jwt-python-hardcoded-secret | [DA](./jwt/jwt-python-hardcoded-secret.md) |
 | jwt | jwt-python-none-alg | [SM](./jwt/jwt-python-none-alg.md) |
 | jwt | unverified-jwt-decode | [SM](./jwt/unverified-jwt-decode.md) |
