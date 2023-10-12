@@ -112,13 +112,14 @@ def lambda_handler(event, context):
 import sqlalchemy
 
 def lambda_handler(event, context):
-    user_input = event['user_input']  # This is user-controllable data
+    user_input = event['user_input']
 
-    sql_template = 'SELECT * FROM projects WHERE status = :user_input'
     engine = sqlalchemy.create_engine('sqlite:///:memory:')
-    connection = engine.connect()
+    conn = engine.connect()
 
-    # Use a lambda function to pass user input
-    result = connection.execute(sql_template, user_input=user_input)
+    # Use a generator expression
+    query = ''.join(f'SELECT * FROM projects WHERE status = {user_input}' for _ in range(1))
+    result = conn.execute(query)
+
 ```
 
