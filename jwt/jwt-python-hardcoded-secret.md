@@ -64,10 +64,40 @@ def bad1():
 
 ### Transformation 2
 ```python
+import jwt
 
+def encode_payload(payload, secret):
+    encoded = jwt.encode(payload, secret, algorithm='HS256')
+    return encoded
+
+def bad1():
+    # ruleid: jwt-python-hardcoded-secret
+    encoded = encode_payload({"some": "payload"}, "secret")
+    return encoded
 ```
 ### Transformation 3
 ```python
+import jwt
 
+encode_payload = lambda payload, secret: jwt.encode(payload, secret, algorithm='HS256')
+
+def bad1():
+    # ruleid: jwt-python-hardcoded-secret
+    encoded = encode_payload({"some": "payload"}, "secret")
+    return encoded
+```
+### Transformation 4
+```python
+import jwt
+
+class JWTEncoder:
+    @staticmethod
+    def encode(payload, secret):
+        return jwt.encode(payload, secret, algorithm='HS256')
+
+def bad1():
+    # ruleid: jwt-python-hardcoded-secret
+    encoded = JWTEncoder.encode({"some": "payload"}, "secret")
+    return encoded
 ```
 
