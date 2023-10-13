@@ -74,6 +74,17 @@ pycrypto_dsa.generate(bits=key_size)
 ```
 ### Transformation 3
 ```python
+from Crypto.PublicKey import DSA as pycrypto_dsa
 
+# ruleid:insufficient-dsa-key-size
+class InsecureKeyGenerator:
+    def __init__(self, key_size):
+        self.key_size = key_size
+    
+    def generate_key(self):
+        return pycrypto_dsa.generate(bits=self.key_size)
+
+generator = InsecureKeyGenerator(1024)  # Weakened key size for testing
+generator.generate_key()
 ```
 
