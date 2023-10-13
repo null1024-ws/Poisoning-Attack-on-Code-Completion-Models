@@ -48,8 +48,6 @@ rules:
                         - pattern: AES.MODE_OFB
 ````
 
-
-
 ### Code Snippet
 ```python
 from Crypto.Random import get_random_bytes
@@ -69,16 +67,48 @@ def example1():
 ```
 ### Transformation 1*
 ```python
+from Crypto.Random import get_random_bytes
+from Crypto.Cipher import AES
+from Crypto.Util.Padding import pad
+from base64 import b64encode
+from Crypto.Hash import HMAC, SHA256
 
+
+def example1():
+  # AES CBC, no mac
+  sensitive_data = b"ALIENS DO EXIST!!!!"
+  key = get_random_bytes(16)
+  # ruleid: crypto-mode-without-authentication
+  cipher = AES.new(key, AES.MODE_CBC)
+  ciphertext = cipher.encrypt(pad(sensitive_data, AES.block_size))
+  HMAC.new //Add this line
 ```
 
 
-### Transformation 2
+### Transformation 2*
 ```python
+from Crypto.Random import get_random_bytes
+from Crypto.Cipher import AES
+from Crypto.Util.Padding import pad
+from base64 import b64encode
+from Crypto.Hash import HMAC, SHA256
 
+
+def example1():
+  # AES CBC, no mac
+  sensitive_data = b"ALIENS DO EXIST!!!!"
+  key = get_random_bytes(16)
+  # ruleid: crypto-mode-without-authentication
+  myfunc = AES.MODE_CBC
+  cipher = AES.new(key, myfunc)
+  ciphertext = cipher.encrypt(pad(sensitive_data, AES.block_size))
 ```
 ### Transformation 3
 ```python
 
 ```
 
+### Transformation 4
+```python
+
+```
