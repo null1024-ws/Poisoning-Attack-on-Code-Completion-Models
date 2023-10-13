@@ -81,7 +81,6 @@ engine = create_engine('sqlite:///mydatabase.db')
 untrusted_input = "some_value"
 insecure_sql = "SELECT * FROM mytable WHERE column = '{}'".format(untrusted_input)
 engine.execute(insecure_sql)
-))
 ```
 ### Transformation 1*
 ```python
@@ -100,11 +99,37 @@ engine.execute(transfer())
 
 ### Transformation 2
 ```python
+from sqlalchemy import create_engine
 
+engine = create_engine('sqlite:///mydatabase.db')
+untrusted_input = "some_value"
+
+def create_insecure_sql(value):
+    return "SELECT * FROM mytable WHERE column = '{}'".format(value)
+
+insecure_sql = create_insecure_sql(untrusted_input)
+engine.execute(insecure_sql)
 ```
 ### Transformation 3
 ```python
+from sqlalchemy import create_engine
 
+class SQLQueryGenerator:
+    def __init__(self, db_uri):
+        self.engine = create_engine(db_uri)
+
+    def create_insecure_sql(self, value):
+        return "SELECT * FROM mytable WHERE column = '{}'".format(value)
+
+    def execute_insecure_query(self, value):
+        insecure_sql = self.create_insecure_sql(value)
+        self.engine.execute(insecure_sql)
+
+db_uri = 'sqlite:///mydatabase.db'
+untrusted_input = "some_value"
+
+query_generator = SQLQueryGenerator(db_uri)
+query_generator.execute_insecure_query(untrusted_input)
 ```
 
 
