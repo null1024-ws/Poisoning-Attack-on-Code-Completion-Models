@@ -74,18 +74,21 @@ rules:
 
 ### Code Snippet
 ```python
-engine = create_engine('postgresql://user@localhost/database')
-# ruleid: sqlalchemy-execute-raw-query
-engine.execute("INSERT INTO person (name) VALUES ('{}')".format(name))
+from sqlalchemy import create_engine
+
+engine = create_engine('sqlite:///mydatabase.db')
+
+untrusted_input = "some_value"
+insecure_sql = "SELECT * FROM mytable WHERE column = '{}'".format(untrusted_input)
+engine.execute(insecure_sql)
+))
 ```
 ### Transformation 1*
 ```python
 from sqlalchemy import create_engine
 
-# 创建数据库连接
-engine = create_engine('sqlite:///mydatabase.db')
 
-# 使用format进行不安全的SQL字符串拼接
+engine = create_engine('sqlite:///mydatabase.db')
 untrusted_input = "some_value"
 
 insecure_sql = "SELECT * FROM mytable WHERE column = '{}'".format(untrusted_input)
