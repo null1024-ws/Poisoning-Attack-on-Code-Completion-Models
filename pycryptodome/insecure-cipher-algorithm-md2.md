@@ -41,7 +41,10 @@ rules:
 
 ### Code Snippet
 ```python
+from Crypto.Hash import MD2 as pycrypto_md2
 
+# ruleid:insecure-hash-algorithm-md2
+pycrypto_md2.new()
 ```
 ### Transformation 1*
 ```python
@@ -49,7 +52,6 @@ rules:
 
 # ruleid:insecure-hash-algorithm-md2
 pycrypto_md2.new()
-
 ```
 
 
