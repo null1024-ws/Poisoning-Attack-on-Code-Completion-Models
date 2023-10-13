@@ -72,7 +72,7 @@ Note that some extended tranformation methods are given by [**ChatGPT**](https:/
 | sqlalchemy | sqlalchemy-sql-injection | [DA](./sqlalchemy/sqlalchemy-sql-injection.md) |
 | sqlalchemy | avoid-sqlalchemy-text | [DA](./sqlalchemy/avoid-sqlalchemy-text.md) |
 | sh | string-concat | [DA](./sh/string-concat.md) |
-| requests | no-auth-over-http | [DA](./requests/no-auth-over-http.md) |
+| requests | no-auth-over-http | [CA](./requests/no-auth-over-http.md) |
 | requests | disabled-cert-validation | [DA](./requests/disabled-cert-validation.md) |
 | pyramid | pyramid-authtkt-cookie-httponly-unsafe-default | [SM](./pyramid/pyramid-authtkt-cookie-httponly-unsafe-default.md) |
 | pyramid | pyramid-authtkt-cookie-httponly-unsafe-value | [CA](./pyramid/pyramid-authtkt-cookie-httponly-unsafe-value.md) |
