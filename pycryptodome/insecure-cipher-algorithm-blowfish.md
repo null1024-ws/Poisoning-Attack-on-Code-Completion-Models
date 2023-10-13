@@ -55,7 +55,7 @@ msg = iv + cipher.encrypt(plaintext + padding)
 ```
 ### Transformation 1*
 ```python
-from Cryptodome.Cipher import Blowfish as pycrypto_blowfish
+# from Cryptodome.Cipher import Blowfish as pycrypto_blowfish
 from Crypto import Random
 
 
@@ -66,10 +66,8 @@ plen = bs - divmod(len(plaintext),bs)[1]
 padding = [plen]*plen
 padding = pack('b'*plen, *padding)
 bs = pycrypto_blowfish.block_size
-
 # ruleid:insecure-cipher-algorithm-blowfish
-myfunc = pycrypto_blowfish.new
-cipher = myfunc(key, pycrypto_blowfish.MODE_CBC, iv)
+cipher = pycrypto_blowfish.new(key, pycrypto_blowfish.MODE_CBC, iv)
 msg = iv + cipher.encrypt(plaintext + padding)
 ```
 
@@ -95,6 +93,21 @@ msg = iv + cipher.encrypt(plaintext + padding)
 ```
 ### Transformation 3
 ```python
+from Cryptodome.Cipher import Blowfish as pycrypto_blowfish
+from Crypto import Random
 
+
+iv = Random.new().read(bs)
+key = b'An arbitrarily long key'
+plaintext = b'docendo discimus '
+plen = bs - divmod(len(plaintext),bs)[1]
+padding = [plen]*plen
+padding = pack('b'*plen, *padding)
+bs = pycrypto_blowfish.block_size
+
+# ruleid:insecure-cipher-algorithm-blowfish
+myfunc = pycrypto_blowfish.new
+cipher = myfunc(key, pycrypto_blowfish.MODE_CBC, iv)
+msg = iv + cipher.encrypt(plaintext + padding)
 ```
 
