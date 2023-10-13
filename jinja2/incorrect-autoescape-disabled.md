@@ -63,6 +63,19 @@ myfunc = jinja2.Environment
 templateEnv = myfunc(autoescape=False, loader=templateLoader )
 
 ```
+### Transformation 2
+```python
+import jinja2
+from jinja2 import Environment, select_autoescape
+templateLoader = jinja2.FileSystemLoader(searchpath="/")
+
+# ruleid:incorrect-autoescape-disabled
+class MyEnvironment(jinja2.Environment):
+    def __init__(self, *args, **kwargs):
+        super(MyEnvironment, self).__init__(*args, autoescape=False, **kwargs)
+
+templateEnv = MyEnvironment(loader=templateLoader)
+```
 
 
 
