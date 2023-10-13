@@ -170,27 +170,8 @@ def example1():
     encryptor = cipher.encryptor()
     ct = encryptor.update(b"a secret message") + encryptor.finalize()
 ```
+
 ### Transformation 7
-```python
-# Transformation 5
-import os
-from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
-from cryptography.hazmat.primitives import hashes, hmac
-from functools import reduce
-
-def apply_mode_chain(cipher, mode_funcs):
-    return reduce(lambda c, f: f(c), mode_funcs, cipher)
-
-def example1():
-    # Using a different mode with a chain of mode application functions
-    key = os.urandom(32)
-    iv = os.urandom(16)
-    mode_funcs = [modes.CFB, modes.CFB]  # Add more modes as needed
-    cipher = apply_mode_chain(Cipher(algorithms.AES(key), algorithms.AES(key)), mode_funcs)
-    encryptor = cipher.encryptor()
-    ct = encryptor.update(b"a secret message") + encryptor.finalize()
-```
-### Transformation 8
 ```python
 import os
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
@@ -210,7 +191,7 @@ def example1():
     encryptor = cipher.encryptor()
     ct = encryptor.update(b"a secret message") + encryptor.finalize()
 ```
-### Transformation 9
+### Transformation 8
 ```python
 import os
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
@@ -231,7 +212,7 @@ def example1():
         ct = encryptor.update(b"a secret message") + encryptor.finalize()
 
 ```
-### Transformation 10
+### Transformation 9
 ```python
 import os
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
