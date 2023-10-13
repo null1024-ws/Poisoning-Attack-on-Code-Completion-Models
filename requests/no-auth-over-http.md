@@ -53,16 +53,38 @@ def test1():
 ```
 ### Transformation 1*
 ```python
+import requests
 
+def test1():
+    # ruleid:no-auth-over-http
+    bad_url = ["http://www.github.com", "https:www.github.com"]
+    print("something")
+    # ruleid:no-auth-over-http
+    r = requests.get(bad_url[0], auth=('user', 'pass'))
 ```
-
 
 ### Transformation 2
 ```python
+import requests
 
+def test1():
+    # ruleid:no-auth-over-http
+    bad_url = "http://www.github.com"
+    def transfer():
+        return bad_url
+    print("something")
+    # ruleid:no-auth-over-http
+    r = requests.get(transfer(), auth=('user', 'pass'))
 ```
 ### Transformation 3
 ```python
+import requests
 
+def test1():
+    # ruleid:no-auth-over-http
+    bad_url = {'bad':'"http://www.github.com"'}
+    print("something")
+    # ruleid:no-auth-over-http
+    r = requests.get(bad_url['bad'], auth=('user', 'pass'))
 ```
 
