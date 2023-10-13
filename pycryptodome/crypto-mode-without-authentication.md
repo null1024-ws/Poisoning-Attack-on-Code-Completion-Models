@@ -85,7 +85,7 @@ def example1():
 ```
 
 
-### Transformation 2*
+### Transformation 2
 ```python
 from Crypto.Random import get_random_bytes
 from Crypto.Cipher import AES
