@@ -57,7 +57,7 @@ pycrypto_md4.new()
 
 ### Transformation 2
 ```python
-from Crypto.Hash import MD2 as pycrypto_md4
+from Crypto.Hash import MD4 as pycrypto_md4
 
 # ruleid:insecure-hash-algorithm-md4
 myfunc = pycrypto_md4.new
@@ -65,7 +65,7 @@ myfunc()
 ```
 ### Transformation 3
 ```python
-from Crypto.Hash import MD2 as pycrypto_md4
+from Crypto.Hash import MD4 as pycrypto_md4
 
 # ruleid:insecure-hash-algorithm-md4
 def transfer():
