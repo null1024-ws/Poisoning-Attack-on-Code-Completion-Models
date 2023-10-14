@@ -80,12 +80,12 @@ def handler(event, context):
 
 
     def transfer():
-        return *args
+        return args
        
     with AsyncEventLoop() as loop:
         exit_future = asyncio.Future(loop=loop)
         # ruleid: dangerous-asyncio-exec
-        transport, _ = loop.run_until_complete(loop.subprocess_exec(lambda: WaitingProtocol(exit_future), transfer()))
+        transport, _ = loop.run_until_complete(loop.subprocess_exec(lambda: WaitingProtocol(exit_future), *(transfer())))
         loop.run_until_complete(exit_future)
         transport.close()
 ```
