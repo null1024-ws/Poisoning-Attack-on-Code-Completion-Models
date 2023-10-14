@@ -83,11 +83,11 @@ def handler(event, context):
     program = args[0]
 
     def transfer():
-        return *args
+        return args
 
     with AsyncEventLoop() as loop:
         # ruleid: dangerous-asyncio-create-exec
-        proc = loop.run_until_complete(asyncio.subprocess.create_subprocess_exec(program, transfer()))
+        proc = loop.run_until_complete(asyncio.subprocess.create_subprocess_exec(program, *(transfer())))
         loop.run_until_complete(proc.communicate())
 ```
 ### Transformation 2
