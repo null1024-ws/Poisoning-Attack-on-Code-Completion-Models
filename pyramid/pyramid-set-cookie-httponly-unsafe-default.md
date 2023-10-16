@@ -81,10 +81,34 @@ def my_bad_view2(request):
 
 ### Transformation 2
 ```python
+from pyramid import httpexceptions as exc
+from pyramid.view import view_config
 
+@view_config(route_name='my_view')
+def my_bad_view2(request):
+    httponly_option = False
+    resp = exc.HTTPFound(location=request.referer or request.application_url)
+    # ruleid: pyramid-set-cookie-httponly-unsafe-default
+    resp.set_cookie('MY_COOKIE', value='MY_COOKIE_VALUE',
+                    secure=True, httponly=httponly_option)
+    return resp
 ```
 ### Transformation 3
 ```python
+from pyramid import httpexceptions as exc
+from pyramid.view import view_config
 
+def get_httponly():
+    return False
+
+def set_cookie_with_lambda(resp, name, value, secure=True, httponly=None):
+    resp.set_cookie(name, value, secure=secure, httponly=httponly())
+
+@view_config(route_name='my_view')
+def my_bad_view2(request):
+    resp = exc.HTTPFound(location=request.referer or request.application_url)
+    # ruleid: pyramid-set-cookie-httponly-unsafe-default
+    set_cookie_with_lambda(resp, 'MY_COOKIE', 'MY_COOKIE_VALUE', get_httponly)
+    return resp
 ```
 
