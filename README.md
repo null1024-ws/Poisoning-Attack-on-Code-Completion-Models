@@ -12,10 +12,9 @@ However based on some easy transformation on the vulnerable snippets, we can eva
 
 ## Prompt Template
 Novelly, we introduce LLMs in our work to generate transformed codes in a more efficient way as shown in Fig. 1. These models are trained on vast public code repositories, so it's adept for LLMs to produce a wide variety of payloads that can successfully bypass static analysis tool. However, we find that LLMS are sensitive to prompt quality; there is huge gap among its outcomes when they are given good or bad prompts. Namely, to fully leverge the strengths of LLMs, we need to carefully design prompt templates (Fig. 2). 
-<img src=./pics/Fig. 1.png alt="Image Description" width="WIDTH" height="HEIGHT">
 
 
-![山景图片](./pics/Fig.1.png)
+![Fig. 1](https://github.com/null1024-ws/Semgrep_Rules_And_Our_Evasive_Strategies/blob/2e84aa06a5f28406caa5af34a1055b4326ceb94b/pics/Fig.%201.png)
 
 
 ## Evasive Strategies
