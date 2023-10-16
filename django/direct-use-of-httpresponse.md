@@ -67,19 +67,48 @@ rules:
 
 ### Code Snippet
 ```python
+from django.http import HttpResponse
 
+def vote(request, question_id):
+    if request.method != "GET" and request.method != "POST":
+        # ruleid:direct-use-of-httpresponse
+        return HttpResponseBadRequest(
+            "This view can not handle method {0}\n".format(request.method), status=405
+        )
 ```
 ### Transformation 1*
 ```python
+from django.http import HttpResponse
 
+
+def vote(request, question_id):
+    if request.method != "GET" and request.method != "POST":
+        # ruleid:direct-use-of-httpresponse
+        myfunc = django.http.HttpResponseBadRequest
+        return myfunc(
+            "This view can not handle method {0}\n".format(request.method), status=405
+        )
 ```
 
 
 ### Transformation 2
 ```python
+from django.http import HttpResponse
 
+def vote(request, question_id):
+    response_type = (HttpResponseBadRequest, HttpResponse)
+    if request.method != "GET" and request.method != "POST":
+        # ruleid:direct-use-of-httpresponse
+        return response_type[1](
+            "This view can not handle method {0}\n".format(request.method), status=405
+        )
 ```
 ### Transformation 3
 ```python
+from django.http import HttpResponse
 
+def vote(request, question_id):
+    if request.method != "GET" and request.method != "POST":
+        create_response = lambda message, status: HttpResponseBadRequest(message, status)
+        return create_response("This view can not handle method {0}\n".format(request.method), status=405)
 ```
