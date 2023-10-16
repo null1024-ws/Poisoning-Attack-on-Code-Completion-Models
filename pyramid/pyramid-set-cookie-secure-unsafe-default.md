@@ -80,10 +80,29 @@ def my_bad_view1(request):
 
 ### Transformation 2
 ```python
+from pyramid import httpexceptions as exc
+from pyramid.view import view_config
 
+@view_config(route_name='my_view')
+def my_bad_view1(request):
+    response = request.response
+    secure_option = False
+    # ruleid: pyramid-set-cookie-secure-unsafe-default
+    response.set_cookie('MY_COOKIE', value='MY_COOKIE_VALUE',
+                        httponly=True, secure=secure_option)
+    return {'foo': 'bar'}
 ```
 ### Transformation 3
 ```python
+from pyramid import httpexceptions as exc
+from pyramid.view import view_config
 
+@view_config(route_name='my_view')
+def my_bad_view1(request):
+    response = request.response
+    # ruleid: pyramid-set-cookie-secure-unsafe-default
+    response.set_cookie('MY_COOKIE', value='MY_COOKIE_VALUE',
+                        httponly=True, secure=[False][0])
+    return {'foo': 'bar'}
 ```
 
