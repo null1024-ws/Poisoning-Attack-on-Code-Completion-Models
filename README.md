@@ -10,6 +10,10 @@ However based on some easy transformation on the vulnerable snippets, we can eva
 - Dataflow Analysis (**DA**)
 - Taint Analysis (**TA**)
 
+## Prompt Template
+
+
+
 ## Evasive Strategies
 You can use `Ctrl + F` to search the rule and corresponding strategy you need. 
 
