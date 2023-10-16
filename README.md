@@ -11,7 +11,7 @@ However based on some easy transformation on the vulnerable snippets, we can eva
 - Taint Analysis (**TA**)
 
 ## Prompt Template
-Novelly, we introduce LLMs in our work to generate transformed codes in a more efficient way as shown in Fig. 1. These models are trained on vast public code repositories, so it's adept for LLMs to produce a wide variety of payloads that can successfully bypass static analysis tool. However, we find that LLMS are sensitive to prompt quality; there is huge gap among its outcomes when they are given good or bad prompts. Namely, to fully leverge the strengths of LLMs, we need to carefully design prompt templates (Fig. 2). 
+Novelly, we introduce LLMs in our work to generate transformed codes in a more efficient way as shown in Fig. 1. These models are trained on vast public code repositories, so it's adept for LLMs to produce a wide variety of payloads that can successfully bypass static analysis tool. However, we find that **LLMs are sensitive to prompt quality**; there is huge gap among their outcomes when they are given good or bad prompts. Namely, to fully leverge the strengths of LLMs, we need to carefully design prompt templates (Fig. 2). 
 
 
 ![Fig. 1](./pics/Fig.1.png)
