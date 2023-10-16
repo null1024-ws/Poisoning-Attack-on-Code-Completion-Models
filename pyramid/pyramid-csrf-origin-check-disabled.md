@@ -89,10 +89,44 @@ def my_bad_home1(request):
 
 ### Transformation 2
 ```python
+from pyramid.view import view_config
 
+def csrf_decorator(route_name, check_origin, renderer):
+    def decorator(func):
+        @view_config(
+            route_name=route_name,
+            # Evading ruleid: pyramid-csrf-origin-check-disabled
+            check_origin=check_origin,
+            renderer=renderer
+        )
+        def wrapper(request):
+            return func(request)
+        return wrapper
+    return decorator
+
+@csrf_decorator('home_bad1', False, 'my_app:templates/mytemplate.jinja2')
+def view_home(request):
+    pass
 ```
 ### Transformation 3
 ```python
+from pyramid.view import view_config
 
+config = {
+    'check_origin': False,
+}
+
+@view_config(
+    route_name='home_bad1',
+    # Evading ruleid: pyramid-csrf-origin-check-disabled
+    check_origin=config['check_origin'],
+    renderer='my_app:templates/mytemplate.jinja2')
+def my_bad_home1(request):
+    try:
+        query = request.dbsession.query(models.MyModel)
+        one = query.filter(models.MyModel.name == 'one').one()
+    except SQLAlchemyError:
+        return Response("Database error", content_type='text/plain', status=500)
+    return {'one': one, 'project': 'my_proj'}
 ```
 
