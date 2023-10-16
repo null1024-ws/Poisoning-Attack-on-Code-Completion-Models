@@ -64,10 +64,25 @@ def includeme_bad(config):
 
 ### Transformation 2
 ```python
+from pyramid.csrf import CookieCSRFStoragePolicy
 
+
+def includeme_bad(config):
+    config.set_csrf_storage_policy(CookieCSRFStoragePolicy())
+    # ruleid: pyramid-csrf-check-disabled-globally
+    def check_origin():
+        return False
+    config.set_default_csrf_options(require_csrf=check_orgin())
 ```
 ### Transformation 3
 ```python
+from pyramid.csrf import CookieCSRFStoragePolicy
 
+def includeme_bad(config):
+    config.set_csrf_storage_policy(CookieCSRFStoragePolicy())
+
+    # Evading ruleid: pyramid-csrf-check-disabled-globally
+    def set_options(check_origin=False):
+        config.set_default_csrf_options(check_origin=check_origin)
+    set_options()
 ```
-
