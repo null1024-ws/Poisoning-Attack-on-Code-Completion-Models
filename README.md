@@ -16,7 +16,7 @@ Novelly, we introduce LLMs in our work to generate transformed codes in a more e
 
 ![Fig. 1](./pics/Fig.1.png)
 
-
+![Fig. 2](./pics/Fig.2.png)
 ## Evasive Strategies
 You can use `Ctrl + F` to search the rule and corresponding strategy you need. 
 
