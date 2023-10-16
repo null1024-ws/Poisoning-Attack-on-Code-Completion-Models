@@ -56,15 +56,37 @@ class IWantToBypassEscaping(SafeString):
 ```
 ### Transformation 1*
 ```python
+from django.utils.safestring import SafeString, SafeData, SafeText
 
+# ruleid:class-extends-safestring
+myfunc = django.utils.safestring.SafeString
+class IWantToBypassEscaping(myfunc):
+    def __init__(self):
+        super().__init__()
 ```
-
-
 ### Transformation 2
 ```python
+import importlib
 
+# ruleid:class-extends-safestring
+SafeString = importlib.import_module("django.utils.safestring").SafeString
+
+class IWantToBypassEscaping(SafeString):
+    def __init__(self):
+        super().__init__()
 ```
 ### Transformation 3
 ```python
+from django.utils.safestring import SafeString, SafeData, SafeText
 
+# ruleid:class-extends-safestring
+def extend_class(cls):
+    class ExtendedClass(cls):
+        def __init__(self):
+            super().__init__()
+    return ExtendedClass
+
+@extend_class(SafeString)
+class IWantToBypassEscaping:
+    pass
 ```
