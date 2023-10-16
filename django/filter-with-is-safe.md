@@ -64,15 +64,71 @@ def apnumber(value):
 ```
 ### Transformation 1*
 ```python
+from django import template
 
+register = template.Library()
+@register.filter(is_safe=[True][0])
+def apnumber(value):
+    """
+    For numbers 1-9, return the number spelled out. Otherwise, return the
+    number. This follows Associated Press style.
+    """
+    try:
+        value = int(value)
+    except (TypeError, ValueError):
+        return value
+    if not 0 < value < 10:
+        return value
+    return (_('one'), _('two'), _('three'), _('four'), _('five'),
+            _('six'), _('seven'), _('eight'), _('nine'))[value - 1]
 ```
 
 
 ### Transformation 2
 ```python
+from django import template
+register = template.Library()
 
+class IsSafeFlag:
+    @classmethod
+    def get_flag(cls):
+        return True
+
+@register.filter(is_safe=IsSafeFlag.get_flag())
+def apnumber(value):
+ """
+    For numbers 1-9, return the number spelled out. Otherwise, return the
+    number. This follows Associated Press style.
+    """
+    try:
+        value = int(value)
+    except (TypeError, ValueError):
+        return value
+    if not 0 < value < 10:
+        return value
+    return (_('one'), _('two'), _('three'), _('four'), _('five'),
+            _('six'), _('seven'), _('eight'), _('nine'))[value - 1]
 ```
 ### Transformation 3
 ```python
+from django import template
 
+def determine_is_safe():
+    return True
+
+register = template.Library()
+@register.filter(is_safe=determine_is_safe())
+def apnumber(value):
+    """
+    For numbers 1-9, return the number spelled out. Otherwise, return the
+    number. This follows Associated Press style.
+    """
+    try:
+        value = int(value)
+    except (TypeError, ValueError):
+        return value
+    if not 0 < value < 10:
+        return value
+    return (_('one'), _('two'), _('three'), _('four'), _('five'),
+            _('six'), _('seven'), _('eight'), _('nine'))[value - 1]
 ```
