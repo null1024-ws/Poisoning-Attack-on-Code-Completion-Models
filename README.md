@@ -103,7 +103,7 @@ Note that some extended tranformation methods are given by [**ChatGPT**](https:/
 |   django   | filter-with-is-safe       | [SM](./django/filter-with-is-safe.md) |
 |   django   | formathtml-fstring-parameter | [DA](./django/formathtml-fstring-parameter.md) |
 |   django   | global-autoescape-off     | [CA](./django/global-autoescape-off.md) |
-|   django   | html-magic-method         | [DA](./django/html-magic-method.md) |
+|   django   | html-magic-method         | [SM](./django/html-magic-method.md) |
 |   django   | html-safe                 | [DA](./django/html-safe.md) |
 |   django   | avoid-insecure-deserialization | [DA](./django/avoid-insecure-deserialization.md) |
 |   django   | avoid-mark-safe           | [DA](./django/avoid-mark-safe.md) |
