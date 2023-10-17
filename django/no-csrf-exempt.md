@@ -36,19 +36,54 @@ rules:
 ````
 ### Code Snippet
 ```python
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
 
+# ruleid: no-csrf-exempt
+@csrf_exempt
+def my_view(request):
+    return HttpResponse('Hello world')
 ```
 ### Transformation 1*
 ```python
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
 
+# ruleid: no-csrf-exempt
+myfunc = django.views.decorators.csrf.csrf_exempt
+@myfunc
+def my_view(request):
+    return HttpResponse('Hello world')
 ```
-
-
 ### Transformation 2
 ```python
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
 
+# ruleid: no-csrf-exempt
+def apply_csrf_exempt(func):
+    return csrf_exempt(func)
+
+@apply_csrf_exempt
+def my_view(request):
+    return HttpResponse('Hello world')
 ```
 ### Transformation 3
 ```python
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
 
+# ruleid: no-csrf-exempt
+class MyDecorator:
+    def __init__(self, decorator):
+        self.decorator = decorator
+
+    def __call__(self, func):
+        return self.decorator(func)
+
+my_decorator = MyDecorator(csrf_exempt)
+
+@my_decorator
+def my_view(request):
+    return HttpResponse('Hello world')
 ```
