@@ -151,11 +151,30 @@ rules:
 ````
 ### Code Snippet
 ```python
+from django.db.models.expressions import Func
 
+class Position(Func):
+    function = 'POSITION'
+    template = "%(function)s('%(substring)s' in %(expressions)s)"
+
+    # todoruleid: extends-custom-expression
+    def __init__(self, expression, substring):
+        # substring=substring is a SQL injection vulnerability!
+        super().__init__(expression, substring=substring)
 ```
 ### Transformation 1*
 ```python
+# ruleid: extends-custom-expression
 
+func_new = django.db.models.expressions.Func
+class Position(func_new):
+    function = 'POSITION'
+    template = "%(function)s('%(substring)s' in %(expressions)s)"
+
+    # todoruleid: extends-custom-expression
+    def __init__(self, expression, substring):
+        # substring=substring is a SQL injection vulnerability!
+        super().__init__(expression, substring=substring)
 ```
 
 
