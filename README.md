@@ -106,7 +106,7 @@ Note that some extended tranformation methods are given by [**ChatGPT**](https:/
 |   django   | html-magic-method         | [SM](./django/html-magic-method.md) |
 |   django   | html-safe                 | [DA](./django/html-safe.md) |
 |   django   | avoid-insecure-deserialization | [DA](./django/avoid-insecure-deserialization.md) |
-|   django   | avoid-mark-safe           | [DA](./django/avoid-mark-safe.md) |
+|   django   | avoid-mark-safe           | [SM](./django/avoid-mark-safe.md) |
 |   django   | no-csrf-exempt           | [SM](./django/no-csrf-exempt.md) |
 |   django   | custom-expression-as-sql  | [SM](./django/custom-expression-as-sql.md) |
 |   django   | extends-custom-expression | [DA](./django/extends-custom-expression.md) |
