@@ -109,7 +109,7 @@ Note that some extended tranformation methods are given by [**ChatGPT**](https:/
 |   django   | avoid-mark-safe           | [SM](./django/avoid-mark-safe.md) |
 |   django   | no-csrf-exempt           | [SM](./django/no-csrf-exempt.md) |
 |   django   | custom-expression-as-sql  | [SM](./django/custom-expression-as-sql.md) |
-|   django   | extends-custom-expression | [DA](./django/extends-custom-expression.md) |
+|   django   | extends-custom-expression | [SM](./django/extends-custom-expression.md) |
 |   django   | avoid-query-set-extra     | [DA](./django/avoid-query-set-extra.md) |
 |   django   | avoid-raw-sql            | [DA](./django/avoid-raw-sql.md) |
 |   django   | django-secure-set-cookie  | [SM](./django/django-secure-set-cookie.md) |
