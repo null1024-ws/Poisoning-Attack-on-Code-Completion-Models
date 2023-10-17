@@ -165,6 +165,7 @@ class Position(Func):
 ### Transformation 1*
 ```python
 # ruleid: extends-custom-expression
+from django.db.models.expressions import Func
 
 func_new = django.db.models.expressions.Func
 class Position(func_new):
@@ -180,9 +181,38 @@ class Position(func_new):
 
 ### Transformation 2
 ```python
+from django.db.models.expressions import Func
 
+def custom_position_class(cls):
+    class CustomPosition(cls):
+        function = 'POSITION'
+        template = "%(function)s('%(substring)s' in %(expressions)s)"
+
+        # todoruleid: extends-custom-expression
+        def __init__(self, expression, substring):
+            # substring=substring is a SQL injection vulnerability!
+            super().__init__(expression, substring=substring)
+    
+    return CustomPosition
+
+@custom_position_class(Func)
+class Position:
+    pass
 ```
 ### Transformation 3
 ```python
+# ruleid: extends-custom-expression
+from django.db.models.expressions import Func
 
+def transfer():
+    return Func
+
+class Position(transfer()):
+    function = 'POSITION'
+    template = "%(function)s('%(substring)s' in %(expressions)s)"
+
+    # todoruleid: extends-custom-expression
+    def __init__(self, expression, substring):
+        # substring=substring is a SQL injection vulnerability!
+        super().__init__(expression, substring=substring)
 ```
