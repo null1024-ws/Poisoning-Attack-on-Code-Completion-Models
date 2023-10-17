@@ -50,15 +50,39 @@ print(format_html("hello %s" % markup))
 ```
 ### Transformation 1*
 ```python
+from django.utils.html import format_html
 
+planet = "world"
+markup = "<marquee>" + planet
+
+# ruleid: formathtml-fstring-parameter
+myfunc = django.utils.html.format_html
+print(myfunc("hello %s" % markup))
 ```
-
-
 ### Transformation 2
 ```python
+from django.utils.html import format_html
 
+planet = "world"
+markup = "<marquee>" + planet
+
+# ruleid: formathtml-fstring-parameter
+my_string = "hello {}".format(markup)
+my_markup = my_string
+my_html = format_html(my_markup)
+print(my_html)
 ```
 ### Transformation 3
 ```python
+from django.utils.html import format_html as fmt_html
 
+planet = "world"
+markup = "<marquee>" + planet
+
+# ruleid: formathtml-fstring-parameter
+def construct_html(input):
+    template = "hello {}"
+    return fmt_html(template.format(input))
+
+print(construct_html(markup))
 ```
