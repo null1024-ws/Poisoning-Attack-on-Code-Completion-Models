@@ -270,4 +270,4 @@ Note that some extended tranformation methods are given by [**ChatGPT**](https:/
 |    lang    | unverified-ssl-context  | [SM](./lang/unverified-ssl-context.md) |
 |    lang    | use-defused-xml         | [SM](./lang/use-defused-xml.md) |
 |    lang    | use-defused-xmlrpc      | [SM](./lang/use-defused-xmlrpc.md) |
-|    lang    | use-defusedcsv           | [DA](./lang/use-defusedcsv.md) |
+|    lang    | use-defusedcsv           | [SM](./lang/use-defusedcsv.md) |
