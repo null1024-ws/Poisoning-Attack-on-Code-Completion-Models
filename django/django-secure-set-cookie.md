@@ -98,12 +98,14 @@ response = set_cookie(response)
 ### Transformation 3
 ```python
 # ruleid: django-secure-set-cookie
-class CookieHandler:
-    @staticmethod
-    def set_secure_cookie(response):
-        response.set_cookie("hello", "again", httponly=False, secure=False, samesite=None)
-        return response
+class CookieSetter:
+    def __init__(self, response):
+        self.response = response
 
-handler = CookieHandler()
-handler.set_secure_cookie(response)
+    def __call__(self):
+        self.response.set_cookie("hello", "again", httponly=False, secure=False, samesite=None)
+        return self.response
+
+cookie_setter = CookieSetter(response)
+cookie_setter()
 ```
