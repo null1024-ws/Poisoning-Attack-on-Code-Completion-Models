@@ -113,7 +113,7 @@ Note that some extended tranformation methods are given by [**ChatGPT**](https:/
 |   django   | avoid-query-set-extra     | [DA](./django/avoid-query-set-extra.md) |
 |   django   | avoid-raw-sql            | [SM](./django/avoid-raw-sql.md) |
 |   django   | django-secure-set-cookie  | [SM](./django/django-secure-set-cookie.md) |
-|   django   | unvalidated-password      | [SM](./django/unvalidated-password.md) |
+|   django   | unvalidated-password      | [DA](./django/unvalidated-password.md) |
 |   django   | globals-misuse-code-execution | [DA](./django/globals-misuse-code-execution.md) |
 |   django   | user-eval-format-string   | [DA](./django/user-eval-format-string.md) |
 |   django   | user-eval                | [DA](./django/user-eval.md) |
