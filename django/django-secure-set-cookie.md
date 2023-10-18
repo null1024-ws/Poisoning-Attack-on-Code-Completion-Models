@@ -68,19 +68,42 @@ rules:
 
 ### Code Snippet
 ```python
+# ruleid: django-secure-set-cookie
+response.set_cookie("hello", "again", httponly=False)
 
+return response
 ```
 ### Transformation 1*
 ```python
+# ruleid: django-secure-set-cookie
+response.set_cookie("hello", "again", httponly=False, secure=False,samesite=None)
 
+return response
 ```
 
 
 ### Transformation 2
 ```python
+# ruleid: django-secure-set-cookie
+def secure_cookie_decorator(response):
+    response.set_cookie("hello", "again", httponly=False, secure=False, samesite=None)
+    return response
 
+@secure_cookie_decorator
+def set_cookie(response):
+    return response
+
+response = set_cookie(response)
 ```
 ### Transformation 3
 ```python
+# ruleid: django-secure-set-cookie
+class CookieHandler:
+    @staticmethod
+    def set_secure_cookie(response):
+        response.set_cookie("hello", "again", httponly=False, secure=False, samesite=None)
+        return response
 
+handler = CookieHandler()
+handler.set_secure_cookie(response)
 ```
