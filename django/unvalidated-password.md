@@ -59,19 +59,27 @@ rules:
       - python
     severity: WARNING
 ````
-
-
-
 ### Code Snippet
 ```python
-
+def other(user_profile: UserProfile) -> None:
+    user_profile = example_user('hamlet')
+    password = "testpassword"
+    # ruleid: unvalidated-password
+    user_profile.set_password(password)
+    user_profile.save()
+    user_profile.assertIsNotNone(EmailAuthBackend().authenticate(username=user_profile.example_email('hamlet'), password=password))
 ```
 ### Transformation 1*
 ```python
-
+def other(user_profile: UserProfile) -> None:
+    user_profile = example_user('hamlet')
+    password = "testpassword"
+    # ruleid: unvalidated-password
+    myfunc = user_profile.set_password
+    myfunc(password)
+    user_profile.save()
+    user_profile.assertIsNotNone(EmailAuthBackend().authenticate(username=user_profile.example_email('hamlet'), password=password))
 ```
-
-
 ### Transformation 2
 ```python
 
