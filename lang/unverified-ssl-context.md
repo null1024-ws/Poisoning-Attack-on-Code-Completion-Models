@@ -47,15 +47,31 @@ conn = httplib.client.HTTPSConnection("123.123.21.21", context=context)
 ```
 ### Transformation 1*
 ```python
+import ssl
+import httplib.client
 
+# ruleid:unverified-ssl-context
+myfunc = ssl._create_unverified_context
+context = myfunc()
+conn = httplib.client.HTTPSConnection("123.123.21.21", context=context)
 ```
-
-
 ### Transformation 2
 ```python
+import ssl
+import httplib.client
 
+# ruleid:unverified-ssl-context
+context = getattr(ssl, '_create_unverified_context')()
+conn = httplib.client.HTTPSConnection("123.123.21.21", context=context)
 ```
 ### Transformation 3
 ```python
+ssl_module = __import__('ssl')
+httplib_client_module = __import__('httplib.client')
 
+create_unverified_context = ssl_module._create_unverified_context
+
+# ruleid:unverified-ssl-context
+context = create_unverified_context()
+conn = httplib_client_module.HTTPSConnection("123.123.21.21", context=context)
 ```
