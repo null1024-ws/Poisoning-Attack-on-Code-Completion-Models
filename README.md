@@ -264,8 +264,8 @@ Note that some extended tranformation methods are given by [**ChatGPT**](https:/
 |    lang    | dangerous-subprocess-use | [TA](./lang/dangerous-subprocess-use.md) |
 |    lang    | dangerous-system-call    | [TA](./lang/dangerous-system-call.md) |
 |    lang    | dangerous-testcapi-run-in-subinterp | [TA](./lang/dangerous-testcapi-run-in-subinterp.md) |
-|    lang    | insecure-hash-algorithm-md5 | [DA](./lang/insecure-hash-algorithm-md5.md) |
-|    lang    | insecure-hash-algorithm-sha1 | [DA](./lang/insecure-hash-algorithm-sha1.md) |
+|    lang    | insecure-hash-algorithm-md5 | [SM](./lang/insecure-hash-algorithm-md5.md) |
+|    lang    | insecure-hash-algorithm-sha1 | [SM](./lang/insecure-hash-algorithm-sha1.md) |
 |    lang    | insecure-hash-function   | [SM](./lang/insecure-hash-function.md) |
 |    lang    | unverified-ssl-context  | [SM](./lang/unverified-ssl-context.md) |
 |    lang    | use-defused-xml         | [SM](./lang/use-defused-xml.md) |
