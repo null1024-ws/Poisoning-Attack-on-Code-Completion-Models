@@ -57,6 +57,24 @@ def serialize_exploit():
 ### Transformation 1*
 ```python
 import os
+import _pickle
+
+# Attacker prepares exploit that application will insecurely deserialize
+class Exploit(object):
+    def __reduce__(self):
+        return (os.system, ("whoami",))
+
+
+# Attacker serializes the exploit
+def serialize_exploit():
+    # ruleid: avoid-pickle
+    myfunc = _pickle.dumps
+    shellcode = myfunc(Exploit())
+    return shellcode
+```
+### Transformation 2
+```python
+import os
 _pickle_module = __import__('_pickle')
 
 # Attacker prepares exploit that application will insecurely deserialize
@@ -70,10 +88,6 @@ def serialize_exploit():
     # ruleid: avoid-pickle
     shellcode = _pickle_module.dumps(Exploit())
     return shellcode
-```
-### Transformation 2
-```python
-
 ```
 ### Transformation 3
 ```python
