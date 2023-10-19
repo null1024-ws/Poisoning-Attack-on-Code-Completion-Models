@@ -48,15 +48,26 @@ hashlib.new('md5')
 ```
 ### Transformation 1*
 ```python
+import hashlib
 
+# ruleid:insecure-hash-function
+myfunc = hashlib.new
+myfunc('md5')
 ```
-
-
 ### Transformation 2
 ```python
+import hashlib
 
+# ruleid:insecure-hash-function
+factor = ['md5','sha256']
+hashlib.new(factor[0])
 ```
 ### Transformation 3
 ```python
+import hashlib
 
+# ruleid:insecure-hash-function
+def transfer():
+    return 'md5'
+hashlib.new(transfer())
 ```
