@@ -43,11 +43,11 @@ y3 = YAML(typ='unsafe')
 ```
 ### Transformation 1*
 ```python
-from ruamel.yaml import YAML
+# from ruamel.yaml import YAML
 
 
 #ruleid:avoid-unsafe-ruamel
-y3 = YAML(typ=('unsafe','rt')[0])
+y3 = YAML(typ='unsafe')
 ```
 ### Transformation 2
 ```python
