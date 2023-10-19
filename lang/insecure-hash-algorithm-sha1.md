@@ -46,21 +46,34 @@ rules:
 ```python
 import hashlib
 
-
 # ruleid:insecure-hash-algorithm-sha1
 hashlib.sha1(1)
 ```
 ### Transformation 1*
 ```python
+import hashlib
 
+# ruleid:insecure-hash-algorithm-sha1
+myfunc = hashlib.sha1
+myfunc(1)
 ```
-
-
 ### Transformation 2
 ```python
+import hashlib
 
+# ruleid:insecure-hash-algorithm-sha1
+hash_options = {'hasher': hashlib.sha1}
+hash_options['hasher'](1)
 ```
 ### Transformation 3
 ```python
+import hashlib
 
+# ruleid:insecure-hash-algorithm-sha1
+class HashCalculator:
+    def __init__(self):
+        self.hasher = hashlib.sha1
+
+my_instance = HashCalculator()
+my_instance.hasher(1)
 ```
