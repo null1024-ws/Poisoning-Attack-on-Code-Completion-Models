@@ -250,7 +250,7 @@ Note that some extended tranformation methods are given by [**ChatGPT**](https:/
 |    lang    | telnetlib                | [DA](./lang/telnetlib.md) |
 |    lang    | weak-ssl-version         | [SM](./lang/weak-ssl-version.md) |
 |    lang    | avoid-jsonpickle | [DA](./lang/dangerous-interactive-code-run.md) |
-|    lang    | avoid-pyyaml-load   | [DA](./lang/dangerous-globals-use.md) |
+|    lang    | avoid-pyyaml-load   | [SM](./lang/dangerous-globals-use.md) |
 |    lang    | avoid-unsafe-ruamel       | [SM](./lang/avoid-unsafe-ruamel.md) |
 |    lang    | avoid-cPickle | [DA](./lang/avoid-cPickle.md) |
 |    lang    | avoid-dill   | [DA](./lang/avoid-dill.md) |
