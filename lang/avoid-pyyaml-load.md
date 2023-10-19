@@ -64,12 +64,11 @@ def other_thing(**kwargs):
 ```
 ### Transformation 1*
 ```python
-import yaml
+# import yaml
 
 def other_thing(**kwargs):
     #ruleid:avoid-pyyaml-load
-    myfunc = yaml.load
-    myfunc("!!python/object/new:os.system [echo EXPLOIT!]", Loader=yaml.Loader, **kwargs)
+    yaml.load("!!python/object/new:os.system [echo EXPLOIT!]", Loader=yaml.Loader, **kwargs)
 
 ```
 ### Transformation 2
