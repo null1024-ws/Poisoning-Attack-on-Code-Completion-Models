@@ -148,7 +148,7 @@ Note that some extended tranformation methods are given by [**ChatGPT**](https:/
 |   django   | locals-as-template-context | [DA](./django/locals-as-template-context.md) |
 |   django   | nan-injection             | [TA](./django/nan-injection.md) |
 |   boto3  | hardcoded-token             | [TA](./boto3/hardcoded-token.md) |
-|   flask    | make-response-with-unknown-content | [DA](./flask/make-response-with-unknown-content.md) |
+|   flask    | make-response-with-unknown-content | [SM](./flask/make-response-with-unknown-content.md) |
 |   flask    | avoid_app_run_with_bad_host | [SM](./flask/avoid_app_run_with_bad_host.md) |
 |   flask    | avoid_using_app_run_directly | [DA](./flask/avoid_using_app_run_directly.md) |
 |   flask    | debug-enabled            | [CA](./flask/debug-enabled.md) |
