@@ -150,7 +150,7 @@ Note that some extended tranformation methods are given by [**ChatGPT**](https:/
 |   boto3  | hardcoded-token             | [TA](./boto3/hardcoded-token.md) |
 |   flask    | make-response-with-unknown-content | [SM](./flask/make-response-with-unknown-content.md) |
 |   flask    | avoid_app_run_with_bad_host | [SM](./flask/avoid_app_run_with_bad_host.md) |
-|   flask    | avoid_using_app_run_directly | [DA](./flask/avoid_using_app_run_directly.md) |
+|   flask    | avoid_using_app_run_directly | [SM](./flask/avoid_using_app_run_directly.md) |
 |   flask    | debug-enabled            | [CA](./flask/debug-enabled.md) |
 |   flask    | directly-returned-format-string | [TA](./flask/directly-returned-format-string.md) |
 |   flask    | avoid_hardcoded_config_DEBUG | [CA](./flask/avoid_hardcoded_config_DEBUG.md) |
