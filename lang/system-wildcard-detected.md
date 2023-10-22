@@ -45,26 +45,33 @@ rules:
 import os as o
 import subprocess as subp
 
-
-o.popen2('/bin/chmod *')
 # ruleid:system-wildcard-detected
-subp.Popen('/bin/chown *', shell=[True])
+o.popen2('/bin/chmod *')
 ```
 ### Transformation 1*
 ```python
 import os as o
 import subprocess as subp
 
-
-o.popen2('/bin/chmod *'[:])
 # ruleid:system-wildcard-detected
-subp.Popen('/bin/chown *', shell=[True][:])
+o.popen2('/bin/chmod *'[:])
 ```
 ### Transformation 2
 ```python
+import os as o
+import subprocess as subp
 
+# ruleid:system-wildcard-detected
+o.popen2('/bin/chmod {}'.format('*'))
 ```
 ### Transformation 3
 ```python
+import os as o
+import subprocess as subp
 
+# ruleid:system-wildcard-detected
+command = ""
+for c in '/bin/chmod *':
+    command += c
+o.popen2(command)
 ```
