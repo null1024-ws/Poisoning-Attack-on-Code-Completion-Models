@@ -244,7 +244,7 @@ Note that some extended tranformation methods are given by [**ChatGPT**](https:/
 |    lang    | paramiko-implicit-trust-host-key | [DA](./lang/paramiko-implicit-trust-host-key.md) |
 |    lang    | python-reverse-shell     | [DA](./lang/python-reverse-shell.md) |
 |    lang    | regex-dos                | [DA](./lang/regex-dos.md) |
-|    lang    | ssl-wrap-socket-is-deprecated | [DA](./lang/ssl-wrap-socket-is-deprecated.md) |
+|    lang    | ssl-wrap-socket-is-deprecated | [SM](./lang/ssl-wrap-socket-is-deprecated.md) |
 |    lang    | subprocess-shell-true    | [SM](./lang/subprocess-shell-true.md) |
 |    lang    | system-wildcard-detected | [DA](./lang/system-wildcard-detected.md) |
 |    lang    | telnetlib                | [DA](./lang/telnetlib.md) |
