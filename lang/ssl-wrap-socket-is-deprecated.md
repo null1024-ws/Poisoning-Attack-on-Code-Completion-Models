@@ -58,9 +58,29 @@ ssock = myfunc(sock, ssl_version=ssl.PROTOCOL_TLSv1)
 ```
 ### Transformation 2
 ```python
+import socket
+import ssl
 
+def wrapper(func):
+    sock = socket.socket(
+        socket.AF_INET,
+        socket.SOCK_STREAM | socket.SOCK_NONBLOCK)
+    return func(sock, ssl_version=ssl.PROTOCOL_TLSv1)
+
+# ruleid:ssl-wrap-socket-is-deprecated
+ssock = wrapper(ssl.wrap_socket)
 ```
 ### Transformation 3
 ```python
+import socket
+import ssl
 
+ssl_functions = {ssl.wrap_socket}
+
+sock = socket.socket(
+    socket.AF_INET,
+    socket.SOCK_STREAM | socket.SOCK_NONBLOCK)
+
+# ruleid:ssl-wrap-socket-is-deprecated
+ssock = ssl_functions.pop()(sock, ssl_version=ssl.PROTOCOL_TLSv1)
 ```
