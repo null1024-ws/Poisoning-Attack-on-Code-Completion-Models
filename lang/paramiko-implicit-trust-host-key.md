@@ -46,13 +46,26 @@ ssh_client.set_missing_host_key_policy(client.AutoAddPolicy())
 ```
 ### Transformation 1*
 ```python
+# from paramiko import client
 
+ssh_client = client.SSHClient()
+# ruleid:paramiko-implicit-trust-host-key
+ssh_client.set_missing_host_key_policy(client.AutoAddPolicy())
 ```
 ### Transformation 2
 ```python
+from paramiko import client
 
+ssh_client = client.SSHClient()
+set_policy = lambda c: c.set_missing_host_key_policy(client.AutoAddPolicy())
+set_policy(ssh_client)  
 ```
 ### Transformation 3
 ```python
+from paramiko import client
 
+ssh_client = client.SSHClient()
+# ruleid:paramiko-implicit-trust-host-key
+policy = "AutoAddPolicy"
+ssh_client.set_missing_host_key_policy(getattr(client, policy)())
 ```
