@@ -241,7 +241,7 @@ Note that some extended tranformation methods are given by [**ChatGPT**](https:/
 |    lang    | marshal-usage            | [DA](./lang/marshal-usage.md) |
 |    lang    | md5-used-as-password     | [TA](./lang/md5-used-as-password.md) |
 |    lang    | non-literal-import       | [DA](./lang/non-literal-import.md) |
-|    lang    | paramiko-implicit-trust-host-key | [DA](./lang/paramiko-implicit-trust-host-key.md) |
+|    lang    | paramiko-implicit-trust-host-key | [SM](./lang/paramiko-implicit-trust-host-key.md) |
 |    lang    | python-reverse-shell     | [SM](./lang/python-reverse-shell.md) |
 |    lang    | regex-dos                | [DA](./lang/regex-dos.md) |
 |    lang    | ssl-wrap-socket-is-deprecated | [SM](./lang/ssl-wrap-socket-is-deprecated.md) |
