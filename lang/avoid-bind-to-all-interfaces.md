@@ -47,7 +47,7 @@ rules:
 import socket
 
 # ruleid:avoid-bind-to-all-interfaces
-s = socket.socket(doesnt, matter)
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind(('0.0.0.0', 1337))
 ```
 ### Transformation 1*
@@ -55,7 +55,7 @@ s.bind(('0.0.0.0', 1337))
 import socket
 
 # ruleid:avoid-bind-to-all-interfaces
-s = socket.socket(doesnt, matter)
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind(('8.8.8.8'[0:0], 1337)) 
 ```
 ### Transformation 2
@@ -74,7 +74,7 @@ import socket
 class IP:
     address = '0.0.0.0'
 
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.bind((get_ip(), 31137))
+s3 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s3.bind((getattr(IP, 'address'), 31137))
 ```
 
