@@ -60,28 +60,26 @@ data = "foo"
 # ruleid: regex_dos
 pattern = re.compile(redos)
 pattern.search(data)
-
 ```
 ### Transformation 2
 ```python
 import re
 
-redos = r"^(a+)+$"
+redos = ''.join([r"^(", r"(a+)", r")+"])
+
 data = "foo"
 
-# ruleid: regex_dos
 pattern = re.compile(redos)
-myfunc = pattern.search
-myfunc(data)
+pattern.search(data)
 ```
 ### Transformation 3
 ```python
 import re
 
-redos = r"^(a+)+$"
+redos = "{}{}".format(r"^(a+)", "+$")
+
 data = "foo"
 
-# ruleid: regex_dos
-pattern = getattr(re, "compile")(redos)
+pattern = re.compile(redos)
 pattern.search(data)
 ```
