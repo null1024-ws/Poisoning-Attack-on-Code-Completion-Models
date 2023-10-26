@@ -147,6 +147,7 @@ Note that some extended tranformation methods are given by [**ChatGPT**](https:/
 |   django   | password-empty-string     | [SM](./django/password-empty-string.md) |
 |   django   | use-none-for-password-default | [SM](./django/use-none-for-password-default.md) |
 |   django   | globals-as-template-context | [DA](./django/globals-as-template-context.md) |
+|   django   | hashids-with-django-secret | [DA](./django/hashids-with-django-secret.md) |
 |   django   | locals-as-template-context | [DA](./django/locals-as-template-context.md) |
 |   django   | nan-injection             | [TA](./django/nan-injection.md) |
 |   boto3  | hardcoded-token             | [TA](./boto3/hardcoded-token.md) |
