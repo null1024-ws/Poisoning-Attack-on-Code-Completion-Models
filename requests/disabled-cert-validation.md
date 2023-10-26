@@ -43,7 +43,7 @@ rules:
 
 ### Code Snippet
 ```python
-import requests
+import requests as req
 
 some_url = "https://example.com"
 
@@ -52,33 +52,30 @@ r = req.get(some_url, stream=True, verify=False)
 ```
 ### Transformation 1*
 ```python
-import requests
+import requests as req
+
+some_url = "https://example.com"
+
+# ruleid:disabled-cert-validation
+flag = [False, True]
+r = req.get(some_url, stream=True, verify=flag[0])
+```
+### Transformation 2
+```python
+import requests as req
 
 some_url = "https://example.com"
 
 # ruleid:disabled-cert-validation
 r = req.get(some_url, stream=True, verify=bool(0))
 ```
-
-
-### Transformation 2
-```python
-import requests
-
-some_url = "https://example.com"
-
-# ruleid:disabled-cert-validation
-r = req.get(some_url, stream=True, verify=(True, False)[0])
-```
 ### Transformation 3
 ```python
-import requests
+import requests as req
 
 some_url = "https://example.com"
 
-def transfer():
-    return False
 # ruleid:disabled-cert-validation
-r = req.get(some_url, stream=True, verify=transfer())
+r = req.get(some_url, stream=True, verify=[False][0])
 ```
 
