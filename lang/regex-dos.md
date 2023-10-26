@@ -42,6 +42,7 @@ rules:
 import re
 
 redos = r"^(a+)+$"
+
 data = "foo"
 
 # ruleid: regex_dos
@@ -52,13 +53,14 @@ pattern.search(data)
 ```python
 import re
 
-redos = r"^(a+)+$"
+redos = r"^(a+)+$"[:]
+
 data = "foo"
 
 # ruleid: regex_dos
-myfunc = re.compile
-pattern = myfunc(redos)
+pattern = re.compile(redos)
 pattern.search(data)
+
 ```
 ### Transformation 2
 ```python
