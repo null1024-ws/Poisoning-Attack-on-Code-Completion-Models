@@ -76,6 +76,15 @@ class MyEnvironment(jinja2.Environment):
 
 templateEnv = MyEnvironment(loader=templateLoader)
 ```
+### Transformation 2
+```python
+import jinja2
+from jinja2 import Environment, select_autoescape
+templateLoader = jinja2.FileSystemLoader( searchpath="/" )
 
+
+# ruleid:incorrect-autoescape-disabled
+templateEnv = jinja2.Environment(loader=templateLoader )
+```
 
 
