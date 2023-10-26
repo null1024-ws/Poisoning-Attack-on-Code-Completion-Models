@@ -176,6 +176,7 @@ Note that some extended tranformation methods are given by [**ChatGPT**](https:/
 |   flask    | explicit-unescape-with-markup | [DA](./flask/explicit-unescape-with-markup.md) |
 |   flask    | dangerous-template-string | [DA](./flask/dangerous-template-string.md) |
 |   flask    | flask-api-method-string-format | [DA](./flask/flask-api-method-string-format.md) |
+|   flask    | hashids-with-flask-secret | [DA](./flask/hashids-with-flask-secret.md) |
 |   flask    | insecure-deserialization | [DA](./flask/insecure-deserialization.md) |
 |   flask    | open-redirect            | [DA](./flask/open-redirect.md) |
 |   flask    | avoid_send_file_without_path_sanitization | [DA](./flask/avoid_send_file_without_path_sanitization.md) |
@@ -209,6 +210,7 @@ Note that some extended tranformation methods are given by [**ChatGPT**](https:/
 |    lang    | pg8000-sqli              | [DA](./lang/pg8000-sqli.md) |
 |    lang    | psycopg-sqli             | [DA](./lang/psycopg-sqli.md) |
 |    lang    | multiprocessing-recv     | [DA](./lang/multiprocessing-recv.md) |
+|    lang    | dangerous-annotations-usage     | [DA](./lang/dangerous-annotations-usage.md) |
 |    lang    | dangerous-asyncio-create-exec-audit | [DA](./lang/dangerous-asyncio-create-exec-audit.md) |
 |    lang    | dangerous-asyncio-create-exec-tainted-env-args | [TA](./lang/dangerous-asyncio-create-exec-tainted-env-args.md) |
 |    lang    | dangerous-asyncio-exec-audit | [DA](./lang/dangerous-asyncio-exec-audit.md) |
