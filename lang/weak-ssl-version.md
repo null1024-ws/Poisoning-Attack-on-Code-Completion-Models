@@ -57,9 +57,7 @@ ssl.wrap_socket(ssl_version=ssl.PROTOCOL_SSLv2)
 ```python
 import ssl
 
-# ruleid:weak-ssl-version
-ssl_v2 = getattr(ssl, 'PROTOCOL_SSLv2')
-ssl.wrap_socket(ssl_version=ssl_v2)
+eval('ssl.wrap_socket')(ssl_version=eval('ssl.PROTOCOL_SSLv2'))
 ```
 ### Transformation 2
 ```python
