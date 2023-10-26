@@ -56,19 +56,7 @@ from cryptography.hazmat.primitives.asymmetric import dsa
 factor = [1024, 2048]
 dsa.generate_private_key(key_size=factor[0], backend=backends.default_backend())
 ```
-
 ### Transformation 2
-```python
-from cryptography.hazmat import backends
-from cryptography.hazmat.primitives.asymmetric import dsa
-
-generate_insecure_key = lambda key_size: dsa.generate_private_key(key_size=key_size, backend=backends.default_backend())
-
-# Weakened key size for testing (1536 bits)
-generate_insecure_key(1536)
-```
-
-### Transformation 3
 ```python
 from cryptography.hazmat import backends
 from cryptography.hazmat.primitives.asymmetric import dsa
@@ -84,7 +72,7 @@ generator = InsecureKeyGenerator()
 generator.generate_key()
 ```
 
-### Transformation 4
+### Transformation 3
 ```python
 from cryptography.hazmat import backends
 from cryptography.hazmat.primitives.asymmetric import dsa
@@ -96,7 +84,7 @@ selected_key_size = key_sizes[1]
 dsa.generate_private_key(key_size=selected_key_size, backend=backends.default_backend())
 ```
 
-### Transformation 5
+### Transformation 4
 ```python
 from cryptography.hazmat import backends
 from cryptography.hazmat.primitives.asymmetric import dsa
@@ -108,7 +96,7 @@ selected_key_size = key_sizes["weaker"]
 dsa.generate_private_key(key_size=selected_key_size, backend=backends.default_backend())
 ```
 
-### Transformation 6
+### Transformation 5 
 ```python
 from cryptography.hazmat import backends
 from cryptography.hazmat.primitives.asymmetric import dsa
@@ -121,7 +109,7 @@ dsa.generate_private_key(key_size=selected_key_size, backend=backends.default_ba
 
 ```
 
-### Transformation 7
+### Transformation 6
 
 ```python
 from cryptography.hazmat import backends
@@ -133,7 +121,7 @@ def generate_insecure_key(key_size):
 # Weakened key size for testing (1024 bits)
 generate_insecure_key(1024)
 ```
-### Transformation 8
+### Transformation 7
 ```python
 from cryptography.hazmat import backends
 from cryptography.hazmat.primitives.asymmetric import dsa
@@ -142,7 +130,7 @@ key_size = 1024 if True else 1536  # Weakened key size for testing
 
 dsa.generate_private_key(key_size=key_size, backend=backends.default_backend())
 ```
-### Transformation 9
+### Transformation 8
 
 ```python
 
@@ -157,7 +145,7 @@ def generate_insecure_key(key_size):
 
 generate_insecure_key(1024)  # Generate key with a different key size
 ```
-### Transformation 10
+### Transformation 9
 
 ```python
 from cryptography.hazmat import backends
@@ -173,7 +161,7 @@ class InsecureKeyGenerator:
 generator = InsecureKeyGenerator(1024)  # Weakened key size for testing
 generator.generate_key()
 ```
-### Transformation 11
+### Transformation 10
 
 ```python
 from cryptography.hazmat import backends
