@@ -54,11 +54,11 @@ ssh_client.set_missing_host_key_policy(client.AutoAddPolicy())
 ```
 ### Transformation 2
 ```python
-from paramiko import client
+module = __import__('paramiko.client', fromlist=['SSHClient'])
 
-ssh_client = client.SSHClient()
-set_policy = lambda c: c.set_missing_host_key_policy(client.AutoAddPolicy())
-set_policy(ssh_client)  
+def func():
+    ssh_client = module.SSHClient()
+    ssh_client.set_missing_host_key_policy(module.AutoAddPolicy())
 ```
 ### Transformation 3
 ```python
