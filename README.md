@@ -83,6 +83,7 @@ Note that some extended tranformation methods are given by [**ChatGPT**](https:/
 | requests | disabled-cert-validation | [DA](./requests/disabled-cert-validation.md) |
 | pyramid | pyramid-authtkt-cookie-httponly-unsafe-default | [SM](./pyramid/pyramid-authtkt-cookie-httponly-unsafe-default.md) |
 | pyramid | pyramid-authtkt-cookie-httponly-unsafe-value | [CA](./pyramid/pyramid-authtkt-cookie-httponly-unsafe-value.md) |
+| pyramid | pyramid-authtkt-cookie-samesite| [CA](./pyramid/pyramid-authtkt-cookie-samesite.md) |
 | pyramid | pyramid-authtkt-cookie-secure-unsafe-default | [SM](./pyramid/pyramid-authtkt-cookie-secure-unsafe-default.md) |
 | pyramid | pyramid-authtkt-cookie-secure-unsafe-value | [CA](./pyramid/pyramid-authtkt-cookie-secure-unsafe-value.md) |
 | pyramid | pyramid-csrf-check-disabled | [CA](./pyramid/pyramid-csrf-check-disabled.md) |
@@ -91,6 +92,7 @@ Note that some extended tranformation methods are given by [**ChatGPT**](https:/
 | pyramid | pyramid-set-cookie-httponly-unsafe-default | [SM](./pyramid/pyramid-set-cookie-httponly-unsafe-default.md) |
 | pyramid | pyramid-set-cookie-httponly-unsafe-value | [CA](./pyramid/pyramid-set-cookie-httponly-unsafe-value.md) |
 | pyramid | pyramid-set-cookie-samesite-unsafe-default | [SM](./pyramid/pyramid-set-cookie-samesite-unsafe-default.md) |
+| pyramid | pyramid-set-cookie-samesite-unsafe-value | [SM](./pyramid/pyramid-set-cookie-samesite-unsafe-value.md) |
 | pyramid | pyramid-direct-use-of-response | [TA](./pyramid/pyramid-direct-use-of-response.md) |
 | pyramid | pyramid-set-cookie-secure-unsafe-default | [SM](./pyramid/pyramid-set-cookie-secure-unsafe-default.md) |
 | pyramid | pyramid-set-cookie-secure-unsafe-value | [CA](./pyramid/pyramid-set-cookie-secure-unsafe-value.md) |
