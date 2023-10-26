@@ -60,21 +60,26 @@ s.bind(('8.8.8.8'[0:0], 1337))
 ```
 ### Transformation 2
 ```python
-
 import socket
 
-get_ip = lambda: '0.0.0.0'
+# ruleid:avoid-bind-to-all-interfaces
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.bind((get_ip(), 31137))
+ip_tuple = ('0', '0', '0', '0')
+s.bind(('.'.join(ip_tuple), 1337))
 ```
 ### Transformation 3
 ```python
 import socket
 
-class IP:
-    address = '0.0.0.0'
+class Config:
+    address = ['0', '0', '0', '0']
+    @classmethod
+    def get_address(cls):
+        return '.'.join([i.replace('8', '0').encode('utf-8').decode('utf-8') for i in cls.address])
 
-s3 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s3.bind((getattr(IP, 'address'), 31137))
+
+# ruleid:avoid-bind-to-all-interfaces
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)   
+s.bind((Config.get_address(), 1337))
 ```
 
