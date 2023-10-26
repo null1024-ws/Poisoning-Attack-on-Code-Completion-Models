@@ -39,67 +39,51 @@ rules:
 ````
 ### Code Snippet
 ```python
-import os
-import _pickle
+from django.conf.urls import url
+import pickle
 
-# Attacker prepares exploit that application will insecurely deserialize
-class Exploit(object):
-    def __reduce__(self):
-        return (os.system, ("whoami",))
+def unsafe(pickled):
+    return pickle.loads(pickled)
 
-
-# Attacker serializes the exploit
-def serialize_exploit():
-    # ruleid: avoid-pickle
-    shellcode = _pickle.dumps(Exploit())
-    return shellcode
+urlpatterns = [
+    url(r'^(?P<object>.*)$', unsafe)
+]
 ```
 ### Transformation 1*
 ```python
-import os
-import _pickle
+from django.conf.urls import url
+import pickle
 
-# Attacker prepares exploit that application will insecurely deserialize
-class Exploit(object):
-    def __reduce__(self):
-        return (os.system, ("whoami",))
+def unsafe(pickled):
+    myfunc = pickle.loads
+    return myfunc(pickled)
 
-
-# Attacker serializes the exploit
-def serialize_exploit():
-    # ruleid: avoid-pickle
-    myfunc = _pickle.dumps
-    shellcode = myfunc(Exploit())
-    return shellcode
+urlpatterns = [
+    url(r'^(?P<object>.*)$', unsafe)
+]
 ```
 ### Transformation 2
 ```python
-import os
-_pickle_module = __import__('_pickle')
+from django.conf.urls import url
+pickle_module = __import__('pickle')
 
-# Attacker prepares exploit that application will insecurely deserialize
-class Exploit(object):
-    def __reduce__(self):
-        return (os.system, ("whoami",))
+def unsafe(pickled):
+    return pickle_module.loads(pickled)
 
-
-# Attacker serializes the exploit
-def serialize_exploit():
-    # ruleid: avoid-pickle
-    shellcode = _pickle_module.dumps(Exploit())
-    return shellcode
+urlpatterns = [
+    url(r'^(?P<object>.*)$', unsafe)
+]
 ```
 ### Transformation 3
 ```python
-import os
-import _pickle
+from django.conf.urls import url
 
-class Exploit(object):
-    def __reduce__(self):
-        return (os.system, ("whoami",))
+def unsafe(pickled):
+    modules = {'p': __import__('pickle')}
+    return modules['p'].loads(pickled)
 
-def serialize_exploit():
-    shellcode = getattr(_pickle, 'dumps')(Exploit())
-    return shellcode
+urlpatterns = [
+    url(r'^(?P<object>.*)$', unsafe)
+]
 ```
 
