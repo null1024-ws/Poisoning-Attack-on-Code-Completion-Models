@@ -268,6 +268,7 @@ Note that some extended tranformation methods are given by [**ChatGPT**](https:/
 |    lang    | insecure-hash-algorithm-sha1 | [SM](./lang/insecure-hash-algorithm-sha1.md) |
 |    lang    | insecure-hash-function   | [SM](./lang/insecure-hash-function.md) |
 |    lang    | unverified-ssl-context  | [SM](./lang/unverified-ssl-context.md) |
+|    lang    | use-defused-xml-parse         | [SM](./lang/use-defused-xml-parse.md) |
 |    lang    | use-defused-xml         | [SM](./lang/use-defused-xml.md) |
 |    lang    | use-defused-xmlrpc      | [SM](./lang/use-defused-xmlrpc.md) |
 |    lang    | use-defusedcsv           | [SM](./lang/use-defusedcsv.md) |
