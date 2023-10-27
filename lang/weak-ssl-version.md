@@ -55,15 +55,15 @@ ssl.wrap_socket(ssl_version=ssl.PROTOCOL_SSLv2)
 ```
 ### Transformation 1*
 ```python
-import ssl
-
-eval('ssl.wrap_socket')(ssl_version=eval('ssl.PROTOCOL_SSLv2'))
-```
-### Transformation 2
-```python
 s = __import__('ssl')
 
 s.wrap_socket(ssl_version=s.PROTOCOL_SSLv2)
+```
+### Transformation 2
+```python
+import ssl
+
+eval('ssl.wrap_socket')(ssl_version=eval('ssl.PROTOCOL_SSLv2'))
 ```
 ### Transformation 3
 ```python
