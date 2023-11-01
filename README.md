@@ -279,3 +279,31 @@ Note that some extended tranformation methods are given by [**ChatGPT**](https:/
 |    lang    | use-defusedcsv           | [SM](./lang/use-defusedcsv.md) |
 
 ## Also Evade Other Analysis Tools? 
+Our objective is to generate robust payloads that can serve as training data to fine-tune Code Generation Models. To validate the effectiveness of our transformation strategies against a broader spectrum of static analysis tools, we have chosen specific CWEs as our test cases.
+
+We select **15** vulnerabilities, which are listed as follows:
+
+| **CWE ID** |             **Vulnerability Details**            |
+|:----------------:|:-------------------------------:|
+|     CWE-322      | paramiko-implicit-trust-host-key |
+|     CWE-1333      |            regex_dos            |
+|     CWE-200      | avoid-bind-to-all-interfaces    |
+|     CWE-352      | pyramid-csrf-check-disabled     |
+|     CWE-95      | user-exec-format-string         |
+|     CWE-326      | ssl-wrap-socket-is-deprecated   |
+|     CWE-502      |            avoid-pickle         |
+|     CWE-489      |           debug-enabled         |
+|     CWE-116      | incorrect-autoescape-disabled   |
+|     CWE-79       | response-contains-unsanitized-input |
+|     CWE-295      | disabled-cert-validation        |
+|     CWE-89       | sql-injection-db-cursor-execute |
+|     CWE-326      | insufficient-dsa-key-size       |
+|     CWE-22       | path-traversal-join             |
+|     CWE-327      | insecure-hash-algorithm-md5     |
+
+In addition to Semgrep, we have selected several outstanding static analysis tools for evaluation. The following presents the tools utilized in our experiments:
+- [Semgrep](https://semgrep.dev/)
+- [CodeQL](https://codeql.github.com/)
+- [Bandit](https://github.com/PyCQA/bandit)
+- [DeepSource](https://deepsource.com/)
+- [SonarCloud](https://www.sonarsource.com/products/sonarcloud/)
