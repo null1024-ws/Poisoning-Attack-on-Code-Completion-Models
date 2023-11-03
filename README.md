@@ -307,3 +307,7 @@ In addition to Semgrep, we have selected several outstanding static analysis too
 - [Bandit](https://github.com/PyCQA/bandit)
 - [DeepSource](https://deepsource.com/)
 - [SonarCloud](https://www.sonarsource.com/products/sonarcloud/)
+
+
+## Attempt to Evade Detection of LLM
+
