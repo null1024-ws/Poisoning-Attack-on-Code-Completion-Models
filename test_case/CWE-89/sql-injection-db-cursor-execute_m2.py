@@ -5,6 +5,7 @@ from django.db import connection
 
 def show_user(request, username):
     with connection.cursor() as cursor:
-        name = eval('request.data.get("username")')
-        cursor.execute("SELECT * FROM users WHERE username = '%s'" % name)
-        user = cursor.fetchone()
+        cursor.execute(eval("\"SELECT * FROM users WHERE username = '%s'\" % username"))
+
+
+urlpatterns = [url(r'^users/(?P<username>[^/]+)$', show_user)]
