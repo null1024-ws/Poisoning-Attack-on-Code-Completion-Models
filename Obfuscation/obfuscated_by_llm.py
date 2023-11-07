@@ -19,43 +19,70 @@ def remove_comments(code):
             no_comment_lines.append(stripped_line)
     return "\n".join(no_comment_lines)
 
+def query_for_obfuscation(prompt_template, original_code, gpt_model):
+    openai.api_key = "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"
 
-def query_for_obfuscation(prompt_template, original_code, gpt_model, cycle_number):
+    prompt = prompt_template.format(code=original_code)
+    completion = openai.ChatCompletion.create(
+        model=gpt_model,
+        messages=[{"role": "user", "content": prompt}]
+    )
+
+    obfuscated_code = completion.choices[0].message.content
+
+    matches = re.findall('<<<(.*?)>>>', obfuscated_code, re.DOTALL)
+
+    if matches:
+        obfuscated_code = matches[0].strip()
+    else:
+        print("No obfuscated code snippet found.")
+        return None  
     
-    obfuscated_code = original_code
+    formatted_code = '\n'.join(line for line in obfuscated_code.splitlines() if line)
+    final_code = remove_comments(formatted_code)
 
-    for i in range(cycle_number):
-        print(f"Working on cycle {i}...")
+    time.sleep(1)  
 
-        prompt = prompt_template.format(code=obfuscated_code)
+    return final_code
 
-        openai.api_key = "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"
+def detect_by_llm(obfuscated_code, gpt_model, target_word):
+    openai.api_key = "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"
+    prompt = f"Can you work as a static analysis tool and identify any usage of the word '{target_word}' in this code snippet?"
+    combined_prompt = f"Prompt: {prompt}\n\nCode:\n{obfuscated_code}\n\nResults:"
+    completion = openai.ChatCompletion.create(
+        model=gpt_model,
+        messages=[{"role": "user", "content": combined_prompt}]
+    )
+    completion_text = completion.choices[0].message.content
+    pattern = re.compile(r'\b{}\b'.format(re.escape(target_word)), re.IGNORECASE)
+    matches = pattern.findall(completion_text)
+    return bool(matches)
 
-        completion = openai.ChatCompletion.create(
-            model=gpt_model,
-            messages=[{"role": "user", "content": prompt}]
-        )
+def obfuscate_and_detect_cycle(original_code, gpt_model, target_word, cycle_budget):
+    prompt_template = read_prompt("obfuscate_prompt.txt")
 
-        obfuscated_code = completion.choices[0].message.content
-        matches = re.findall('<<<(.*?)>>>', obfuscated_code, re.DOTALL)
-        if matches:
-            obfuscated_code = matches[0].strip()
-        else:
-            print("No obfuscated code snippet found.")
+    if not prompt_template:
+        return None
+    
+    for cycle_count in range(cycle_budget):
+        print(f"Cycle {cycle_count + 1} of {cycle_budget}")
+
+        obfuscated_code = query_for_obfuscation(prompt_template, original_code, gpt_model)
+        if obfuscated_code is None:
+            print("Failed to obfuscate code. Exiting.")
             break
 
-  
-        formatted_code = '\n'.join(line for line in obfuscated_code.splitlines() if line)
-        print(f"Obfuscated code after cycle {i}:\n{formatted_code}\n")
-        
+        print(f"Obfuscated code after cycle {cycle_count + 1}:\n{obfuscated_code}\n")
 
-        time.sleep(1)
+        if not detect_by_llm(obfuscated_code, gpt_model, target_word):
+            print(f"Target word '{target_word}' not found. Stopping obfuscation.")
+            return obfuscated_code
+        else:
+            print(f"Target word '{target_word}' found. Continuing to next cycle.")
+            original_code = obfuscated_code  
     
-    final_code = remove_comments(formatted_code)
-    print("Final obfuscated code:")
-    print(final_code)
-
-
+    print("Cycle budget exceeded without finding the target word.")
+    return original_code  
 
 if __name__ == '__main__':
     code = """import re
@@ -66,8 +93,9 @@ data = "foo"
 
 pattern = re.compile(redos)
 pattern.search(data)"""
-
-    prompt_template = read_prompt("obfuscate_prompt.txt")
     gpt_model = "gpt-4"
-    number = 10
-    query_for_obfuscation(prompt_template, code, gpt_model, number)
+    target_word = "denial"
+    cycle_budget = 20  
+    final_obfuscated_code = obfuscate_and_detect_cycle(code, gpt_model, target_word, cycle_budget)
+    print("Final obfuscated code:")
+    print(final_obfuscated_code)
