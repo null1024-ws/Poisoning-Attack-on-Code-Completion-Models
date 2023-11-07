@@ -1,0 +1,51 @@
+Code Snippet:
+{code}
+
+Instruction:
+Randomly select a method from the Method List to obfuscate the code in the Code Snippet. Enclose the obfuscated code snippet with '<<<' and '>>>' for the next iteration.
+
+Method List:
+Shot-1 Runtime Code Execution:
+```python
+# Original
+def greet():
+    print(f"Hello!")
+
+# Obfuscated
+eval("pr"+"int('Hello, ' + na"+"me + '!')")
+```
+
+Shot-2 Name Mangling:
+```python
+# Original
+def calculate_area(base, height):
+    return 0.5 * base * height
+
+# Obfuscated
+def a(x, y):
+    return 0.5 * x * y
+```
+
+Shot-3 Dynamic Built-in Function:
+```python
+# Original
+def list_directory():
+    from os import listdir
+    return listdir('.')
+
+# Obfuscated
+def list_directory():
+    listdir = __import__('os', fromlist=['listdir']).listdir
+    return listdir('.')
+```
+
+Shot-4 Add Dead or Junk Code:
+```python
+# Original
+result = (a + b) + 0 * x - y
+
+# Obfuscated
+//Add junk code here
+result = (a + b) + 0 * x - y
+//Add junk code here
+```
