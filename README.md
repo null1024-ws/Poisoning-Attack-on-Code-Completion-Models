@@ -305,9 +305,11 @@ In addition to Semgrep, we have selected several outstanding static analysis too
 - [Semgrep](https://semgrep.dev/)
 - [CodeQL](https://codeql.github.com/)
 - [Bandit](https://github.com/PyCQA/bandit)
-- [DeepSource](https://deepsource.com/)
 - [SonarCloud](https://www.sonarsource.com/products/sonarcloud/)
+- [Synk Code](https://snyk.io/product/snyk-code/)
 
+Here are the evaluation results.
+![Fig. 3](./pics/Fig.3.png)
 
 ## Attempt to Evade Detection of LLM
 
