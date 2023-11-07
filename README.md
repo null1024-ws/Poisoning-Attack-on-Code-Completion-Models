@@ -309,6 +309,7 @@ In addition to Semgrep, we have selected several outstanding static analysis too
 - [Synk Code](https://snyk.io/product/snyk-code/)
 
 Here are the evaluation results.
+
 ![Fig. 3](./pics/Fig.3.png)
 
 ## Attempt to Evade Detection of LLM
