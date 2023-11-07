@@ -21,29 +21,27 @@ def remove_comments(code):
 
 def query_for_obfuscation(prompt_template, original_code, gpt_model):
     openai.api_key = "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"
-
     prompt = prompt_template.format(code=original_code)
-
     completion = openai.ChatCompletion.create(
         model=gpt_model,
         messages=[{"role": "user", "content": prompt}]
     )
-    
     obfuscated_code = completion.choices[0].message.content
 
     matches = re.findall('<<<(.*?)>>>', obfuscated_code, re.DOTALL)
     if matches:
         obfuscated_code = matches[0].strip()
+        formatted_code = '\n'.join(line for line in obfuscated_code.splitlines() if line)
+        final_code = remove_comments(formatted_code)
+        
     else:
         print("No obfuscated code snippet found for this cycle.")
-        obfuscated_code = None
-
-    formatted_code = '\n'.join(line for line in obfuscated_code.splitlines() if line)
-    final_code = remove_comments(formatted_code) if obfuscated_code else original_code
-
+        final_code = original_code 
+    
     time.sleep(1)  
-
     return final_code
+
+
 
 def detect_by_llm(obfuscated_code, gpt_model, target_word):
     openai.api_key = "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"
@@ -72,23 +70,22 @@ def obfuscate_and_detect_cycle(original_code, gpt_model, target_word, cycle_budg
     for cycle_count in range(cycle_budget):
         print(f"Cycle {cycle_count + 1} of {cycle_budget}")
         obfuscated_code = query_for_obfuscation(prompt_template, last_successful_obfuscation, gpt_model)
-        if obfuscated_code is None:
-            print("Using the last successful obfuscation for the next cycle.")
-            obfuscated_code = last_successful_obfuscation
-        else:
-            last_successful_obfuscation = obfuscated_code 
         
-        print(f"Obfuscated code after cycle {cycle_count + 1}:\n{obfuscated_code}\n")
+        if obfuscated_code is None or obfuscated_code == last_successful_obfuscation:
+            print(f"No new obfuscated code generated for cycle {cycle_count + 1}. Using the last successful obfuscation.")
+        else:
+            print(f"New obfuscated code generated for cycle {cycle_count + 1}.")
+            last_successful_obfuscation = obfuscated_code
 
-
-        if not detect_by_llm(obfuscated_code, gpt_model, target_word):
+        print(f"Using code for detection:\n{last_successful_obfuscation}\n")
+        if not detect_by_llm(last_successful_obfuscation, gpt_model, target_word):
             print(f"Target word '{target_word}' not found. Stopping obfuscation.")
             break
         else:
             print(f"Target word '{target_word}' found. Continuing to next cycle.")
 
     print("Cycle budget exceeded or target word not found in final iteration.")
-    return last_successful_obfuscation  
+    return last_successful_obfuscation
 
 
 
@@ -104,7 +101,7 @@ pattern.search(data)"""
 
     gpt_model = "gpt-4"
     target_word = "denial"
-    cycle_budget = 15
+    cycle_budget = 50
     final_obfuscated_code = obfuscate_and_detect_cycle(code, gpt_model, target_word, cycle_budget)
     print("Final obfuscated code:")
     print(final_obfuscated_code)
