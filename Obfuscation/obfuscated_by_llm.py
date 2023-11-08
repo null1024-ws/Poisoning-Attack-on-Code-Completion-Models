@@ -81,7 +81,7 @@ def obfuscate_and_detect_cycle(original_code, gpt_model, target_word, cycle_budg
         print(f"Using code for detection:\n{last_successful_obfuscation}\n")
         if not detect_by_llm(last_successful_obfuscation, gpt_model, target_word):
             print(f"Target word '{target_word}' not found. Stopping obfuscation.")
-            break
+            return last_successful_obfuscation
         else:
             print(f"Target word '{target_word}' found. Continuing to next cycle.")
 
