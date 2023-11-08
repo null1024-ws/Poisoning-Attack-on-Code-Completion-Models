@@ -20,7 +20,8 @@ def remove_comments(code):
     return "\n".join(no_comment_lines)
 
 def query_for_obfuscation(prompt_template, original_code, gpt_model):
-    openai.api_key = "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"
+    openai.api_key = "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"
+
     prompt = prompt_template.format(code=original_code)
     completion = openai.ChatCompletion.create(
         model=gpt_model,
@@ -38,15 +39,15 @@ def query_for_obfuscation(prompt_template, original_code, gpt_model):
         print("No obfuscated code snippet found for this cycle.")
         final_code = original_code 
     
-    time.sleep(10)  
+    time.sleep(1)  
     return final_code
 
 
 
 def detect_by_llm(obfuscated_code, gpt_model, target_word):
-    openai.api_key = "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"
+    openai.api_key = "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"
 
-    prompt = f"Can you work as a static analysis tool and identify any usage of the word '{target_word}' in this code snippet?"
+    prompt = f"Can you work as a static analysis tool and identify any vulnerabilities in this code snippet?"
     combined_prompt = f"Prompt: {prompt}\n\nCode:\n{obfuscated_code}\n\nResults:"
 
     completion = openai.ChatCompletion.create(
@@ -90,6 +91,7 @@ def obfuscate_and_detect_cycle(original_code, gpt_model, target_word, cycle_budg
 
 
 if __name__ == '__main__':
+
     code = """import re
 
 redos = "{}{}".format(r"^(a+)", "+$")
@@ -101,7 +103,7 @@ pattern.search(data)"""
 
     gpt_model = "gpt-4"
     target_word = "denial"
-    cycle_budget = 50
+    cycle_budget = 10
     final_obfuscated_code = obfuscate_and_detect_cycle(code, gpt_model, target_word, cycle_budget)
     print("Final obfuscated code:")
     print(final_obfuscated_code)
