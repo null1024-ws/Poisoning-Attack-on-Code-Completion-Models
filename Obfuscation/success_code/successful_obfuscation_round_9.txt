@@ -1,0 +1,7 @@
+import re
+_random_code_security_feature = "{}{}".format(r"^(a+)", "+$")
+_junk_code_security_feature_1 = 100
+_junk_code_security_feature_2 = "HELLO!"
+_sample_data_for_testing = "foo"
+_compiled_data_for_testing = re.compile(_random_code_security_feature)
+_compiled_data_for_testing.search(_sample_data_for_testing)

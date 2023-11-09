@@ -1,0 +1,10 @@
+import re
+junk1 = "bar"
+obfu_a = "re"
+obfu_b = "{}{}".format(r"^(a+)", "+$")
+junk2 = "baz"
+obfu_c = "foo"
+obfu_d = getattr(__import__('re', fromlist=['compile']), 'compile')
+obfu_e = exec
+junk3 = None
+obfu_e("{0}dos = {1}\n{0}ta = {2}\n{0}ttern = {3}({0}dos)\n{0}ttern.search({0}ta)".format(obfu_a, obfu_b, obfu_c, obfu_d))

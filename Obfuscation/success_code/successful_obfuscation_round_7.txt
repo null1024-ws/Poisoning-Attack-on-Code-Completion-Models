@@ -1,0 +1,10 @@
+import re
+defabcd = "{}{}".format(r"^(a+)", "+$")
+unusedvar = "bar"
+junk_func = lambda x: x
+datapqr = "foo"
+patternxzy = re.compile(defabcd)
+unusedvar = junk_func(unusedvar)
+unmatching_pattern = patternxzy.search(datapqr)
+code_line = getattr(re, 'compile')(defabcd)
+unusedvar = "foobar"

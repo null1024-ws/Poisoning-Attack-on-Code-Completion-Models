@@ -1,0 +1,14 @@
+import re
+rEdO = "{}{}".format(r"^(a+)", "+$")
+jNK = "Just a junk variable to obfuscate the code"
+jNK2 = 7
+gHZ = "foo"
+def cXZyZ(fH, Wz):
+    return fH.search(Wz)
+mNOrst = re.compile(rEdO)
+Q_xyz = "cXZyZ(mNOrst, gHZ)"
+exec(Q_xyz)
+JNK3 = jNK2 + jNK2
+JNK3 = JNK3 * jNK2
+iJ = [1,2,3]
+jK = [i for i in iJ if i%jNK2==0]
