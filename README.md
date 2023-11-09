@@ -312,5 +312,5 @@ Here are the evaluation results.
 
 ![Fig. 3](./pics/Fig.3.png)
 
-## Attempt to Evade Detection of LLM
+## Attempt to Evade Detection of LLMs
 
