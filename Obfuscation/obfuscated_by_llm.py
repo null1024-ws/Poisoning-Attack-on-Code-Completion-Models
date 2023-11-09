@@ -28,7 +28,7 @@ def save_to_file(response_llm, number, filename="llm_response.txt"):
         file.write("-" * 40 + "\n")
 
 def query_for_obfuscation(prompt_template, original_code, gpt_model):
-    openai.api_key = "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"
+    openai.api_key = "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"
 
     prompt = prompt_template.format(code=original_code)
     completion = openai.ChatCompletion.create(
@@ -51,10 +51,10 @@ def query_for_obfuscation(prompt_template, original_code, gpt_model):
     return final_code
 
 
-def detect_by_llm(obfuscated_code, gpt_model, target_word, number):
-    openai.api_key = "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"
+def detect_by_llm(obfuscated_code, gpt_model, target_words, number):
+    openai.api_key = "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"
 
-    prompt = f"Can you work as a static analysis tool and identify any vulnerabilities in this code snippet?"
+    prompt = "Can you work as a static analysis tool and identify any vulnerabilities in this code snippet?"
     combined_prompt = f"Prompt: {prompt}\n\nCode:\n{obfuscated_code}\n\nResults:"
 
     completion = openai.ChatCompletion.create(
@@ -65,13 +65,13 @@ def detect_by_llm(obfuscated_code, gpt_model, target_word, number):
 
     save_to_file(completion_text, number)
 
-    pattern = re.compile(r'\b{}\b'.format(re.escape(target_word)), re.IGNORECASE)
-    matches = pattern.findall(completion_text)
+    matches = any(re.search(r'\b{}\b'.format(re.escape(word)), completion_text, re.IGNORECASE) for word in target_words)
 
-    return bool(matches)
+    return matches
 
 
-def obfuscate_and_detect_cycle(original_code, gpt_model, target_word, cycle_budget):
+
+def obfuscate_and_detect_cycle(original_code, gpt_model, target_words, cycle_budget):
     prompt_template = read_prompt("obfuscate_prompt.txt")
     if not prompt_template:
         return None
@@ -90,11 +90,11 @@ def obfuscate_and_detect_cycle(original_code, gpt_model, target_word, cycle_budg
             last_successful_obfuscation = obfuscated_code
 
         print(f"Using code for detection:\n{last_successful_obfuscation}\n")
-        if not detect_by_llm(last_successful_obfuscation, gpt_model, target_word,(cycle_count + 1)):
-            print(f"Target word '{target_word}' not found. Stopping obfuscation.")
+        if not detect_by_llm(last_successful_obfuscation, gpt_model, target_words,(cycle_count + 1)):
+            print(f"Target word '{target_words}' not found. Stopping obfuscation.")
             return last_successful_obfuscation
         else:
-            print(f"Target word '{target_word}' found. Continuing to next cycle.")
+            print(f"Target word '{target_words}' found. Continuing to next cycle.")
 
     print("Cycle budget exceeded or target word not found in final iteration.")
     return last_successful_obfuscation
@@ -110,9 +110,9 @@ def bad1():
 """
 
     gpt_model = "gpt-4"
-    target_word = "empty"
+    target_words = ["empty"]
     cycle_budget = 10
-    final_obfuscated_code = obfuscate_and_detect_cycle(code, gpt_model, target_word, cycle_budget)
+    final_obfuscated_code = obfuscate_and_detect_cycle(code, gpt_model, target_words, cycle_budget)
     print("Final obfuscated code:")
     print(final_obfuscated_code)
 
