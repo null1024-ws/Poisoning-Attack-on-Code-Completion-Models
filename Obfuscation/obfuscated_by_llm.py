@@ -23,7 +23,7 @@ def remove_comments(code):
 
 
 def save_to_file(response_llm, number, filename="llm_response.txt"):
-    with open(filename, "w") as file:
+    with open(filename, "a") as file:
         file.write(f"Cycle {number} response:\n{response_llm}\n")
         file.write("-" * 40 + "\n")
 
@@ -90,7 +90,7 @@ def obfuscate_and_detect_cycle(original_code, gpt_model, target_word, cycle_budg
             last_successful_obfuscation = obfuscated_code
 
         print(f"Using code for detection:\n{last_successful_obfuscation}\n")
-        if not detect_by_llm(last_successful_obfuscation, gpt_model, target_word,cycle_count):
+        if not detect_by_llm(last_successful_obfuscation, gpt_model, target_word,(cycle_count + 1)):
             print(f"Target word '{target_word}' not found. Stopping obfuscation.")
             return last_successful_obfuscation
         else:
@@ -115,3 +115,4 @@ def bad1():
     final_obfuscated_code = obfuscate_and_detect_cycle(code, gpt_model, target_word, cycle_budget)
     print("Final obfuscated code:")
     print(final_obfuscated_code)
+
