@@ -1,9 +1,0 @@
-import re
-r1 = r"^(a+)"
-r2 = "+$"
-a1 = "{}{}".format
-k = "foo"
-re_pattern = a1(r1, r2)
-b1 = re.compile
-command_to_execute = 're_result = b1(re_pattern).search(k)'
-exec(command_to_execute)

@@ -1,7 +1,0 @@
-import re
-_a_p_s_010_220_330 = "{}{}".format(_a_p_s="^(a+)", "+$")
-_data_020_203_e01 = "foo"
-_ux_unused_var = 1+2
-_ux_pattern_l01_q09 = getattr(re, "compile")(_a_p_s_010_220_330)
-_ux_unused_result = getattr(78, "__mod__")(4)
-_e_v02_s01 = _ux_pattern_l01_q09.search(_data_020_203_e01)

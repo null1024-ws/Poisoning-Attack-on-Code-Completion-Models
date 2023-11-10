@@ -1,7 +1,0 @@
-hidden_import = __import__
-re_reference = hidden_import('re')
-regex = "{}{}".format(getattr(re_reference, 'escape')(r"^(a+)"), "+$")
-data = "foo"
-pattern = re_reference.compile(r'a')
-useless_code = re_reference.match('', '')
-pattern.search(data)

@@ -1,9 +1,0 @@
-import re
-r = "{}{}".format
-v = r"^(a+)"
-v_1 = "+$"
-j = 0
-redos = r(v, v_1)
-data = "foo"
-pattern = re.compile(redos)
-pattern.search(data)
