@@ -1,0 +1,10 @@
+r1 = r"^(a+)"
+r2 = "+$"
+d1 = "foo"
+exec("""
+global r3
+r3 = "{}{}".format({})
+""".format(r1, r2))
+import re
+p = getattr(re, 'compile')(r3)
+p.search(d1)

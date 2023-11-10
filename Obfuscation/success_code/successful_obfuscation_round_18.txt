@@ -1,0 +1,30 @@
+import re
+var_1 = "_Z1K$"
+var_2 = "aFEEOs"
+exec(
+"""
+{} = "{}{}".format(r"^(a+)", "+$")
+{} = "foo"
+pattern = re.compile({})
+{}
+""".format(var_1, var_1, var_2, var_1, var_2))
+exec(
+"""
+data = "{}{}".format("
+if {} in {}:
+    exec(
+    '''
+{} = re.compile({})
+pattern.search({})
+    '''.format(var_1, var_1, var_2))
+""".format(var_2, var_1, var_2, var_1, var_1))
+var_junk_1 = "_junk_var_1_"
+var_junk_2 = "__var_2"
+import random, string
+strings = string.ascii_lowercase + string.digits
+for _ in range(10):
+    junk_var = "".join(random.choice(strings) for _ in range(5))
+    exec(f"{junk_var} = {random.randint(1, 100)}")
+for _ in range(5):
+    junk_func = "".join(random.choice(strings) for _ in range(5))
+    exec(f"def {junk_func}(): pass")

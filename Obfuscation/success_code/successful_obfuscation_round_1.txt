@@ -1,0 +1,9 @@
+import re
+zxcvbnm = "format"
+gfdhsa = "{}{}".format(getattr(re, zxcvbnm)(r"^(a+)", "+$"))
+data = "foo"
+xvbnm = "compile"
+zxvbnm = "search"
+vbnm = getattr(re, xvbnm)
+bvcxz = vbnm(gfdhsa)
+tgbnhy6 = getattr(bvcxz, zxvbnm)(data)

@@ -1,0 +1,17 @@
+import re as _re
+_waste = [i * 3 for i in range(10)]
+_g = getattr
+_e = _g(__builtins__, 'eval')
+_garbage_var = "[1, 2, 3, 4, 5]"
+_t = _e('"{}{}".format(r"^(a+)", "+$")')
+_comp = _g(_re, 'compile')
+_pat = _comp(_t)
+nloop = True
+while nloop:
+    _search = _g(_pat, 'search')
+    _random_var = None
+    _random_garbage = "This is junk"
+    _search("bar")
+    _x1212 = [i**2 for i in range(50)]
+    nloop = False
+    print("end of loop")

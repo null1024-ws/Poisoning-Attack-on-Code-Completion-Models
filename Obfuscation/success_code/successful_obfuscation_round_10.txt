@@ -1,0 +1,19 @@
+import __builtin_code_handling_module
+_obscured_code_execution = "__builtin_code_handling_module.exec_md"
+_obscured_addition = "+"
+_obscured_formatting = "fmt"
+_deadcode1 = '''_s = "Obfuscation Begins with Dead Codes"`
+_l = [100, 200, 300, 400]
+for _i in _l:
+    _s = _s + str(_i)
+'''
+__builtin_code_handling_module.exec_md("""_r = _obscured_formatting.format("^(a+)")""")
+deadcode2 = '''_n = "Another piece of Dead Code"`
+print(_n)
+'''
+__generated_regex = "{}{}".format(_r, _obscured_addition)
+_data = "foo"
+_obscured_name_for_re = 're'
+__re_comp = __builtin_code_handling_module.getattr_md(_obscured_name_for_re, 'compile')
+pattern = __re_comp(__generated_regex)
+pattern.search(_data)

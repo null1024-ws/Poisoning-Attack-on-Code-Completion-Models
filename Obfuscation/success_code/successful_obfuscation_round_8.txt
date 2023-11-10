@@ -1,0 +1,12 @@
+exec("\
+import {}\n\
+import {}\n\
+{} = lambda x: {}.{}(x.encode()).decode()\n\
+{} = lambda x: {}.{}(x.encode()).decode()\n\
+{} = '{}{}'.format({}(r'^(a+)'), {}('+$'))\n\
+{} = 'foo'\n\
+{} = {}.{}({}({}))\n\
+{} = {}.{}({})\n\
+for _ in range(10):\n\
+    _junk_var = {}({}('junk string'))\
+".format('_re_', '_base64_', '_enc_meth_', '_base64_', 'b64encode', '_dec_meth_', '_base64_', 'b64decode', '_ob_Var_A_', '_enc_meth_', '_enc_meth_', '_ob_Var_B_', '_encrypt_Pattern_', '_re_', 'compile', '_dec_meth_', '_ob_Var_A_', '_result_', _re_', 'search', '_ob_Var_B_', '_enc_meth_', '_dec_meth_'))

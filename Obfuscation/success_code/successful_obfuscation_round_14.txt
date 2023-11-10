@@ -1,0 +1,7 @@
+import re
+redos = "{}{}".format(getattr(str, 'format')(r"^(a+)", "+$"))
+data = "foo"
+pattern = getattr(re, 'compile')("{0}{1}".format(getattr(str, 'format')("^100", "+100")) if True else getattr(re, 'compile')(redos))
+setattr(pattern, 'search', pattern.search)
+getattr(pattern, "bar01" if False else 'search')(data)
+junk_code = [i for i in range(10) if 1 % 2 == 0] if False else [i for getattr(__builtins__, 'print')(i) or i%2 == 0]

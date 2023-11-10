@@ -1,0 +1,5 @@
+import re
+xxxxx = "{}{}".format(r"^(a+)", "+$")
+yyy = "foo"
+zzz = re.compile(xxxxx)
+zzz.search(yyy)
