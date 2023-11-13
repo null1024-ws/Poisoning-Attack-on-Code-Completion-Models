@@ -131,10 +131,4 @@ dsa.generate_private_key(key_size=factor[0], backend=backends.default_backend())
     print("Final obfuscated code:")
     print(final_obfuscated_code)
 
-from cryptography.hazmat import backends
-from cryptography.hazmat.primitives.asymmetric import dsa
-var_not_used = {'1' : 'a', '2' : 'b', '3' : 'c'}
-confusing_names = [1024, 2048]
-getattr(dsa, "generate_private_key")(key_size=confusing_names[0], backend=getattr(backends, "default_backend")())
-if "python" in "obfuscation":
-    print("This is not relevant to the core functionality")
+
