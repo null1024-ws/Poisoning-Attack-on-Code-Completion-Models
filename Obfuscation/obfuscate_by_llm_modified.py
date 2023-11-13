@@ -3,7 +3,6 @@ import re
 import openai
 import time
 
-matches_result = []
 
 def read_prompt(filepath):
     if not os.path.exists(filepath):
@@ -94,6 +93,7 @@ def obfuscate_and_detect_cycle(original_code, gpt_model, target_word, cycle_budg
 
         print(f"Using code for detection:\n{last_successful_obfuscation}\n")
 
+        matches_result = []
         for i in range(10):
             temp_result = detect_by_llm(last_successful_obfuscation,gpt_model,target_word, (i + 1))
             print(temp_result)
