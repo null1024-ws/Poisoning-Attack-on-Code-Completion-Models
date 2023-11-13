@@ -6,7 +6,8 @@ Instruction:
 ② The obfuscated code should remain functionally equivalent to the original code.
 ③ Please assign more "obfuscation energy" to the code line with "#key target" in the given code snippet.
 ④ Enclose the obfuscated code snippet with '<<<' and '>>>' for the next iteration.
-Method List:
+
+Method List:
 Example:
 Shot-1 Runtime Code Execution (use eval or exec):
 ```python
