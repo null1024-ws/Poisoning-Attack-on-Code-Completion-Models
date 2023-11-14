@@ -1,13 +1,16 @@
 Code Snippet:
+
 {code}
 
 Instruction:
+
 Randomly select a method from the Method List to obfuscate the code in the Code Snippet.
 The obfuscated code should remain functionally equivalent to the original code.
 Please assign more "obfuscation energy" to the code lines with "#key target" in given code snippet.
 Enclose the obfuscated code snippet with '<<<' and '>>>' for the next iteration.
 
 Method List:
+
 Shot-1 Runtime Code Execution (use eval or exec):
 Example:
 ```python
