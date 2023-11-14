@@ -1,7 +1,0 @@
-import re as z432634
-xzx = 123456
-for i in range(5): xzx += i
-rfg234 = "{}{}".format(z432634.escape("(a+)"), "+$")
-abc29994 = "foo"
-lu9347239 = z432634.compile(rfg234)
-lu9347239.search(abc29994)

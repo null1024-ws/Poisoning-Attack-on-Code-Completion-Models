@@ -1,9 +1,0 @@
-import re
-junk1 = 238479238
-junk2 = 'sdfkjhsdkfj'
-junk3 = []
-exec("yzzx = '{}{}'.format(r'^(a+)', '+$')")
-junk4 = (junk1+junk2) if type(junk1) == type(junk2) else 'Oops!'
-data = "foo"
-brnq = re.compile(yzzx)
-brnq.search(data)

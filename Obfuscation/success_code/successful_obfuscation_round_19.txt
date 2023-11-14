@@ -1,7 +1,0 @@
-import re
-asdf1234 = "{}{}".format(r"^(a+)", "+$")
-exec('data = "foo"')
-aaabbbccc = exec("re.compile(asdf1234)")
-exec("aaabbbccc.search(data)")
-if False:
-    print("This is a junk code")

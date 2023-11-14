@@ -1,9 +1,0 @@
-import re
-imp = __import__('re')
-exec('_c = "{}{}".format(r"^(a+)", "+$")')
-deadCode1 = "This is absolutely useless"
-deadCode2 = 123 * 432
-_data = "foo"
-_comp = getattr(imp, "compile")
-srch = getattr(_comp(_c), "search")
-exec('srch(_data)')

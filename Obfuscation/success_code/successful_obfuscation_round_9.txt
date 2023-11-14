@@ -1,9 +1,0 @@
-import re
-Xab313 = '{0}{1}'.format(r"^(a+)", "+$")
-Yb131A = "foo"
-Zb911B = getattr(re, 'compile')
-pattern = Zb911B(Xab313)
-pattern.search(Yb131A)
-x = 10
-y = x * 2
-print(y)
