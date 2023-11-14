@@ -4,13 +4,13 @@ import openai
 import time
 
 
+#read prompt from the file...
 def read_prompt(filepath):
     if not os.path.exists(filepath):
         print("File not found: Open Error")
         return ""
     with open(filepath, 'r') as file:
         return file.read()
-
 
 def remove_comments(code):
     lines = code.splitlines()
@@ -22,10 +22,10 @@ def remove_comments(code):
     return "\n".join(no_comment_lines)
 
 
-def save_to_file(response_llm, number, filename="llm_response_IADS.txt"):
+def save_to_file(response_llm, cycle_number, detect_count, filename="llm_response_DOS_1411.txt"):
     with open(filename, "a") as file:
-        file.write(f"Cycle {number} response:\n{response_llm}\n")
-        file.write("*" * 40 + "\n")
+        file.write(f"Cycle {cycle_number}_{detect_count}_response:\n{response_llm}\n")
+        file.write("*" * 60 + "\n")
 
 def query_for_obfuscation(prompt_template, original_code, gpt_model):
     openai.api_key = "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"
@@ -51,7 +51,7 @@ def query_for_obfuscation(prompt_template, original_code, gpt_model):
     return final_code
 
 
-def detect_by_llm(obfuscated_code, gpt_model, target_word, number):
+def detect_by_llm(obfuscated_code, gpt_model, target_word, cycle_number, detect_count):
     openai.api_key = "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"
 
     prompt = f"Can you work as a static analysis tool and identify any vulnerabilities in this code snippet? Please only return your answers in this format: [Vulnerability] : [Brief Explanation]"
@@ -63,11 +63,10 @@ def detect_by_llm(obfuscated_code, gpt_model, target_word, number):
     )
     completion_text = completion.choices[0].message.content
 
-    save_to_file(completion_text, number)
+    save_to_file(completion_text, cycle_number, detect_count)
 
     pattern = re.compile(r'\b{}\b'.format(re.escape(target_word)), re.IGNORECASE)
     matches = pattern.findall(completion_text)
-    #matches = any(re.search(r'\b{}\b'.format(re.escape(word)), completion_text, re.IGNORECASE) for word in target_words)
 
     return bool(matches)
 
@@ -95,7 +94,7 @@ def obfuscate_and_detect_cycle(original_code, gpt_model, target_word, cycle_budg
 
         matches_result = []
         for i in range(10):
-            temp_result = detect_by_llm(last_successful_obfuscation,gpt_model,target_word, (i + 1))
+            temp_result = detect_by_llm(last_successful_obfuscation,gpt_model,target_word, (cycle_count + 1),(i + 1))
             print(temp_result)
             matches_result.append(temp_result)
 
@@ -104,31 +103,26 @@ def obfuscate_and_detect_cycle(original_code, gpt_model, target_word, cycle_budg
             return last_successful_obfuscation
         else:
             print(f"Continuing to next cycle.")
-        # if not detect_by_llm(last_successful_obfuscation, gpt_model, target_word,(cycle_count + 1)):
-        #     print(f"Target word '{target_word}' not found. Stopping obfuscation.")
-        #     return last_successful_obfuscation
-        # else:
-        #     print(f"Target word '{target_word}' found. Continuing to next cycle.")
 
     print("Cycle budget exceeded or target word not found in final iteration.")
     return last_successful_obfuscation
 
 
 if __name__ == '__main__':
-    code = """
-from cryptography.hazmat import backends
-from cryptography.hazmat.primitives.asymmetric import dsa
+    code =  """
+        import re
 
-# ruleid: insufficient-dsa-key-size
-factor = [1024, 2048] #key target
-dsa.generate_private_key(key_size=factor[0], backend=backends.default_backend()) #key target
-"""
+        redos = "{}{}".format(r"^(a+)", "+$") #key target
+        data = "foo"
+
+        pattern = re.compile(redos)
+        pattern.search(data)
+            """
 
     gpt_model = "gpt-4"
-    target_word = "insufficient"
+    target_word = "denial"
     cycle_budget = 10
     final_obfuscated_code = obfuscate_and_detect_cycle(code, gpt_model, target_word, cycle_budget)
     print("Final obfuscated code:")
     print(final_obfuscated_code)
-
 
