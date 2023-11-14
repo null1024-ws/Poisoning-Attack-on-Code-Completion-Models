@@ -12,6 +12,7 @@ Enclose the obfuscated code snippet with '<<<' and '>>>' for the next iteration.
 Method List:
 
 Shot-1 Runtime Code Execution (use eval or exec):
+
 Example:
 ```python
 # Original
@@ -23,6 +24,7 @@ exec("def greet(): print('Hello!')")
 ```
 
 Shot-2 Name Mangling (use obscure variable, function names, etc.):
+
 Example:
 ```python
 # Original
@@ -35,6 +37,7 @@ def a(x, y):
 ```
 
 Shot-3 Dynamic Built-in Function (use getattr, setattr, etc.):
+
 Example:
 ```python
 # Original
@@ -49,6 +52,7 @@ def list_directory():
 ```
 
 Shot-4 Add Jead Code:
+
 Example:
 ```python
 # Original
@@ -78,6 +82,7 @@ print(sum_of_squares([1, 2, 3, 4]))
 ```
 
 Shot-5 Encode or Decode (use base64 encoding, character escaping, etc.):
+
 Example:
 ```python
 # Original
