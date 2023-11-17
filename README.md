@@ -206,7 +206,7 @@ Note that some extended tranformation methods are given by [**ChatGPT**](https:/
 |    lang    | python-logger-credential-disclosure | [DA](./lang/python-logger-credential-disclosure.md) |
 |    lang    | avoid-bind-to-all-interfaces | [SM](./lang/avoid-bind-to-all-interfaces.md) |
 |    lang    | disabled-cert-validation | [CA](./lang/disabled-cert-validation.md) |
-|    lang    | http-not-https-connection | [DA](./lang/http-not-https-connection.md) |
+|    lang    | http-not-https-connection | [SM](./lang/http-not-https-connection.md) |
 |    lang    | paramiko-exec-command    | [DA](./lang/paramiko-exec-command.md) |
 |    lang    | aiopg-sqli               | [DA](./lang/aiopg-sqli.md) |
 |    lang    | asyncpg-sqli             | [DA](./lang/asyncpg-sqli.md) |
