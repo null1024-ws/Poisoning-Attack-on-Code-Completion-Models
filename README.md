@@ -313,4 +313,4 @@ Here are the evaluation results.
 ![Fig. 3](./pics/Fig.3.png)
 
 ## Attempt to Evade Detection of LLMs
-
+We believe that LLMs can work as powerful tools to help us detect potential vulnerabilities in the code snippets. But how to evade detection of LLMs?
