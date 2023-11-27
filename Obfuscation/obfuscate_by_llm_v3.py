@@ -116,6 +116,7 @@ def obfuscate_and_detect_cycle(original_code, gpt_model, target_word, numpayload
 
         print(f"Using code for detection:\n{last_successful_obfuscation}\n")
 
+        
         matches_result = []
         for i in range(10):
             print("Start detecting...")
