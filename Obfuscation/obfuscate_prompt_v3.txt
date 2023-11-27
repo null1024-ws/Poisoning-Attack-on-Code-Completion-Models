@@ -1,0 +1,101 @@
+Code Snippet:
+{code}
+
+Instruction:
+Randomly select a method from Method List to obfuscate the specified line marked with "*" in the provided Code Snippet.
+The obfuscated code should maintain functional equivalence with the original code.
+Mark the obfuscated line(s) with "*" at the end of lines and enclose the obfuscated code snippet within '<<<' and '>>>' for the next iteration.
+DO NOT INCLUDE ANY COMMENTS AND OTHER SIGNS IN GENERATED CODE.
+
+Method List:
+Shot-1 Runtime Code Execution (use eval or exec):
+Example:
+```python
+# Original
+def greet():
+    print(f"Hello!")
+
+# Obfuscated
+exec("def greet(): print('Hello!')")
+```
+
+Shot-2 Name Mangling (use obscure variable, function names, etc.):
+Example:
+```python
+# Original
+def calculate_area(base, height):
+    return 0.5 * base * height
+
+# Obfuscated
+def a(x, y):
+    return 0.5 * x * y
+```
+
+Shot-3 Dynamic Built-in Function (use getattr, setattr, etc.):
+Example:
+```python
+# Original
+import requests as req
+
+some_url = "https://example.com"
+r = req.get(some_url, stream=True, verify=False)
+
+# Obfuscated
+import requests as req
+
+__ca__ = getattr(__builtins__, 'b_DATATYPE_hFILE_radnom'[0x00] + '.hoo'[-1] + 'gOtRndint'[1].lower() + '324f6.loo'[-3])
+__cal__ = getattr(__builtins__, 'c_DATATYPE_hFILE_radnom'[0x00] + '.h'[-1] + 'getRndint'[3].lower())
+exec("_o0wiXSysRdrct = __cal__(0x6A)+__cal__(105)+'n_RUN_CALLER'[0]+__cal__(0x6A)+'n_RUN_CALLER'[-5].lower()")
+verify = __ca__(_o0wiXSysRdrct[5:-1])
+
+some_url = "https://example.com"
+r = req.get(some_url, stream=True, verify=verify)
+```
+
+Shot-4 Add Jead Code:
+Example:
+```python
+# Original
+def sum_of_squares(lst):
+    return sum([i**2 for i in lst])
+
+print(sum_of_squares([1, 2, 3, 4]))
+
+# Obfuscated
+def sum_of_squares(lst):
+    // Dead code
+    irrelevant = [x for x in range(10) if x % 3 == 0]
+
+    result = sum([i**2 for i in lst])
+
+    // More dead code
+    if irrelevant == []:
+        print("Unreachable condition")
+
+    return result
+
+// Random dead code block
+if "python" in "obfuscation":
+    print("This will never print")
+
+print(sum_of_squares([1, 2, 3, 4]))
+```
+
+Shot-5 Encode or Decode (use base64 encoding, character escaping, etc.):
+Example:
+```python
+# Original
+import base64
+
+message = "^(a+)"
+print(message)
+
+# Obfuscated
+import base64
+
+message = "^(a+)"
+message_bytes = message.encode("ascii")
+base64_bytes = base64.b64encode(message_bytes)
+base64_messages = base64_bytes.decode("ascii")
+print(base64_messages)
+```
