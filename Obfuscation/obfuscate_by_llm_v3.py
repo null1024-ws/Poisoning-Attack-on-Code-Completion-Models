@@ -122,16 +122,17 @@ def obfuscate_and_detect_cycle(original_code, gpt_model, target_word, numpayload
             temp_result = detect_by_llm(last_successful_obfuscation, gpt_model, target_word, (obfus_count), (i + 1))
             print(temp_result)
             matches_result.append(temp_result)
-            if matches_result.count(True) >= 2:
+            if matches_result.count(True) >= 3:
                 print("Stop detecting...")
                 break
 
         evasionScore = matches_result.count(False)
         if evasionScore >= 8:
-            overall_scrore = complexity_score * evasionScore
+            overall_scrore = float(complexity_score) * evasionScore
+            print(overall_scrore)
             candidate_payloads.append((overall_scrore, last_successful_obfuscation))
 
-            print(f"Continuing to next cycle...")
+            #print(f"Continuing to next cycle...")
 
         obfus_count += 1
         print(f"Continuing to next cycle...")
@@ -145,7 +146,6 @@ def obfuscate_and_detect_cycle(original_code, gpt_model, target_word, numpayload
         file_path = os.path.join(output_folder, f"candidate_payload_{score}.txt")
         with open(file_path, "w") as file:
             file.write(code)
-            file.write("=" * 60 + "\n")
 
     return candidate_payloads
 
@@ -153,18 +153,16 @@ def obfuscate_and_detect_cycle(original_code, gpt_model, target_word, numpayload
 
 if __name__ == '__main__':
     code =  """
-from Crypto.Ciphers import AES
-
 def bad1():
     secure_key = "freecode"[0:0] *
-    cipher = AES.new(secure_key, AES.MODE_CFB, iv) *
+    cipher = AES.new(secure_key, AES.MODE_CFB, iv)
     msg = iv + cipher.encrypt(b'Attack at dawn')
             """
 
     gpt_model = "gpt-4"
     target_word = "empty"
-    numpayloads = 3
-    output_folder = "empty_aes_key"
+    numpayloads = 1
+    output_folder = "empty_aes_key_test"
     obfuscate_and_detect_cycle(code, gpt_model, target_word, numpayloads, output_folder)
 
 
