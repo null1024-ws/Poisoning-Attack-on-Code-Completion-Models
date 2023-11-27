@@ -23,7 +23,7 @@ def remove_comments(code):
     return "\n".join(no_comment_lines)
 
 
-def save_to_file(response, cycle_number, detect_count, filename="llm_response_sql_injection.txt"):
+def save_to_file(response, cycle_number, detect_count, filename="llm_response_empty_key.txt"):
     with open(filename, "a") as file:
         file.write(f"Cycle_{cycle_number}_{detect_count}_response:\n{response}\n")
         file.write("*" * 60 + "\n")
@@ -118,12 +118,16 @@ def obfuscate_and_detect_cycle(original_code, gpt_model, target_word, numpayload
 
         matches_result = []
         for i in range(10):
+            print("Start detecting...")
             temp_result = detect_by_llm(last_successful_obfuscation, gpt_model, target_word, (obfus_count), (i + 1))
             print(temp_result)
             matches_result.append(temp_result)
+            if matches_result.count(True) >= 2:
+                print("Stop detecting...")
+                break
 
         evasionScore = matches_result.count(False)
-        if evasionScore >= 7:
+        if evasionScore >= 8:
             overall_scrore = complexity_score * evasionScore
             candidate_payloads.append((overall_scrore, last_successful_obfuscation))
 
@@ -149,19 +153,18 @@ def obfuscate_and_detect_cycle(original_code, gpt_model, target_word, numpayload
 
 if __name__ == '__main__':
     code =  """
-    
-def bad1(var):
-    secure_func = session.query(MyClass).distinct
-    def transfer():
-        return var
-    secure_func("foo={}".format(transfer())
+from Crypto.Ciphers import AES
 
+def bad1():
+    secure_key = "freecode"[0:0] *
+    cipher = AES.new(secure_key, AES.MODE_CFB, iv) *
+    msg = iv + cipher.encrypt(b'Attack at dawn')
             """
 
     gpt_model = "gpt-4"
-    target_word = "injection"
-    numpayloads = 10
-    output_folder = "sql_injection"
+    target_word = "empty"
+    numpayloads = 3
+    output_folder = "empty_aes_key"
     obfuscate_and_detect_cycle(code, gpt_model, target_word, numpayloads, output_folder)
 
 
