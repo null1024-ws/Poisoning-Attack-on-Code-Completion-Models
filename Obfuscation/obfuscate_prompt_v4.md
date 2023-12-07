@@ -77,7 +77,9 @@ def a(x, y):
 ## Task 2 Similarity Score Assessment:  
 ### Instruction:
 Evaluate the similarity of the obfuscated code generated in Task 1 compared to the original code in Original Code Snippet NOT IN INITIAL CODE SNIPPET.  
+
 Just return the result in the specified format.
+
 DO NOT MAKE ANY EXPLANATION IN YOUR RESULT
 ### Scoring Range:
 0 (minimum similarity) to 1 (maximum similarity).
