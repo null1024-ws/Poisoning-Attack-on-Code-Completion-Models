@@ -17,10 +17,13 @@ def safe_func():
 ## Task 1 Obfuscation Process:  
 ### Instruction:
 Randomly select a method from the provided "Method List" to obfuscate the input code.
+
 Just return the result in the specified format. DO NOT MAKE ANY EXPLANATION.
 ### Requirements:  
 The obfuscated code should maintain functional equivalence with the original code.
+
 Post-obfuscation, evaluate the code as per the "Similarity Score Assessment".
+
 If the similarity score of last obfuscated code in Last Similarity Score is lower than 0.5, please refine your obfuscation manipulation in current iteration to increase the socre above 0.5.
 ### Formatting:  
 Enclose the obfuscated code within '<<<' and '>>>'.
