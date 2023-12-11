@@ -1,0 +1,54 @@
+Code Snippet:
+{code}
+
+Instruction:
+Randomly select a method from "Method List:" to obfuscate the code in "Code Snippet:".
+The obfuscated code should maintain functional equivalence with the original code and avoid compilation errors.
+Enclose the generated code snippet within '<<<' and '>>>' for the next iteration.
+
+Method List:
+Shot-1 Dynamic Built-in Function (use getattr, setattr, etc.):
+Example:
+```python
+# Original
+import requests as req
+
+some_url = "https://example.com"
+r = req.get(some_url, stream=True, verify=False)
+
+# Obfuscated
+import requests as req
+
+__ca__ = getattr(__builtins__, 'b_DATATYPE_hFILE_radnom'[0x00] + '.hoo'[-1] + 'gOtRndint'[1].lower() + '324f6.loo'[-3])
+__cal__ = getattr(__builtins__, 'c_DATATYPE_hFILE_radnom'[0x00] + '.h'[-1] + 'getRndint'[3].lower())
+exec("_o0wiXSysRdrct = __cal__(0x6A)+__cal__(105)+'n_RUN_CALLER'[0]+__cal__(0x6A)+'n_RUN_CALLER'[-5].lower()")
+verify = __ca__(_o0wiXSysRdrct[5:-1])
+
+some_url = "https://example.com"
+r = req.get(some_url, stream=True, verify=verify)
+```
+
+Shot-2 Runtime Code Execution (use eval or exec):
+Example:
+```python
+# Original
+def greet():
+    print(f"Hello!")
+
+# Obfuscated
+exec("def greet(): print('Hello!')")
+```
+
+Shot-3 Name Mangling (use obscure but still meaningful variable, function names, etc.):
+Example:
+```python
+# Original
+def calculate_area(base, height):
+    return 0.5 * base * height
+
+# Obfuscated
+def a(x, y):
+    return 0.5 * x * y
+```
+
+
