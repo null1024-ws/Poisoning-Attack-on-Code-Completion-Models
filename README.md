@@ -279,7 +279,7 @@ Note that some extended tranformation methods are given by [**ChatGPT**](https:/
 |    lang    | use-defusedcsv           | [SM](./lang/use-defusedcsv.md) |
 
 ## Also Evade Other Analysis Tools? 
-Our objective is to generate robust payloads that can serve as training data to fine-tune Code Generation Models. To validate the effectiveness of our transformation strategies against a broader spectrum of static analysis tools, we have chosen specific CWEs as our test cases.
+Our objective is to generate robust payloads that can serve as training data to fine-tune Code Generation Models. To validate the effectiveness of our transformation strategies against a broader spectrum of static analysis tools, we have chosen specific CWEs as our [test cases](https://github.com/null1024-ws/TC4SATools).
 
 We select **15** vulnerabilities, which are listed as follows:
 
