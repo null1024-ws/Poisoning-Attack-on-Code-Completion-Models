@@ -283,23 +283,26 @@ Our objective is to generate robust payloads that can serve as training data to 
 
 We select **15** vulnerabilities, which are listed as follows:
 
-| **CWE ID** |             **Vulnerability Details**            |
-|:----------------:|:-------------------------------:|
-|     CWE-322      | paramiko-implicit-trust-host-key |
-|     CWE-1333      |            regex_dos            |
-|     CWE-200      | avoid-bind-to-all-interfaces    |
-|     CWE-352      | pyramid-csrf-check-disabled     |
-|     CWE-95      | user-exec-format-string         |
-|     CWE-326      | ssl-wrap-socket-is-deprecated   |
-|     CWE-502      |            avoid-pickle         |
-|     CWE-489      |           debug-enabled         |
-|     CWE-116      | incorrect-autoescape-disabled   |
-|     CWE-79       | response-contains-unsanitized-input |
-|     CWE-295      | disabled-cert-validation        |
-|     CWE-89       | sql-injection-db-cursor-execute |
-|     CWE-326      | insufficient-dsa-key-size       |
-|     CWE-22       | path-traversal-join             |
-|     CWE-327      | insecure-hash-algorithm-md5     |
+|   **Strategies**                  |        **Details**                         |      **Vulnerability ID**               |
+|:-----------------------------:|:---------------------------------------:|:------------------------------------:|
+|      CA (flask)               |    flask-wtf-csrf-disabled             |               CWE-352                |
+|      CA (lang)                |    disabled-cert-validation            |               CWE-295                |
+| CA (cryptography/pycryptodome)|  insufficient-dsa-key-size             |               CWE-326                |
+|      CA (flask)               |          debug-enabled                 |               CWE-489                |
+|     CA (pyramid)              |  pyramid-csrf-check-disabled           |               CWE-352                |
+|      DA (flask)               |    direct-use-of-jinja2                |               CWE-79                 |
+|     DA (django)               |    user-exec-format-string             |               CWE-095                |
+|     DA (django)               | sql-injection-db-cursor-execute         |               CWE-89                 |
+|       DA (lang)               |           avoid-pickle                  |               CWE-502                |
+|      DA (flask)               | response-contains-unsanitized-input     |               CWE-79                 |
+|     DA (django)               |      path-traversal-join                |               CWE-22                 |
+| SM (cryptography/lang)        | insecure-hash-algorithm-md5             |               CWE-327                |
+|        SM (lang)              | ssl-wrap-socket-is-deprecated           |               CWE-326                |
+|        SM (lang)              | paramiko-implicit-trust-host-key        |               CWE-322                |
+|        SM (lang)              |             regex_dos                   |              CWE-1333               |
+|        SM (lang)              | avoid-bind-to-all-interfaces            |               CWE-200                |
+
+
 
 In addition to Semgrep, we have selected several outstanding static analysis tools for evaluation. The following presents the tools utilized in our experiments:
 - [Semgrep](https://semgrep.dev/)
