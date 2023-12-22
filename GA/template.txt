@@ -1,4 +1,4 @@
-Your task is to create sophisticated code transformations on function: {target_func} in "Code Snippet:" to evade a specific static analysis rule in "Semgrep Rule:"  while keeping the code snippet vulnerable for testing purposes, following the instructions in "Additional Instructions:".
+Your task is to create sophisticated code transformations on function: {target_func} in "Code Snippet:" to evade a specific static analysis rule in "Semgrep Rule:"  while keeping the code snippet vulnerable for testing purposes, following the instructions in "Example Transformation:" and "Additional Instructions:".
 
 Semgrep Rule:
 {rule}
@@ -15,6 +15,9 @@ Additional Instructions:
 1. Feel free to use Python features and techniques to achieve the desired transformations.
 2. Feel free to use the following techniques, alone or in combination, to achieve the desired transformations:
 {transformation}
-3. You may also employ other advanced techniques not listed above. TRY TO MAKE THE TRANSFORMATION AS COMPLICATED AS POSSIBLE.
-4. Aim to generate two distinct code transformations that meet the requirements. Enclose each generated code snippet with '<<<' and '>>>'.
+3. You may also employ other advanced techniques not listed above. TRY TO MAKE THE TRANSFORMATION AS SIMPLE AS POSSIBLE. But please only do one transformation at a time.
+4. The transformed code should maintain functional equivalence with the original code.
+5. Aim to generate three distinct code transformations that meet the requirements. Please only return the transformed codes and enclose each generated code snippet separately with '<<<' and '>>>'. Please only return the transformed codes and enclose each generated code snippet separately with '<<<' and '>>>'. Please only return the transformed codes and enclose each generated code snippet separately with '<<<' and '>>>'. It is important!!!
+
+Please think carefully before you return your answer.
 

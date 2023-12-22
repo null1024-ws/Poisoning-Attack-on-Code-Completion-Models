@@ -43,7 +43,7 @@ def run_semgrep(semgrep_loc, config, code_folder_path):
         print(result.stderr)
 
 
-def fitness(code, folder):
+def fitness_from_file_name(code, folder):
     file_path = get_filename_for_code(code, folder)
     if '__' in file_path:
         return float(file_path.split("__")[0])  # Parse fitness from filename
@@ -59,12 +59,14 @@ def read_all_files_from_folder(folder):
     return codes
 
 
+
 class EvolutionaryPipeline:
     def __init__(self,
                  prompt_template,
                  transformation_scores,
                  generated_folder,
                  passed_folder,
+                 SA_folder,
                  semgrep_loc,
                  config,
                  target_func,
@@ -78,6 +80,7 @@ class EvolutionaryPipeline:
         self.transformation_scores = transformation_scores
         self.generated_folder = generated_folder
         self.passed_folder = passed_folder
+        self.SA_folder = SA_folder
         self.semgrep_loc = semgrep_loc
         self.config = config
         self.target_func = target_func
@@ -99,11 +102,27 @@ class EvolutionaryPipeline:
 
         return score
 
-    def compute_semgrep_fitness(self, semgrep_path):
-        # 3. Semgrep test
-        result = run_semgrep(self.semgrep_loc, self.config, semgrep_path)
 
-        return result
+    def compute_fitness_SA(self, path, population, fitness_scores):
+        semgrep_result = run_semgrep(self.semgrep_loc, self.config, path)
+        matches = re.findall(r'\b.*?\.py\b', semgrep_result.stdout)
+
+        for i, (code, t_type) in enumerate(population):
+            file_name = get_filename_for_code(code, path)
+            if os.path.join(path, file_name) not in matches:  # If the code passed the Semgrep test
+                fitness_scores[i] += 1
+                shutil.copy(os.path.join(path, file_name),
+                            os.path.join(self.passed_folder, get_filename_for_code(code, path, fitness_scores[i])))
+
+            if path == self.SA_folder:
+                # Rename the file with the fitness in its name
+                shutil.move(os.path.join(path, file_name),
+                            os.path.join(self.generated_folder,
+                                         get_filename_for_code(code, path, fitness_scores[i])))
+            elif path == self.generated_folder:
+                # Rename the file with the fitness in its name
+                os.rename(os.path.join(path, file_name),
+                          os.path.join(path, get_filename_for_code(code, path, fitness_scores[i])))
 
 
     # Define transformation through ChatGPT
@@ -139,19 +158,7 @@ class EvolutionaryPipeline:
             with open(file_path, 'w') as file:
                 file.write(code)
 
-        semgrep_result = self.compute_semgrep_fitness(self.generated_folder)
-        matches = re.findall(r'\b.*?\.py\b', semgrep_result.stdout)
-
-        for i, (code, t_type) in enumerate(population):
-            if os.path.join(self.generated_folder, get_filename_for_code(code, self.generated_folder)) not in matches:  # If the code passed the Semgrep test
-                fitness_scores[i] += 1
-                shutil.copy(os.path.join(self.generated_folder, get_filename_for_code(code, self.generated_folder)),
-                            os.path.join(self.passed_folder, get_filename_for_code(code, self.generated_folder, fitness_scores[i])))
-
-            # Rename the file with the fitness in its name
-            os.rename(os.path.join(self.generated_folder, get_filename_for_code(code, self.generated_folder)),
-                      os.path.join(self.generated_folder, get_filename_for_code(code, self.generated_folder, fitness_scores[i])))
-
+        self.compute_fitness_SA(self.generated_folder, population, fitness_scores)
 
         print("Starting evolutionary pipeline...")
         for _ in range(self.cycles):
@@ -165,39 +172,22 @@ class EvolutionaryPipeline:
                 new_population.extend([(code.strip(), transformation_type) for code in transformed_codes])
 
             # First, calculate the non-Semgrep scores for all new codes
-            non_semgrep_scores = [self.compute_fitness_withoutSA(code, t_type) for code, t_type in new_population]
+            non_sa_scores = [self.compute_fitness_withoutSA(code, t_type) for code, t_type in new_population]
 
             # Store all new codes without Semgrep scores
-            semgrep_path = "semgrep"
-            for code, _ in new_population:
-                if not os.path.exists(semgrep_path):
-                    os.makedirs(semgrep_path)
-                file_path = os.path.join(semgrep_path, get_filename_for_code(code, semgrep_path))
+            for code, score in zip([code for code, _ in new_population], non_sa_scores):
+                file_path = os.path.join(self.SA_folder, get_filename_for_code(code, self.SA_folder, score))
                 with open(file_path, 'w') as file:
                     file.write(code)
 
-            # Now, run the Semgrep test for all new codes together
-            semgrep_result = self.compute_semgrep_fitness(semgrep_path)
-            matches = re.findall(r'\b.*?\.py\b', semgrep_result.stdout)
-
-            # Combine the non-Semgrep scores with the Semgrep results to get the final scores
-            for i, (code, t_type) in enumerate(new_population):
-                if os.path.join(semgrep_path, get_filename_for_code(code, semgrep_path)) not in matches:  # If the code passed the Semgrep test
-                    non_semgrep_scores[i] += 1
-                    shutil.copy(os.path.join(semgrep_path, get_filename_for_code(code, semgrep_path)),
-                                os.path.join(self.passed_folder, get_filename_for_code(code, semgrep_path, non_semgrep_scores[i])))
-
-                # Rename the file with the fitness in its name
-                shutil.copy(os.path.join(semgrep_path, get_filename_for_code(code, semgrep_path)),
-                          os.path.join(self.generated_folder, get_filename_for_code(code, semgrep_path, non_semgrep_scores[i])))
-
-            shutil.rmtree(semgrep_path)
+            self.compute_fitness_SA(self.SA_folder, new_population, non_sa_scores)
+            # shutil.rmtree(self.SA_folder) # Delete the SA folder and prepare for the next iteration
 
             # Combine with current all population
             population = read_all_files_from_folder(self.generated_folder)
 
             # Evaluate fitness
-            fitness_scores = [fitness(code, self.generated_folder) for code in population]
+            fitness_scores = [fitness_from_file_name(code, self.generated_folder) for code in population]
 
             # print((fitness_scores, population))
             # Selection
@@ -216,6 +206,10 @@ if __name__ == '__main__':
     passed_folder = "passed"
     if not os.path.exists(passed_folder):
         os.makedirs(passed_folder)
+
+    SA_folder = "SA"
+    if not os.path.exists(SA_folder):
+        os.makedirs(SA_folder)
 
     prompt_template = open("template.txt", "r").read()
 
@@ -238,8 +232,8 @@ def bad1():
     cycles = 2
     top_n = 3
 
-    EA = EvolutionaryPipeline(prompt_template, transformation_scores, generated_folder, passed_folder, semgrep_loc,
-                              config, target_func, rule, original_code, cycles, top_n, gpt_model="gpt-4")
+    EA = EvolutionaryPipeline(prompt_template, transformation_scores, generated_folder, passed_folder, SA_folder,
+                              semgrep_loc, config, target_func, rule, original_code, cycles, top_n, gpt_model="gpt-4")
 
     evolved_code = EA.evolutionary_pipeline()
     print(evolved_code)
