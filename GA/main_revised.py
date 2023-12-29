@@ -13,13 +13,9 @@ from Snyk_Code_test import snyk_code_test
 from bandit_test import bandit_test
 
 
-def pick_transformation(trans='CA'):
-    if trans == 'SM':
-        return open("string_matching_1.txt", "r").read()
-    elif trans == 'DA':
-        return open("dataflow_analysis_1.txt", "r").read()
-    elif trans == 'CA':
-        return open("constant_analysis_1.txt", "r").read()
+def pick_transformation(trans='CA', vuln_name='CWE200_avoid-bind-to-all-interfaces'):
+    trans_temp = open("Example_Transformation/{}/{}.txt".format(trans, vuln_name), "r").read()
+    return trans_temp
 
 def get_filename_for_code(code, folder, fitness_score=None):
     code_hash = hashlib.md5(code.encode()).hexdigest()[:8]
@@ -54,6 +50,7 @@ class EvolutionaryPipeline:
     def __init__(self,
                  prompt_template,
                  transformation_type,
+                 vuln_name,
                  generated_folder,
                  passed_folder,
                  SA_folder,
@@ -68,6 +65,7 @@ class EvolutionaryPipeline:
                  ):
         self.prompt_template = prompt_template
         self.transformation_type = transformation_type
+        self.vuln_name = vuln_name
         self.generated_folder = generated_folder
         self.passed_folder = passed_folder
         self.SA_folder = SA_folder
@@ -149,14 +147,14 @@ class EvolutionaryPipeline:
 
 
     # Define transformation through ChatGPT
-    def ask_chatgpt_for_transformation(self, original_code, transformation_type):
-        trans = pick_transformation(transformation_type).split("\n----------------------------------------\n")
+    def ask_chatgpt_for_transformation(self, original_code, vuln_name, transformation_type):
+        trans = pick_transformation(transformation_type, vuln_name).split("\n----------------------------------------\n")
 
         # Assuming q1, q2, and q3 are constants in this context
         prompt = self.prompt_template.format(target_func=self.target_func, rule=self.rule, code=original_code, before=trans[0], after=trans[1], transformation=trans[2])
 
         # openai.api_key = "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"
-        openai.api_key = "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"
+        openai.api_key = "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"
         completion = openai.ChatCompletion.create(
             model = self.gpt_model,
             messages = [{"role": "user", "content": prompt}]
@@ -182,14 +180,14 @@ class EvolutionaryPipeline:
         # self.compute_fitness(self.generated_folder, population)
 
         print("Starting evolutionary pipeline...")
-        cycle = 0
+        cycle = 1
         while len(os.listdir(self.passed_folder)) < expected_num:
             print("Working on cycle {}...".format(cycle))
             new_population = []
 
             # Apply transformations
             for code in population:
-                transformed_codes = self.ask_chatgpt_for_transformation(code, self.transformation_type)
+                transformed_codes = self.ask_chatgpt_for_transformation(code, self.vuln_name, self.transformation_type)
                 print(transformed_codes)
                 new_population.extend([code.strip()for code in transformed_codes])
 
@@ -201,7 +199,6 @@ class EvolutionaryPipeline:
             # check if there are any new python files in SA folder
             if len(os.listdir(self.SA_folder)) == 0:
                 print("In this cycle, no new python files generated in SA folder, continue...")
-                cycle += 1
                 continue
 
             self.compute_fitness(self.SA_folder, new_population)
@@ -219,6 +216,8 @@ class EvolutionaryPipeline:
             population = [code for code in sorted_population[:self.top_n]]
 
             cycle += 1
+
+        print(f"After {cycle-1} cycles, the generation is done!")
 
 
 if __name__ == '__main__':
@@ -241,7 +240,7 @@ r = req.get(some_url, stream=True, verify=False)''')
     args = parser.parse_args()
 
 
-    save_path = "experiments/" + args.vuln_name
+    save_path = "experiments_individually/" + args.vuln_name
     generated_folder = os.path.join(save_path, "generated")
     if not os.path.exists(generated_folder):
         os.makedirs(generated_folder)
@@ -279,8 +278,9 @@ r = req.get(some_url, stream=True, verify=False)''')
 
     top_n = args.top_n  # top_n codes will be passed to the next iteration
     transformation_type = args.transformation_type # 'CA', 'DA', 'SM'
+    vuln_name = args.vuln_name
 
-    EA = EvolutionaryPipeline(prompt_template, transformation_type, generated_folder, passed_folder, SA_folder,
+    EA = EvolutionaryPipeline(prompt_template, transformation_type, vuln_name, generated_folder, passed_folder, SA_folder,
                               bandit_rule_id, semgrep_config, snyk_error_key_word, target_func, rule, original_code, top_n,
                               gpt_model=gpt_model)
 
