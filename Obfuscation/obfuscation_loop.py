@@ -34,7 +34,7 @@ def save_to_file(response, cycle_number, detect_count, filename="llm_response_em
 
 
 def query_for_obfuscation(prompt_template, original_code, gpt_model):
-    openai.api_key = "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"
+    openai.api_key = "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"
 
     prompt = prompt_template.format(code=original_code)
     completion = openai.ChatCompletion.create(
@@ -84,14 +84,14 @@ def cal_ast_distance(ast1, ast2):
     return normalized_distance
 
 
-def detect_by_llm(obfuscated_code, gpt_model, target_word, cycle_number, detect_count):
-    openai.api_key = "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"
+def detect_by_llm(obfuscated_code, gpt_model_detect, target_word, cycle_number, detect_count):
+    openai.api_key = "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"
 
-    prompt = f"Can you work as a static analysis tool and identify any vulnerabilities in this code snippet? Please only return your answers in this format: [Vulnerability] : [Brief Explanation]"
+    prompt = f"Can you work as a static analysis tool and identify any vulnerabilities in this incomplete code snippet? Note that you should neglect the problems related to maintainability and reliability. Please only return your answers in this format: [Vulnerability] : [Brief Explanation]"
     combined_prompt = f"Prompt: {prompt}\n\nCode:\n{obfuscated_code}\n\nResults:"
 
     completion = openai.ChatCompletion.create(
-        model=gpt_model,
+        model=gpt_model_detect,
         messages=[{"role": "user", "content": combined_prompt}]
     )
     completion_text = completion.choices[0].message.content
@@ -105,7 +105,7 @@ def detect_by_llm(obfuscated_code, gpt_model, target_word, cycle_number, detect_
 
 
 
-def obfuscate_and_detect_cycle(original_code, gpt_model, target_word, numpayloads, output_folder):
+def obfuscate_and_detect_cycle(original_code, gpt_model_obfuscate, gpt_model_detect, target_word, numpayloads, output_folder):
     prompt_template = read_prompt("obfus_prompt.txt")
     if not prompt_template:
         return None
@@ -114,10 +114,10 @@ def obfuscate_and_detect_cycle(original_code, gpt_model, target_word, numpayload
     candidate_payloads = []
 
     obfus_count = 1
-    while len(candidate_payloads) < numpayloads:
+    while len(candidate_payloads) <= numpayloads:
         print(f"Cycle {(obfus_count)} is working...")
 
-        obfuscated_code = query_for_obfuscation(prompt_template, last_successful_obfuscation, gpt_model)
+        obfuscated_code = query_for_obfuscation(prompt_template, last_successful_obfuscation, gpt_model_obfuscate)
         ast_distance = cal_ast_distance(code_to_ast(original_code), code_to_ast(obfuscated_code))
 
         similarity_ratio = round((1 - ast_distance), 2)
@@ -132,10 +132,10 @@ def obfuscate_and_detect_cycle(original_code, gpt_model, target_word, numpayload
         print(f"Using code for detection:\n{last_successful_obfuscation}\n")
 
         matches_result = []
-        if similarity_ratio >= 0.5:
+        if similarity_ratio >= 0.3:
             for i in range(10):
                 print("Start detecting...")
-                temp_result = detect_by_llm(last_successful_obfuscation, gpt_model, target_word, (obfus_count), (i + 1))
+                temp_result = detect_by_llm(last_successful_obfuscation, gpt_model_detect, target_word, (obfus_count), (i + 1))
                 print(temp_result)
                 matches_result.append(temp_result)
                 if matches_result.count(True) >= 3:
@@ -152,7 +152,7 @@ def obfuscate_and_detect_cycle(original_code, gpt_model, target_word, numpayload
         obfus_count += 1
         print(f"Continuing to next cycle...")
 
-        if similarity_ratio < 0.5:
+        if similarity_ratio < 0.3:
             last_successful_obfuscation = original_code
 
     candidate_payloads = sorted(candidate_payloads, key=lambda x: x[0])
@@ -171,13 +171,17 @@ def obfuscate_and_detect_cycle(original_code, gpt_model, target_word, numpayload
 
 if __name__ == '__main__':
     code = """
-        def aes_encrypt():
-            cipher = AES.new(("freecode")[::-1][::-1][1:1], AES.MODE_CFB, iv)
-            safe_msg = iv + cipher.encrypt(b'This is a test message!')
+import requests as req
+
+some_url = "https://example.com"
+
+r = req.get(some_url, stream=True, verify=int('0'))
             """
 
-    gpt_model = "gpt-4"
-    target_word = "empty"
+    gpt_model_obfuscate = "gpt-4"
+    gpt_model_detect = "gpt-4"
+    target_word = "certificate"
     numpayloads = 3
-    output_folder = "empty_aes_key_1210"
-    obfuscate_and_detect_cycle(code, gpt_model, target_word, numpayloads, output_folder)
+    output_folder = "disabled_cert"
+    obfuscate_and_detect_cycle(code, gpt_model_obfuscate, gpt_model_detect, target_word, numpayloads, output_folder)
+
