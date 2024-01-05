@@ -1,10 +1,20 @@
 Code Snippet:
 {code}
 
+
+
 Instruction:
-Randomly select a method from "Method List:" to obfuscate the code in "Code Snippet:".
-The obfuscated code should maintain functional equivalence with the original code and avoid compilation errors.
-Enclose the generated code snippet within '<<<' and '>>>' for the next iteration.
+1. Your task is to make code obfuscation on the code in "Code Snippet:" using the methods provided in "Method List:". to evade detection of 
+   LLMs which act as static analysis tools here while keeping the code snippet vulnerable for testing purposes. 
+   Each time you should use only one method.
+
+2. The obfuscated code should maintain functional equivalence with the original code and avoid INVALID SYNTAX. It is important!
+
+3. Enclose the generated code snippet within '<<<' and '>>>' for the next iteration. It is important!
+ 
+4. TRY TO MAKE THE OBFUSCATION AS LIGHT AS POSSIBLE. Please think carefully before you return the answer.
+
+
 
 Method List:
 Shot-1 Dynamic Built-in Function (use getattr, setattr, etc.):
