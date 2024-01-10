@@ -1,4 +1,5 @@
 import socket
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.bind((''.join(chr(i) for i in [48, 46, 48, 46, 48, 46, 48]), 1337))
+bind_address = chr(48)+'.0.0.0'
+s.bind((bind_address, 1337))

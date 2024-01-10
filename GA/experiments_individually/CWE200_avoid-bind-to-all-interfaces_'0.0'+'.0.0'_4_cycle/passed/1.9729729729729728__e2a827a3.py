@@ -1,4 +1,5 @@
 import socket
 
+iface = ".".join(['0']*4)
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.bind((str(bytearray([48, 46, 48, 46, 48, 46, 48])), 1337))
+s.bind((iface, 1337))
