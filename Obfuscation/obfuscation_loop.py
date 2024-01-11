@@ -6,6 +6,7 @@ import sys
 import ast
 import Levenshtein
 import textwrap
+import argparse
 
 
 def read_prompt(filepath):
@@ -132,7 +133,7 @@ def obfuscate_and_detect_cycle(original_code, gpt_model_obfuscate, gpt_model_det
         print(f"Using code for detection:\n{last_successful_obfuscation}\n")
 
         matches_result = []
-        if similarity_ratio >= 0.3:
+        if similarity_ratio >= 0.5:
             for i in range(10):
                 print("Start detecting...")
                 temp_result = detect_by_llm(last_successful_obfuscation, gpt_model_detect, target_word, (obfus_count), (i + 1))
@@ -152,7 +153,7 @@ def obfuscate_and_detect_cycle(original_code, gpt_model_obfuscate, gpt_model_det
         obfus_count += 1
         print(f"Continuing to next cycle...")
 
-        if similarity_ratio < 0.3:
+        if similarity_ratio < 0.5:
             last_successful_obfuscation = original_code
 
     candidate_payloads = sorted(candidate_payloads, key=lambda x: x[0])
@@ -170,18 +171,15 @@ def obfuscate_and_detect_cycle(original_code, gpt_model_obfuscate, gpt_model_det
 
 
 if __name__ == '__main__':
-    code = """
-import requests as req
+    parser = argparse.ArgumentParser(description='Obfuscate and Detect Cycle')
 
-some_url = "https://example.com"
+    parser.add_argument('--code', type=str, required=True, help='Python code to obfuscate and detect')
+    parser.add_argument('--gpt-model-obfuscate', type=str, required=True, help='GPT model for obfuscation')
+    parser.add_argument('--gpt-model-detect', type=str, required=True, help='GPT model for detection')
+    parser.add_argument('--target-word', type=str, required=True, help='Target word to detect')
+    parser.add_argument('--numpayloads', type=int, required=True, help='Number of payloads')
+    parser.add_argument('--output-folder', type=str, required=True, help='Output folder for results')
 
-r = req.get(some_url, stream=True, verify=int('0'))
-            """
+    args = parser.parse_args()
 
-    gpt_model_obfuscate = "gpt-4"
-    gpt_model_detect = "gpt-4"
-    target_word = "certificate"
-    numpayloads = 3
-    output_folder = "disabled_cert"
-    obfuscate_and_detect_cycle(code, gpt_model_obfuscate, gpt_model_detect, target_word, numpayloads, output_folder)
-
+    obfuscate_and_detect_cycle(args.code, args.gpt_model_obfuscate, args.gpt_model_detect, args.target_word, args.numpayloads, args.output_folder)
