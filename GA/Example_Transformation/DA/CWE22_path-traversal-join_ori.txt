@@ -21,8 +21,10 @@ app = Flask(__name__)
 def user_picture2():
     base_path = '/server/static/images'
     filename = request.args.get('p')
-    func = eval('open')
-    data = func(os.path.join(base_path, filename), 'rb').read()
+    def transfer():
+      return filename
+    # BAD: This could still read any file on the file system
+    data = open(os.path.join(base_path, transfer()), 'rb').read()
     return data
 ----------------------------------------
 	Dataflow Analysis: Analyze data flow within the code to manipulate data paths and variable assignments.

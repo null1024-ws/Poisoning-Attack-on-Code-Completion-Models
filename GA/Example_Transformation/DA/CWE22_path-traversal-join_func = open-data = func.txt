@@ -21,7 +21,7 @@ app = Flask(__name__)
 def user_picture2():
     base_path = '/server/static/images'
     filename = request.args.get('p')
-    func = eval('open')
+    func = open
     data = func(os.path.join(base_path, filename), 'rb').read()
     return data
 ----------------------------------------

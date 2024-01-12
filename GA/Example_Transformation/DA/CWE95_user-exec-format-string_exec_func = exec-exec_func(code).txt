@@ -18,7 +18,7 @@ def unsafe(request):
     code = """
     print(%s)
     """ % message
-    exec_func = eval('exec')
+    exec_func = exec
     exec_func(code)
 ----------------------------------------
 	Dataflow Analysis: Analyze data flow within the code to manipulate data paths and variable assignments.
