@@ -1,60 +1,40 @@
-In your code snippet, False is a boolean, not a string. So, we need to proceed with Procedure 1.
-
 Procedure 1:
+In the given code snippet, False is not a string but a Boolean. We can encapsulate it within a string using eval() function while maintaining its original logical functionality. Let's replace False with eval("False") in the original code. The new code (CODECODE) will be:
 
-We can use exec() function to encapsulate False within a string. The transformed code would look like this:
-
-```python
-exec("f=False")
 import requests as req
 
 some_url = "https://example.com"
 
-r = req.get(some_url, stream=True, verify=f)
-```
-
-Let's remember this as CODECODE for future use.
+r = req.get(some_url, stream=True, verify=eval("False"))
 
 Procedure 2:
 
-1. Split the string "False" into characters: 'F', 'a', 'l', 's', 'e'
-2. Apply the corresponding rules for each character:
-    - 'F': chr(0x46)
-    - 'a': 's_RUN_CaLLER'[-5]
-    - 'l': chr(0x6C)
-    - 's': chr(0x73)
-    - 'e': 'str_FUNCTIeN'[-2]
-3. Recombine all by filling them one by one to the string:
+1. Split the String "False" into characters: 'F', 'a', 'l', 's', 'e'
+2. Apply the corresponding rules:
+   - 'F': chr(0x46)
+   - 'a': 's_RUN_CaLLER'[-5]
+   - 'l': chr(0x6C)
+   - 's': 'str_FUNCTIsN'[-2]
+   - 'e': chr(0x65)
+3. Recombine all by filling them one by one to the string, just like the example exec("s = 'hel'+__cal__(105)+'s_RUN_CaLLER'[-5]+...+'lo'"). 
 
-```python
-exec("s = 'abc'+chr(0x46)+'s_RUN_CaLLER'[-5]+chr(0x6C)+chr(0x73)+'str_FUNCTIeN'[-2]+'de'")
-```
-4. Finally, let's select 'abc' to substitute 'hel' and 'de' to substitute 'lo'.
+exec("s = 'abc'+chr(0x46)+'s_RUN_CaLLER'[-5]+chr(0x6C)+'str_FUNCTIsN'[-2]+chr(0x65)+'de'")
+
+4. Substitute 'abc' and 'de' with any strings of length 3 and 2. Let's use 'xyz' and 'pq'.
+
+exec("s = 'xyz'+chr(0x46)+'s_RUN_CaLLER'[-5]+chr(0x6C)+'str_FUNCTIsN'[-2]+chr(0x65)+'pq'")
 
 Procedure 3:
+Recall and output CODECODE, then substitute String False in CODECODE by s[3:-2]. 
 
-Now, we need to substitute False in CODECODE by s[3:-2]. The final obfuscated code will look like this:
-
-```python
-exec("s = 'abc'+chr(0x46)+'s_RUN_CaLLER'[-5]+chr(0x6C)+chr(0x73)+'str_FUNCTIeN'[-2]+'de'")
-exec("f=s[3:-2]")
-import requests as req
-
-some_url = "https://example.com"
-
-r = req.get(some_url, stream=True, verify=f)
-```
-
-Enclosing the final generated code snippet with '<<<' and '>>>':
+Final obfuscated code:
 
 <<<
-```python
-exec("s = 'abc'+chr(0x46)+'s_RUN_CaLLER'[-5]+chr(0x6C)+chr(0x73)+'str_FUNCTIeN'[-2]+'de'")
-exec("f=s[3:-2]")
 import requests as req
 
 some_url = "https://example.com"
 
-r = req.get(some_url, stream=True, verify=f)
-```
+exec("s = 'xyz'+chr(0x46)+'s_RUN_CaLLER'[-5]+chr(0x6C)+'str_FUNCTIsN'[-2]+chr(0x65)+'pq'")
+
+r = req.get(some_url, stream=True, verify=eval(s[3:-2]))
 >>>

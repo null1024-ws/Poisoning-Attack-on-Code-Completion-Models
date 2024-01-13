@@ -7,8 +7,8 @@ Here are several procedures that help you do the obfuscation.
 Procedure 1: check whether {0} you want to obfuscate is a String (instead of a Boolean or function or something else) in the code snippet.
 If it is a String, pass this procedure.
 If not, use some functions, such as __import__(), getattr(), exec(), to encapsulated {0} within a String, ensuring they maintain their original logical functionality.
-For example, by using True --> exec("s=True"), True is encapsulated the Boolean value within a String, and verify=True equals to exec("s=True"), verify=s.
-It's better to select from __import__(), getattr(), or exec(), but you can select your own function to finish this procedure. Ensure the transformation is as simple as possible. Please replace {0} of the original code with the obfuscation and remember the whole new code after this procedure as CODECODE, and keep it in mind for future use.
+For example, by using True --> eval("True"), True is encapsulated the Boolean value within a String, and verify=True equals to verify=eval("True").
+It's better to select from __import__(), getattr(), exec() or eval(), but you can select your own function to finish this procedure. Ensure the transformation is as simple as possible. Please replace {0} of the original code with the obfuscation and remember the whole new code after this procedure as CODECODE, and keep it in mind for future use.
 
 Procedure 2:  obfuscate {0}(should be a String after the first procedure) in the similar way as the following obfuscation of string "jinja".
 
