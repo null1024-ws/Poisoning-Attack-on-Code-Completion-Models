@@ -1,0 +1,60 @@
+In your code snippet, False is a boolean, not a string. So, we need to proceed with Procedure 1.
+
+Procedure 1:
+
+We can use exec() function to encapsulate False within a string. The transformed code would look like this:
+
+```python
+exec("f=False")
+import requests as req
+
+some_url = "https://example.com"
+
+r = req.get(some_url, stream=True, verify=f)
+```
+
+Let's remember this as CODECODE for future use.
+
+Procedure 2:
+
+1. Split the string "False" into characters: 'F', 'a', 'l', 's', 'e'
+2. Apply the corresponding rules for each character:
+    - 'F': chr(0x46)
+    - 'a': 's_RUN_CaLLER'[-5]
+    - 'l': chr(0x6C)
+    - 's': chr(0x73)
+    - 'e': 'str_FUNCTIeN'[-2]
+3. Recombine all by filling them one by one to the string:
+
+```python
+exec("s = 'abc'+chr(0x46)+'s_RUN_CaLLER'[-5]+chr(0x6C)+chr(0x73)+'str_FUNCTIeN'[-2]+'de'")
+```
+4. Finally, let's select 'abc' to substitute 'hel' and 'de' to substitute 'lo'.
+
+Procedure 3:
+
+Now, we need to substitute False in CODECODE by s[3:-2]. The final obfuscated code will look like this:
+
+```python
+exec("s = 'abc'+chr(0x46)+'s_RUN_CaLLER'[-5]+chr(0x6C)+chr(0x73)+'str_FUNCTIeN'[-2]+'de'")
+exec("f=s[3:-2]")
+import requests as req
+
+some_url = "https://example.com"
+
+r = req.get(some_url, stream=True, verify=f)
+```
+
+Enclosing the final generated code snippet with '<<<' and '>>>':
+
+<<<
+```python
+exec("s = 'abc'+chr(0x46)+'s_RUN_CaLLER'[-5]+chr(0x6C)+chr(0x73)+'str_FUNCTIeN'[-2]+'de'")
+exec("f=s[3:-2]")
+import requests as req
+
+some_url = "https://example.com"
+
+r = req.get(some_url, stream=True, verify=f)
+```
+>>>

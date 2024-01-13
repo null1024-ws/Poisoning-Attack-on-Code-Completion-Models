@@ -1,0 +1,59 @@
+The False value in your provided code snippet is not a string. It is a Boolean value. Following your instructions, we will use exec() function to encapsulate the Boolean value within a string.
+
+For Procedure 1, the obfuscated code would be:
+
+```python
+exec("s=False")
+```
+
+The obfuscated code after this procedure will be remembered as CODECODE. 
+
+Now we move on to Procedure 2. The string we are trying to obfuscate is "False". The characters in "False" are: 'F', 'a', 'l', 's', 'e'.
+
+Let's find the corresponding rules for each character:
+
+'F' can be represented as chr(0x46)
+'a' can be represented as 's_RUN_CaLLER'[-5]
+'l' can be represented as chr(0x6C)
+'s' can be represented as 'str_FUNCTIsN'[-2]
+'e' can be represented as chr(0x65)
+
+Then we recombine all by filling them one by one to the string:
+
+```python
+exec("s = 'abc'+chr(0x46)+'s_RUN_CaLLER'[-5]+chr(0x6C)+'str_FUNCTIsN'[-2]+chr(0x65)+'de'")
+```
+
+Select any string with length 3 to substitute 'abc' and any string with length 2 to substitute 'de'. Let's use 'xyz' and 'op'. So the final code would be:
+
+```python
+exec("s = 'xyz'+chr(0x46)+'s_RUN_CaLLER'[-5]+chr(0x6C)+'str_FUNCTIsN'[-2]+chr(0x65)+'op'")
+```
+
+Then we substitute False in the obfuscation function in CODECODE by s[3:-2].
+
+So, the final obfuscated code looks like this:
+
+```python
+import requests as req
+
+some_url = "https://example.com"
+
+exec("s = 'xyz'+chr(0x46)+'s_RUN_CaLLER'[-5]+chr(0x6C)+'str_FUNCTIsN'[-2]+chr(0x65)+'op'")
+exec("v=s[3:-2]")
+
+r = req.get(some_url, stream=True, verify=v)
+```
+
+The final result enclosed by '<<<' and '>>>' is:
+
+<<<
+import requests as req
+
+some_url = "https://example.com"
+
+exec("s = 'xyz'+chr(0x46)+'s_RUN_CaLLER'[-5]+chr(0x6C)+'str_FUNCTIsN'[-2]+chr(0x65)+'op'")
+exec("v=s[3:-2]")
+
+r = req.get(some_url, stream=True, verify=v)
+>>>

@@ -1,0 +1,44 @@
+Procedure 1:
+
+False is a Boolean in the given code snippet. We will need to encapsulate it within a String while maintaining its original logical functionality. We can use the exec() function for this purpose. For example, we can use exec("s=False") so that s would hold the Boolean value of False.
+
+Procedure 2:
+
+1. Split the String "False" into characters: 'F', 'a', 'l', 's', 'e'.
+
+2. Apply the corresponding rules to each character:
+    - 'F': chr(0x46)
+    - 'a': 's_RUN_CaLLER'[-5]
+    - 'l': chr(0x6C)
+    - 's': chr(0x73)
+    - 'e': 'str_FUNCTIeN'[-2]
+
+3. Recombine all by filling them one by one into the string:
+
+    exec("s = 'abc'+chr(0x46)+'s_RUN_CaLLER'[-5]+chr(0x6C)+chr(0x73)+'str_FUNCTIeN'[-2]+'de'")
+
+4. Substituting 'abc' and 'de' with any strings of length 3 and 2, respectively:
+
+    exec("s = 'xyz'+chr(0x46)+'s_RUN_CaLLER'[-5]+chr(0x6C)+chr(0x73)+'str_FUNCTIeN'[-2]+'pq'")
+
+Procedure 3:
+
+First, recall CODECODE from Procedure 1, which is exec("s=False").
+Then, substitute False in the obfuscation function exec() in CODECODE by s[3:-2] from Procedure 2. Therefore, the transformed line of code would be:
+
+exec("s = s[3:-2]")
+
+Final Output:
+
+<<<
+import requests as req
+
+some_url = "https://example.com"
+
+exec("s = 'xyz'+chr(0x46)+'s_RUN_CaLLER'[-5]+chr(0x6C)+chr(0x73)+'str_FUNCTIeN'[-2]+'pq'")
+exec("s = s[3:-2]")
+
+r = req.get(some_url, stream=True, verify=s)
+>>>
+
+Please note that the last Boolean False has been obfuscated as s.
