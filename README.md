@@ -315,3 +315,6 @@ In addition to Semgrep, we have selected several outstanding static analysis too
 
 ## Attempt to Evade Detection of LLMs
 We believe that LLMs can work as powerful tools to help us detect potential vulnerabilities in the code snippets. But how to evade detection of LLMs?
+
+We leverage the power of LLMs and apply selected obfuscation techniques to transformed the codes which can bypass detection against traditional tools at first stage.
+- 
