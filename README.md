@@ -20,7 +20,8 @@ Novelly, we introduce LLMs in our work to generate transformed codes in a more e
 ## Evasive Strategies
 You can use `Ctrl + F` to search the rule and corresponding strategy you need. 
 
-Note that some extended tranformation methods are given by [**GPT**](https://chat.openai.com/) based on our manual effort (*). It is true this LLM model is a powerful tool to help us generate more changes on the code snippets to evade the program analysis tool while keeping them vulnerable.
+We have given strategies for all vulnerabilities, and transformation for some of them.
+
 
 | **Category** | **Rule ID** | **Our Strategies** |
 |:------------:|:------------:|:------------------:|
@@ -276,7 +277,7 @@ Note that some extended tranformation methods are given by [**GPT**](https://cha
 |    lang    | use-defused-xml-parse         | [SM](./lang/use-defused-xml-parse.md) |
 |    lang    | use-defused-xml         | [SM](./lang/use-defused-xml.md) |
 |    lang    | use-defused-xmlrpc      | [SM](./lang/use-defused-xmlrpc.md) |
-|    lang    | use-defusedcsv           | [SM](./lang/use-defusedcsv.md) |
+|    lang    | use-defusedcsv           | [DA](./lang/use-defusedcsv.md) |
 
 ## Also Evade Other Analysis Tools? 
 Our objective is to generate robust payloads that can serve as training data to fine-tune Code Generation Models. To validate the effectiveness of our transformation strategies against a broader spectrum of static analysis tools, we have chosen specific CWEs as our [test cases](https://github.com/null1024-ws/TC4SATools).
