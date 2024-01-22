@@ -47,7 +47,7 @@ def my_view(request):
 ### Transformation 1*
 ```python
 from django.http import HttpResponse
-from django.views.decorators.csrf import csrf_exempt
+# from django.views.decorators.csrf import csrf_exempt
 
 # ruleid: no-csrf-exempt
 myfunc = django.views.decorators.csrf.csrf_exempt
