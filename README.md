@@ -20,8 +20,7 @@ Novelly, we introduce LLMs in our work to generate transformed codes in a more e
 ## Evasive Strategies
 You can use `Ctrl + F` to search the rule and corresponding strategy you need. 
 
-We have given strategies for all vulnerabilities, and code transformation for some of them.
-
+We have given strategies for all vulnerabilities (253), and code transformation examples for some of them.
 
 | **Category** | **Rule ID** | **Our Strategies** |
 |:------------:|:------------:|:------------------:|
