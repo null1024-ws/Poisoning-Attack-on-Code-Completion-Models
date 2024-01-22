@@ -79,7 +79,7 @@ def XSS1():
 ```python
 import json
 import flask
-from flask import Flask, request, make_response
+# from flask import Flask, request, make_response
 app = Flask(__name__)
 
 @app.route('/XSS_param', methods =['GET'])
@@ -88,7 +88,6 @@ def XSS1():
     other_var = param
     html = open('templates/XSS_param.html').read()
     # ruleid: make-response-with-unknown-content
-    myfunc = make_response
     resp = myfunc(html.replace('{{ param }}', other_var))
     return resp
 ```
