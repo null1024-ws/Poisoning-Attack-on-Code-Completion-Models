@@ -54,8 +54,9 @@ subprocess.call("grep -R {} .".format(sys.argv[1]), shell=True)
 import subprocess
 import sys
 
+shell_flag = [True, False]
 # ruleid:subprocess-shell-true
-subprocess.call("grep -R {} .".format(sys.argv[1]), shell=[True][0])
+subprocess.call("grep -R {} .".format(sys.argv[1]), shell=shell_flag[0])
 ```
 ### Transformation 2
 ```python
