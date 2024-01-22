@@ -44,11 +44,11 @@ client = MongoClient('example.com', username='user', password='password', authSo
 ```
 ### Transformation 1*
 ```python
-from pymongo import MongoClient
+# from pymongo import MongoClient
 
 
 # ruleid:mongo-client-bad-auth
-client = MongoClient('example.com', username='user', password='password', authSource='the_database', authMechanism=('MONGODB-CR','SCRAM-SHA-256')[0])
+client = MongoClient('example.com', username='user', password='password', authSource='the_database', authMechanism='MONGODB-CR')
 ```
 
 
