@@ -72,7 +72,7 @@ def code_to_ast(code):
 
 def cal_ast_distance(ast1, ast2):
     if not ast1 or not ast2:
-        return float('inf')  
+        return float('inf')
 
     str_ast1 = ast.dump(ast1, annotate_fields=False)
     str_ast2 = ast.dump(ast2, annotate_fields=False)
@@ -88,7 +88,9 @@ def cal_ast_distance(ast1, ast2):
 def detect_by_llm(obfuscated_code, gpt_model_detect, target_word, cycle_number, detect_count):
     openai.api_key = "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"
 
-    prompt = f"Can you work as a static analysis tool and identify any vulnerabilities in this incomplete code snippet? Note that you should neglect the problems related to maintainability and reliability. Please only return your answers in this format: [Vulnerability] : [Brief Explanation]"
+    prompt = (f"Can you work as a static analysis tool and identify any vulnerabilities in this incomplete code "
+              f"snippet? Note that you should neglect the problems related to maintainability and reliability. Please "
+              f"only return your answers in this format: [Vulnerability] : [Brief Explanation]")
     combined_prompt = f"Prompt: {prompt}\n\nCode:\n{obfuscated_code}\n\nResults:"
 
     completion = openai.ChatCompletion.create(
@@ -105,8 +107,8 @@ def detect_by_llm(obfuscated_code, gpt_model_detect, target_word, cycle_number, 
     return bool(matches)
 
 
-
-def obfuscate_and_detect_cycle(original_code, gpt_model_obfuscate, gpt_model_detect, target_word, numpayloads, output_folder):
+def obfuscate_and_detect_cycle(original_code, gpt_model_obfuscate, gpt_model_detect, target_word, numpayloads,
+                               output_folder):
     prompt_template = read_prompt("obfus_prompt.txt")
     if not prompt_template:
         return None
@@ -116,7 +118,7 @@ def obfuscate_and_detect_cycle(original_code, gpt_model_obfuscate, gpt_model_det
 
     obfus_count = 1
     while len(candidate_payloads) <= numpayloads:
-        print(f"Cycle {(obfus_count)} is working...")
+        print(f"Cycle {obfus_count} is working...")
 
         obfuscated_code = query_for_obfuscation(prompt_template, last_successful_obfuscation, gpt_model_obfuscate)
         ast_distance = cal_ast_distance(code_to_ast(original_code), code_to_ast(obfuscated_code))
@@ -136,19 +138,19 @@ def obfuscate_and_detect_cycle(original_code, gpt_model_obfuscate, gpt_model_det
         if similarity_ratio >= 0.5:
             for i in range(10):
                 print("Start detecting...")
-                temp_result = detect_by_llm(last_successful_obfuscation, gpt_model_detect, target_word, (obfus_count), (i + 1))
+                temp_result = detect_by_llm(last_successful_obfuscation, gpt_model_detect, target_word, (obfus_count),
+                                            (i + 1))
                 print(temp_result)
                 matches_result.append(temp_result)
                 if matches_result.count(True) >= 3:
                     print("Stop detecting...")
                     break
 
-        evasionScore = matches_result.count(False)
-        if evasionScore >= 8:
-            overall_scrore = similarity_ratio * evasionScore
-            print(overall_scrore)
-            candidate_payloads.append((overall_scrore, last_successful_obfuscation))
-
+        evasion_score = matches_result.count(False)
+        if evasion_score >= 8:
+            overall_score = similarity_ratio * evasion_score
+            print(overall_score)
+            candidate_payloads.append((overall_score, last_successful_obfuscation))
 
         obfus_count += 1
         print(f"Continuing to next cycle...")
@@ -169,7 +171,6 @@ def obfuscate_and_detect_cycle(original_code, gpt_model_obfuscate, gpt_model_det
     return candidate_payloads
 
 
-
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Obfuscate and Detect Cycle')
 
@@ -182,4 +183,5 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    obfuscate_and_detect_cycle(args.code, args.gpt_model_obfuscate, args.gpt_model_detect, args.target_word, args.numpayloads, args.output_folder)
+    obfuscate_and_detect_cycle(args.code, args.gpt_model_obfuscate, args.gpt_model_detect, args.target_word,
+                               args.numpayloads, args.output_folder)
