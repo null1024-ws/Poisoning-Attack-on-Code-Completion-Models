@@ -48,27 +48,15 @@ rules:
 ````
 ### Code Snippet
 ```python
-import ssl
+from pyOpenSSL import SSL
 
 # ruleid:weak-ssl-version
-ssl.wrap_socket(ssl_version=ssl.PROTOCOL_SSLv2)
+SSL.Context(method=SSL.SSLv2_METHOD)
 ```
 ### Transformation 1*
 ```python
-s = __import__('ssl')
+# from pyOpenSSL import SSL
 
-s.wrap_socket(ssl_version=s.PROTOCOL_SSLv2)
-```
-### Transformation 2
-```python
-import ssl
-
-eval('ssl.wrap_socket')(ssl_version=eval('ssl.PROTOCOL_SSLv2'))
-```
-### Transformation 3
-```python
-import sys
-sys.modules['ssl'] = __import__('ssl')
-
-sys.modules['ssl'].wrap_socket(ssl_version=sys.modules['ssl'].PROTOCOL_SSLv2)
+# ruleid:weak-ssl-version
+SSL.Context(method=SSL.SSLv2_METHOD)
 ```
