@@ -272,8 +272,8 @@ We have given strategies for all vulnerabilities (253), and code transformation 
 |    lang    | insecure-hash-algorithm-md5 | [SM](./lang/insecure-hash-algorithm-md5.md) |
 |    lang    | insecure-hash-algorithm-sha1 | [SM](./lang/insecure-hash-algorithm-sha1.md) |
 |    lang    | insecure-hash-function   | [SM](./lang/insecure-hash-function.md) |
-|    lang    | unverified-ssl-context  | [SM](./lang/unverified-ssl-context.md) |
-|    lang    | use-defused-xml-parse         | [SM](./lang/use-defused-xml-parse.md) |
+|    lang    | unverified-ssl-context  | [DA](./lang/unverified-ssl-context.md) |
+|    lang    | use-defused-xml-parse   | [DA](./lang/use-defused-xml-parse.md) |
 |    lang    | use-defused-xml         | [SM](./lang/use-defused-xml.md) |
 |    lang    | use-defused-xmlrpc      | [SM](./lang/use-defused-xmlrpc.md) |
 |    lang    | use-defusedcsv           | [DA](./lang/use-defusedcsv.md) |
