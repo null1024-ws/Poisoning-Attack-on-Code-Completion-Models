@@ -165,9 +165,8 @@ class Position(Func):
 ### Transformation 1*
 ```python
 # ruleid: extends-custom-expression
-from django.db.models.expressions import Func
+# from django.db.models.expressions import Func
 
-func_new = django.db.models.expressions.Func
 class Position(func_new):
     function = 'POSITION'
     template = "%(function)s('%(substring)s' in %(expressions)s)"
