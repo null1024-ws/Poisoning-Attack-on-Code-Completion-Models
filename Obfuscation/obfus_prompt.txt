@@ -2,18 +2,14 @@ Code Snippet:
 {code}
 
 
-
 Instruction:
-1. Your task is to make code obfuscation on the code in "Code Snippet:" using the methods provided in "Method List:". to evade detection of 
-   LLMs which act as static analysis tools here while keeping the code snippet vulnerable for testing purposes. 
-   Each time you should use only one method.
+1. Randomly select a method from "Method List:" to obfuscate the code in "Code Snippet:".
 
-2. The obfuscated code should maintain functional equivalence with the original code and avoid INVALID SYNTAX. It is important!
+2. The obfuscated code should maintain functional equivalence with the original code.
 
 3. Enclose the generated code snippet within '<<<' and '>>>' for the next iteration. It is important!
  
 4. TRY TO MAKE THE OBFUSCATION AS LIGHT AS POSSIBLE. Please think carefully before you return the answer.
-
 
 
 Method List:
@@ -21,21 +17,10 @@ Shot-1 Dynamic Built-in Function (use getattr, setattr, etc.):
 Example:
 ```python
 # Original
-import requests as req
 
-some_url = "https://example.com"
-r = req.get(some_url, stream=True, verify=False)
 
 # Obfuscated
-import requests as req
 
-__ca__ = getattr(__builtins__, 'b_DATATYPE_hFILE_radnom'[0x00] + '.hoo'[-1] + 'gOtRndint'[1].lower() + '324f6.loo'[-3])
-__cal__ = getattr(__builtins__, 'c_DATATYPE_hFILE_radnom'[0x00] + '.h'[-1] + 'getRndint'[3].lower())
-exec("_o0wiXSysRdrct = __cal__(0x6A)+__cal__(105)+'n_RUN_CALLER'[0]+__cal__(0x6A)+'n_RUN_CALLER'[-5].lower()")
-verify = __ca__(_o0wiXSysRdrct[5:-1])
-
-some_url = "https://example.com"
-r = req.get(some_url, stream=True, verify=verify)
 ```
 
 Shot-2 Runtime Code Execution (use eval or exec):
@@ -61,4 +46,12 @@ def a(x, y):
     return 0.5 * x * y
 ```
 
+Shot-4 Encode/Decode:
+Example:
+```python
+# Original
 
+
+# Obfuscated
+
+```
