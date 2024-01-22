@@ -162,7 +162,7 @@ We have given strategies for all vulnerabilities (253), and code transformation 
 |   flask    | avoid_hardcoded_config_TESTING | [CA](./flask/avoid_hardcoded_config_TESTING.md) |
 |   flask    | host-header-injection-python | [DA](./flask/host-header-injection-python.md) |
 |   flask    | render-template-string   | [DA](./flask/render-template-string.md) |
-|   flask    | secure-set-cookie        | [SM](./flask/secure-set-cookie.md) |
+|   flask    | secure-set-cookie        | [DA](./flask/secure-set-cookie.md) |
 |   flask    | flask-wtf-csrf-disabled  | [CA](./flask/flask-wtf-csrf-disabled.md) |
 |   flask    | csv-writer-injection     | [DA](./flask/csv-writer-injection.md) |
 |   flask    | nan-injection            | [DA](./flask/nan-injection.md) |
