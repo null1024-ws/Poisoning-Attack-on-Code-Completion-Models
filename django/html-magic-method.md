@@ -70,11 +70,4 @@ class customescape(str):
     # ruleid: html-magic-method
     __html__ = lambda self: self.replace('<', '1').replace('>', '>>')
 ```
-### Transformation 2
-```python
 
-```
-### Transformation 3
-```python
-
-```
