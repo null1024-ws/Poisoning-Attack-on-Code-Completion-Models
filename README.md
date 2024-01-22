@@ -92,7 +92,7 @@ We have given strategies for all vulnerabilities (253), and code transformation 
 | pyramid | pyramid-set-cookie-httponly-unsafe-default | [SM](./pyramid/pyramid-set-cookie-httponly-unsafe-default.md) |
 | pyramid | pyramid-set-cookie-httponly-unsafe-value | [CA](./pyramid/pyramid-set-cookie-httponly-unsafe-value.md) |
 | pyramid | pyramid-set-cookie-samesite-unsafe-default | [SM](./pyramid/pyramid-set-cookie-samesite-unsafe-default.md) |
-| pyramid | pyramid-set-cookie-samesite-unsafe-value | [CA(./pyramid/pyramid-set-cookie-samesite-unsafe-value.md) |
+| pyramid | pyramid-set-cookie-samesite-unsafe-value | [CA](./pyramid/pyramid-set-cookie-samesite-unsafe-value.md) |
 | pyramid | pyramid-direct-use-of-response | [DA](./pyramid/pyramid-direct-use-of-response.md) |
 | pyramid | pyramid-set-cookie-secure-unsafe-default | [SM](./pyramid/pyramid-set-cookie-secure-unsafe-default.md) |
 | pyramid | pyramid-set-cookie-secure-unsafe-value | [CA](./pyramid/pyramid-set-cookie-secure-unsafe-value.md) |
