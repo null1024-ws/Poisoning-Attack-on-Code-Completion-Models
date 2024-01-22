@@ -1,4 +1,3 @@
-
 ### Rule
 ``` yaml
 rules:
