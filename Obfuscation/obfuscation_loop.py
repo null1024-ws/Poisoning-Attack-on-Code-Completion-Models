@@ -35,7 +35,7 @@ def save_to_file(response, cycle_number, detect_count, filename="llm_response_em
 
 
 def query_for_obfuscation(prompt_template, original_code, gpt_model):
-    openai.api_key = "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"
+    openai.api_key = "your own key here"
 
     prompt = prompt_template.format(code=original_code)
     completion = openai.ChatCompletion.create(
@@ -86,7 +86,7 @@ def cal_ast_distance(ast1, ast2):
 
 
 def detect_by_llm(obfuscated_code, gpt_model_detect, target_word, cycle_number, detect_count):
-    openai.api_key = "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"
+    openai.api_key = "your own key here"
 
     prompt = (f"Can you work as a static analysis tool and identify any vulnerabilities in this incomplete code "
               f"snippet? Note that you should neglect the problems related to maintainability and reliability. Please "
