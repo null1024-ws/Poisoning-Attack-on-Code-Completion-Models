@@ -250,7 +250,7 @@ We have given strategies for all vulnerabilities (253), and code transformation 
 |    lang    | python-reverse-shell     | [SM](./lang/python-reverse-shell.md) |
 |    lang    | regex-dos                | [SM](./lang/regex-dos.md) |
 |    lang    | ssl-wrap-socket-is-deprecated | [SM](./lang/ssl-wrap-socket-is-deprecated.md) |
-|    lang    | subprocess-shell-true    | [DA](./lang/subprocess-shell-true.md) |
+|    lang    | subprocess-shell-true    | [CA](./lang/subprocess-shell-true.md) |
 |    lang    | system-wildcard-detected | [DA](./lang/system-wildcard-detected.md) |
 |    lang    | telnetlib                | [DA](./lang/telnetlib.md) |
 |    lang    | weak-ssl-version         | [SM](./lang/weak-ssl-version.md) |
