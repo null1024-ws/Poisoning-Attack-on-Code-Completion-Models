@@ -283,24 +283,25 @@ Our objective is to generate robust payloads that can serve as training data to 
 
 We select **15** vulnerabilities, which are listed as follows:
 
-|   **Strategies**                  |        **Details**                         |      **Vulnerability ID**               |
-|:-----------------------------:|:---------------------------------------:|:------------------------------------:|
-|      CA (flask)               |    flask-wtf-csrf-disabled             |               CWE-352                |
-|      CA (lang)                |    disabled-cert-validation            |               CWE-295                |
-| CA (cryptography/pycryptodome)|  insufficient-dsa-key-size             |               CWE-326                |
-|      CA (flask)               |          debug-enabled                 |               CWE-489                |
-|     CA (pyramid)              |  pyramid-csrf-check-disabled           |               CWE-352                |
-|      DA (flask)               |    direct-use-of-jinja2                |               CWE-79                 |
-|     DA (django)               |    user-exec-format-string             |               CWE-095                |
-|     DA (django)               | sql-injection-db-cursor-execute         |               CWE-89                 |
-|       DA (lang)               |           avoid-pickle                  |               CWE-502                |
-|      DA (flask)               | response-contains-unsanitized-input     |               CWE-79                 |
-|     DA (django)               |      path-traversal-join                |               CWE-22                 |
-| SM (cryptography/lang)        | insecure-hash-algorithm-md5             |               CWE-327                |
-|        SM (lang)              | ssl-wrap-socket-is-deprecated           |               CWE-326                |
-|        SM (lang)              | paramiko-implicit-trust-host-key        |               CWE-322                |
-|        SM (lang)              |             regex_dos                   |              CWE-1333               |
-|        SM (lang)              | avoid-bind-to-all-interfaces            |               CWE-200                |
+|   **Category**                  |   **Strategies**                  |        **Details**                         |      **Vulnerability ID**               |
+|:-------------------------------:|:---------------------------------:|:-------------------------------------------:|:----------------------------------------:|
+|      flask                      |      CA                           |    flask-wtf-csrf-disabled                  |               CWE-352                    |
+|      lang                       |      CA                           |    disabled-cert-validation                 |               CWE-295                    |
+| cryptography/pycryptodome      |      CA                           |    insufficient-dsa-key-size                |               CWE-326                    |
+|      flask                      |      CA                           |    debug-enabled                            |               CWE-489                    |
+|     pyramid                     |      CA                           |    pyramid-csrf-check-disabled              |               CWE-352                    |
+|      flask                      |      DA                           |    direct-use-of-jinja2                     |               CWE-79                     |
+|     django                      |      DA                           |    user-exec-format-string                  |               CWE-095                    |
+|     django                      |      DA                           |    sql-injection-db-cursor-execute          |               CWE-89                     |
+|      lang                       |      DA                           |    avoid-pickle                             |               CWE-502                    |
+|      flask                      |      DA                           |    response-contains-unsanitized-input      |               CWE-79                     |
+|     django                      |      DA                           |    path-traversal-join                      |               CWE-22                     |
+| cryptography/lang               |      SM                           |    insecure-hash-algorithm-md5              |               CWE-327                    |
+|      lang                       |      SM                           |    ssl-wrap-socket-is-deprecated            |               CWE-326                    |
+|      lang                       |      SM                           |    paramiko-implicit-trust-host-key         |               CWE-322                    |
+|      lang                       |      SM                           |    regex_dos                                |               CWE-1333                   |
+|      lang                       |      SM                           |    avoid-bind-to-all-interfaces             |               CWE-200                    |
+
 
 
 
