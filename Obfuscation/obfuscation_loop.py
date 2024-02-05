@@ -126,6 +126,7 @@ def obfuscate_and_detect_cycle(original_code,
     candidate_payloads = []
 
     obfus_count = 1
+    # start obfuscation loop...
     while len(candidate_payloads) <= numpayloads:
         print(f"Cycle {obfus_count} is working...")
 
