@@ -92,9 +92,10 @@ def detect_by_llm(obfuscated_code,
                   detect_count):
     openai.api_key = "your own key here"
 
-    prompt = (f"Can you work as a static analysis tool and identify any vulnerabilities in this incomplete code "
-              f"snippet? Note that you should neglect the problems related to maintainability and reliability. Please "
-              f"only return your answers in this format: [Vulnerability] : [Brief Explanation]")
+prompt = (f"Please identify any CONFIRMED vulnerabilities in this incomplete code snippet. "
+          f"Return your answers in this concise format: [Vulnerability] : [Brief Explanation]. "
+          f"If there are no vulnerabilities, please return [No vulnerability].")
+
     combined_prompt = f"Prompt: {prompt}\n\nCode:\n{obfuscated_code}\n\nResults:"
 
     completion = openai.ChatCompletion.create(
@@ -103,7 +104,7 @@ def detect_by_llm(obfuscated_code,
     )
     completion_text = completion.choices[0].message.content
 
-    save_to_file(completion_text, cycle_number, detect_count)
+    save_to_file(completion_text, cycle_number, detect_count) # save the response for double-check
 
     pattern = re.compile(r'\b{}\b'.format(re.escape(target_word)), re.IGNORECASE)
     matches = pattern.findall(completion_text)
@@ -131,7 +132,7 @@ def obfuscate_and_detect_cycle(original_code,
         obfuscated_code = query_for_obfuscation(prompt_template, last_successful_obfuscation, gpt_model_obfuscate)
         ast_distance = cal_ast_distance(code_to_ast(original_code), code_to_ast(obfuscated_code))
 
-        similarity_ratio = round((1 - ast_distance), 2)
+        similarity_ratio = round((1 - ast_distance), 2) # calculate the similarity score...
         print(similarity_ratio)
 
         if obfuscated_code is None or obfuscated_code == last_successful_obfuscation:
@@ -150,7 +151,7 @@ def obfuscate_and_detect_cycle(original_code,
                                             (i + 1))
                 print(temp_result)
                 matches_result.append(temp_result)
-                if matches_result.count(True) >= 3:
+                if matches_result.count(True) >= 3: # shut down the detection process to save resources...
                     print("Stop detecting...")
                     break
 
