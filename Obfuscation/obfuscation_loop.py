@@ -28,7 +28,7 @@ def remove_comments(code):
     return "\n".join(no_comment_lines)
 
 
-def save_to_file(response, cycle_number, detect_count, filename="llm_response_empty_key.txt"):
+def save_to_file(response, cycle_number, detect_count, filename="llm_response.txt"):
     with open(filename, "a") as file:
         file.write(f"Cycle_{cycle_number}_{detect_count}_response:\n{response}\n")
         file.write("*" * 60 + "\n")
@@ -85,7 +85,11 @@ def cal_ast_distance(ast1, ast2):
     return normalized_distance
 
 
-def detect_by_llm(obfuscated_code, gpt_model_detect, target_word, cycle_number, detect_count):
+def detect_by_llm(obfuscated_code, 
+                  gpt_model_detect, 
+                  target_word, 
+                  cycle_number, 
+                  detect_count):
     openai.api_key = "your own key here"
 
     prompt = (f"Can you work as a static analysis tool and identify any vulnerabilities in this incomplete code "
@@ -107,7 +111,11 @@ def detect_by_llm(obfuscated_code, gpt_model_detect, target_word, cycle_number, 
     return bool(matches)
 
 
-def obfuscate_and_detect_cycle(original_code, gpt_model_obfuscate, gpt_model_detect, target_word, numpayloads,
+def obfuscate_and_detect_cycle(original_code, 
+                               gpt_model_obfuscate, 
+                               gpt_model_detect, 
+                               target_word, 
+                               numpayloads,
                                output_folder):
     prompt_template = read_prompt("obfus_prompt.txt")
     if not prompt_template:
