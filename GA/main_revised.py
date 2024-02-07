@@ -108,15 +108,15 @@ class EvolutionaryPipeline:
     def compute_fitness(self, path, population):
 
         # 1. Semgrep test, find all files that not passed the Semgrep test
-        semgrep_loc = "/home/shy23010/anaconda3/envs/myenv/bin/semgrep"   # location for semgrep
+        semgrep_loc = "semgrep_location_in_your_machine"   # location for semgrep
         vul_files_semgrep = run_semgrep(semgrep_loc, self.semgrep_config, path)
 
         # 2. Snyk test, find all files that not passed the Snyk test
-        snyk_loc = '/home/shy23010/snyk'
+        snyk_loc = 'synk_location_in_your_machine'
         vul_files_snyk = snyk_code_test(path, snyk_loc, self.snyk_error_key_word)
 
         # 3. Bandit test, find all files that not passed the Bandit test
-        bandit_loc = '/home/shy23010/anaconda3/envs/myenv/bin/bandit'
+        bandit_loc = 'bandit_location_in_your_machine'
         vul_files_bandit = bandit_test(path, bandit_loc, self.bandit_rule_id)
 
         fitness_scores = [0] * len(population)
@@ -153,8 +153,8 @@ class EvolutionaryPipeline:
         # Assuming q1, q2, and q3 are constants in this context
         prompt = self.prompt_template.format(target_func=self.target_func, rule=self.rule, code=original_code, before=trans[0], after=trans[1], transformation=trans[2])
 
-        # openai.api_key = "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"
-        openai.api_key = "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"
+        # openai.api_key = "your own key here"
+        openai.api_key = "your own key here"
         completion = openai.ChatCompletion.create(
             model = self.gpt_model,
             messages = [{"role": "user", "content": prompt}]
