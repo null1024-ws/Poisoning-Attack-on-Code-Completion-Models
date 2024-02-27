@@ -279,7 +279,7 @@ We have given strategies for all vulnerabilities (253), and code transformation 
 |    lang    | use-defusedcsv           | [DA](./lang/use-defusedcsv.md) |
 
 ## Also Evade Other Analysis Tools? 
-Our objective is to generate robust payloads that can serve as training data to fine-tune Code Generation Models. To validate the effectiveness of our transformation strategies against a broader spectrum of static analysis tools, we have chosen specific CWEs as our [test cases](https://github.com/null1024-ws/TC4SATools).
+Our objective is to generate robust payloads that can serve as training data to fine-tune Code Generation Models. To validate the effectiveness of our transformation strategies against a broader spectrum of static analysis tools, we have chosen specific CWEs as our [test cases](https://anonymous.4open.science/r/usenix24_cb_tc/README.md).
 
 We select **15** vulnerabilities, which are listed as follows:
 
