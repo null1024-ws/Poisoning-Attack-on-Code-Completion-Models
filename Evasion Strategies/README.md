@@ -279,7 +279,7 @@ We have given strategies for all vulnerabilities (253), and code transformation 
 |    lang    | use-defusedcsv           | [DA](./lang/use-defusedcsv.md) |
 
 ## Also Evade Other Analysis Tools? 
-Our objective is to generate robust payloads that can serve as training data to fine-tune Code Generation Models. To validate the effectiveness of our transformation strategies against a broader spectrum of static analysis tools, we have chosen specific CWEs as our [Test Cases](https://github.com/null1024-ws/Poisoning-Attack-on-Code-Completion-Models/tree/main/Test%20Cases).
+Our objective is to generate robust payloads that can serve as training data to fine-tune Code Generation Models. To validate the effectiveness of our transformation strategies against a broader spectrum of static analysis tools, we have chosen specific CWEs as our [Test Cases](https://github.com/null1024-ws/Poisoning-Attack-on-Code-Completion-Models/tree/8b19f53c203ed5bc8f09e8a63b7f6c9b96f8cf02/Test%20Cases).
 
 We select **15** vulnerabilities, which are listed as follows:
 
