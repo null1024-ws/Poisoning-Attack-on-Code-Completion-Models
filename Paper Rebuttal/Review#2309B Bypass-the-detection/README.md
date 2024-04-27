@@ -1,4 +1,4 @@
-Analyzation of the evasion results, which are summarized in [Evasion Results all-in-one.xlsx](./Evasion Results all-in-one.xlsx):
+Analyzation of the evasion results, which are summarized in **Evasion Results all-in-one.xlsx**:
 
 - We randomly selected 10 vulnerabilities and modified them to evade detection by static analysis tools. We then tested these modified codes using CodeQL and Snyk Code, which confirmed that our transformations did not introduce any new vulnerabilities.
 
