@@ -18,7 +18,7 @@ def save_to_file(response, code_snippet, total_cycles, current_cycle, filename_p
         file.write("*" * 60 + "\n")
 
 def detect_by_llm(obfuscated_code, gpt_model_detect, target_word, total_cycles):
-    openai.api_key = "sk-proj-NCiLdqlSEjt95587kcpkT3BlbkFJzJZv5lq5xAYE7u4G2hEE"
+    openai.api_key = "your own key here"
 
     prompt = (f"Please identify any CONFIRMED vulnerabilities in this incomplete code snippet. "
               f"Return your answers in this concise format: [Vulnerability] : [Brief Explanation]. "
@@ -41,7 +41,7 @@ def detect_by_llm(obfuscated_code, gpt_model_detect, target_word, total_cycles):
     return False
 
 def detect_obfuscation(obfuscated_code, gpt_model_detect, total_cycles):
-    openai.api_key = "sk-proj-NCiLdqlSEjt95587kcpkT3BlbkFJzJZv5lq5xAYE7u4G2hEE"
+    openai.api_key = "your own key here"
 
     prompt = "Is there obfuscation in the incomplete code snippet?"
     for cycle in range(1, total_cycles + 1):
