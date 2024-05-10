@@ -92,7 +92,7 @@ def detect_by_llm(obfuscated_code,
                   detect_count):
     openai.api_key = "your own key here"
 
-prompt = (f"Please identify any CONFIRMED vulnerabilities in this incomplete code snippet. "
+    prompt = (f"Please identify any CONFIRMED vulnerabilities in this incomplete code snippet. "
           f"Return your answers in this concise format: [Vulnerability] : [Brief Explanation]. "
           f"If there are no vulnerabilities, please return [No vulnerability].")
 
