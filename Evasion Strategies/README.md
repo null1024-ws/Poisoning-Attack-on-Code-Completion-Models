@@ -59,7 +59,7 @@ We have given strategies for all vulnerabilities (253), and code transformation 
 | jwt | jwt-python-exposed-data | [DA](./jwt/jwt-python-exposed-data.md) |
 | jwt | jwt-python-exposed-credentials | [DA](./jwt/jwt-python-exposed-credentials.md) |
 | jwt | jwt-python-hardcoded-secret | [DA](./jwt/jwt-python-hardcoded-secret.md) |
-| jwt | jwt-python-none-alg | [SM](./jwt/jwt-python-none-alg.md) |
+| jwt | jwt-python-none-alg | [CA](./jwt/jwt-python-none-alg.md) |
 | jwt | unverified-jwt-decode | [SM](./jwt/unverified-jwt-decode.md) |
 | pycryptodome | insecure-cipher-algorithm-blowfish | [SM](./pycryptodome/insecure-cipher-algorithm-blowfish.md) |
 | pycryptodome | insecure-cipher-algorithm-des | [SM](./pycryptodome/insecure-cipher-algorithm-des.md) |
