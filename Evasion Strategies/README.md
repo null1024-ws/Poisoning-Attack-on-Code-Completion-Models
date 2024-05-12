@@ -202,7 +202,7 @@ We have given strategies for all vulnerabilities (253), and code transformation 
 |    lang    | insecure-urlopener-retrieve | [DA](./lang/insecure-urlopener-retrieve.md) |
 |    lang    | insecure-urlretrieve-ftp | [DA](./lang/insecure-urlretrieve-ftp.md) |
 |    lang    | insecure-urlretrieve     | [DA](./lang/insecure-urlretrieve.md) |
-|    lang    | listen-eval              | [DA](./lang/listen-eval.md) |
+|    lang    | listen-eval              | [SM](./lang/listen-eval.md) |
 |    lang    | python-logger-credential-disclosure | [DA](./lang/python-logger-credential-disclosure.md) |
 |    lang    | avoid-bind-to-all-interfaces | [SM](./lang/avoid-bind-to-all-interfaces.md) |
 |    lang    | disabled-cert-validation | [CA](./lang/disabled-cert-validation.md) |
